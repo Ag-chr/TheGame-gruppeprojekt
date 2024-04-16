@@ -1,0 +1,316 @@
+{"frames": {
+"Wooden House0.png":
+  {
+    "frame": {"x": 0,"y": 0,"w": 16,"h": 16},
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": {"x": 0,"y": 0,"w": 16,"h": 16},
+    "sourceSize": {"w": 16, "h": 16}
+  },
+
+"Wooden House1.png":
+  {
+    "frame": {"x": 16,"y": 0,"w": 16,"h": 16},
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": {"x": 16,"y": 0,"w": 16,"h": 16},
+    "sourceSize": {"w": 16, "h": 16}
+  },
+
+"Wooden House2.png":
+  {
+    "frame": {"x": 32,"y": 0,"w": 16,"h": 16},
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": {"x": 32,"y": 0,"w": 16,"h": 16},
+    "sourceSize": {"w": 16, "h": 16}
+  },
+
+"Wooden House3.png":
+  {
+    "frame": {"x": 48,"y": 0,"w": 16,"h": 16},
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": {"x": 48,"y": 0,"w": 16,"h": 16},
+    "sourceSize": {"w": 16, "h": 16}
+  },
+
+"Wooden House4.png":
+  {
+    "frame": {"x": 64,"y": 0,"w": 16,"h": 16},
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": {"x": 64,"y": 0,"w": 16,"h": 16},
+    "sourceSize": {"w": 16, "h": 16}
+  },
+
+"Wooden House5.png":
+  {
+    "frame": {"x": 80,"y": 0,"w": 16,"h": 16},
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": {"x": 80,"y": 0,"w": 16,"h": 16},
+    "sourceSize": {"w": 16, "h": 16}
+  },
+
+"Wooden House6.png":
+  {
+    "frame": {"x": 96,"y": 0,"w": 16,"h": 16},
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": {"x": 96,"y": 0,"w": 16,"h": 16},
+    "sourceSize": {"w": 16, "h": 16}
+  },
+
+"Wooden House7.png":
+  {
+    "frame": {"x": 0,"y": 16,"w": 16,"h": 16},
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": {"x": 0,"y": 16,"w": 16,"h": 16},
+    "sourceSize": {"w": 16, "h": 16}
+  },
+
+"Wooden House8.png":
+  {
+    "frame": {"x": 16,"y": 16,"w": 16,"h": 16},
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": {"x": 16,"y": 16,"w": 16,"h": 16},
+    "sourceSize": {"w": 16, "h": 16}
+  },
+
+"Wooden House9.png":
+  {
+    "frame": {"x": 32,"y": 16,"w": 16,"h": 16},
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": {"x": 32,"y": 16,"w": 16,"h": 16},
+    "sourceSize": {"w": 16, "h": 16}
+  },
+
+"Wooden House10.png":
+  {
+    "frame": {"x": 48,"y": 16,"w": 16,"h": 16},
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": {"x": 48,"y": 16,"w": 16,"h": 16},
+    "sourceSize": {"w": 16, "h": 16}
+  },
+
+"Wooden House11.png":
+  {
+    "frame": {"x": 64,"y": 16,"w": 16,"h": 16},
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": {"x": 64,"y": 16,"w": 16,"h": 16},
+    "sourceSize": {"w": 16, "h": 16}
+  },
+
+"Wooden House12.png":
+  {
+    "frame": {"x": 80,"y": 16,"w": 16,"h": 16},
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": {"x": 80,"y": 16,"w": 16,"h": 16},
+    "sourceSize": {"w": 16, "h": 16}
+  },
+
+"Wooden House13.png":
+  {
+    "frame": {"x": 96,"y": 16,"w": 16,"h": 16},
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": {"x": 96,"y": 16,"w": 16,"h": 16},
+    "sourceSize": {"w": 16, "h": 16}
+  },
+
+"Wooden House14.png":
+  {
+    "frame": {"x": 0,"y": 32,"w": 16,"h": 16},
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": {"x": 0,"y": 32,"w": 16,"h": 16},
+    "sourceSize": {"w": 16, "h": 16}
+  },
+
+"Wooden House15.png":
+  {
+    "frame": {"x": 16,"y": 32,"w": 16,"h": 16},
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": {"x": 16,"y": 32,"w": 16,"h": 16},
+    "sourceSize": {"w": 16, "h": 16}
+  },
+
+"Wooden House16.png":
+  {
+    "frame": {"x": 32,"y": 32,"w": 16,"h": 16},
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": {"x": 32,"y": 32,"w": 16,"h": 16},
+    "sourceSize": {"w": 16, "h": 16}
+  },
+
+"Wooden House17.png":
+  {
+    "frame": {"x": 48,"y": 32,"w": 16,"h": 16},
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": {"x": 48,"y": 32,"w": 16,"h": 16},
+    "sourceSize": {"w": 16, "h": 16}
+  },
+
+"Wooden House18.png":
+  {
+    "frame": {"x": 64,"y": 32,"w": 16,"h": 16},
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": {"x": 64,"y": 32,"w": 16,"h": 16},
+    "sourceSize": {"w": 16, "h": 16}
+  },
+
+"Wooden House19.png":
+  {
+    "frame": {"x": 80,"y": 32,"w": 16,"h": 16},
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": {"x": 80,"y": 32,"w": 16,"h": 16},
+    "sourceSize": {"w": 16, "h": 16}
+  },
+
+"Wooden House20.png":
+  {
+    "frame": {"x": 96,"y": 32,"w": 16,"h": 16},
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": {"x": 96,"y": 32,"w": 16,"h": 16},
+    "sourceSize": {"w": 16, "h": 16}
+  },
+
+"Wooden House21.png":
+  {
+    "frame": {"x": 0,"y": 48,"w": 16,"h": 16},
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": {"x": 0,"y": 48,"w": 16,"h": 16},
+    "sourceSize": {"w": 16, "h": 16}
+  },
+
+"Wooden House22.png":
+  {
+    "frame": {"x": 16,"y": 48,"w": 16,"h": 16},
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": {"x": 16,"y": 48,"w": 16,"h": 16},
+    "sourceSize": {"w": 16, "h": 16}
+  },
+
+"Wooden House23.png":
+  {
+    "frame": {"x": 32,"y": 48,"w": 16,"h": 16},
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": {"x": 32,"y": 48,"w": 16,"h": 16},
+    "sourceSize": {"w": 16, "h": 16}
+  },
+
+"Wooden House24.png":
+  {
+    "frame": {"x": 48,"y": 48,"w": 16,"h": 16},
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": {"x": 48,"y": 48,"w": 16,"h": 16},
+    "sourceSize": {"w": 16, "h": 16}
+  },
+
+"Wooden House25.png":
+  {
+    "frame": {"x": 64,"y": 48,"w": 16,"h": 16},
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": {"x": 64,"y": 48,"w": 16,"h": 16},
+    "sourceSize": {"w": 16, "h": 16}
+  },
+
+"Wooden House26.png":
+  {
+    "frame": {"x": 80,"y": 48,"w": 16,"h": 16},
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": {"x": 80,"y": 48,"w": 16,"h": 16},
+    "sourceSize": {"w": 16, "h": 16}
+  },
+
+"Wooden House27.png":
+  {
+    "frame": {"x": 96,"y": 48,"w": 16,"h": 16},
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": {"x": 96,"y": 48,"w": 16,"h": 16},
+    "sourceSize": {"w": 16, "h": 16}
+  },
+
+"Wooden House28.png":
+  {
+    "frame": {"x": 0,"y": 64,"w": 16,"h": 16},
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": {"x": 0,"y": 64,"w": 16,"h": 16},
+    "sourceSize": {"w": 16, "h": 16}
+  },
+
+"Wooden House29.png":
+  {
+    "frame": {"x": 16,"y": 64,"w": 16,"h": 16},
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": {"x": 16,"y": 64,"w": 16,"h": 16},
+    "sourceSize": {"w": 16, "h": 16}
+  },
+
+"Wooden House30.png":
+  {
+    "frame": {"x": 32,"y": 64,"w": 16,"h": 16},
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": {"x": 32,"y": 64,"w": 16,"h": 16},
+    "sourceSize": {"w": 16, "h": 16}
+  },
+
+"Wooden House31.png":
+  {
+    "frame": {"x": 48,"y": 64,"w": 16,"h": 16},
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": {"x": 48,"y": 64,"w": 16,"h": 16},
+    "sourceSize": {"w": 16, "h": 16}
+  },
+
+"Wooden House32.png":
+  {
+    "frame": {"x": 64,"y": 64,"w": 16,"h": 16},
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": {"x": 64,"y": 64,"w": 16,"h": 16},
+    "sourceSize": {"w": 16, "h": 16}
+  },
+
+"Wooden House33.png":
+  {
+    "frame": {"x": 80,"y": 64,"w": 16,"h": 16},
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": {"x": 80,"y": 64,"w": 16,"h": 16},
+    "sourceSize": {"w": 16, "h": 16}
+  },
+
+"Wooden House34.png":
+  {
+    "frame": {"x": 96,"y": 64,"w": 16,"h": 16},
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": {"x": 96,"y": 64,"w": 16,"h": 16},
+    "sourceSize": {"w": 16, "h": 16}
+  }
+}}

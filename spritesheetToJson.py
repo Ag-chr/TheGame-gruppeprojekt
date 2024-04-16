@@ -5,15 +5,18 @@ class SpritesheetToJson:
     start = '{"frames": {'
     end = '\n}}'
 
-    def __init__(self, name, image, tile_size):
-        self.name = name
+    def __init__(self, image, tile_size):
+        self.name = image[image.rfind("/") + 1:-4]
         self.tile_size = tile_size
-        self.pathStart = __file__[:__file__.rfind("\\") + 1] + name + ".json"
+        self.pathStart = __file__[:__file__.rfind("\\") + 1] + self.name + ".json"
         self.pathEnd = image.replace("png", "json")
-        self.image = pygame.image.load(image).convert()
+        try:
+            self.image = pygame.image.load(image).convert()
+        except():
+            print("could not convert")
+            self.image = pygame.image.load(image)
         self.imageW = self.image.get_width()
         self.imageH = self.image.get_height()
-        print(self.imageW // 16, self.imageH // 16)
 
         self.makeJsonFile()
 
@@ -49,5 +52,5 @@ class SpritesheetToJson:
 
 
 
-
-# jsonFile = SpritesheetToJson("grass", "Images/grass.png", 16)
+if __name__ == "__main__":
+    jsonFile = SpritesheetToJson("Images/water.png", 16)
