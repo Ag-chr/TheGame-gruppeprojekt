@@ -49,7 +49,7 @@ class TileMap():
                 #if map[y][x] == "-1":
                     #continue
                 try:
-                    tiles.append(Tile(f'{spritesheetName}{map[y][x]}.png', x * self.tile_size, y * self.tile_size, self.spritesheet))
+                    tiles.append(Tile(f'{spritesheetName}{map[y][x]}.png', x * (self.tile_size - 1), y * (self.tile_size - 1), self.spritesheet))
                 except:
                     pass
                     # Move to next tile in current row
