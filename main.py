@@ -14,7 +14,7 @@ screenW, screenH = pygame.display.Info().current_w, pygame.display.Info().curren
 scale = screenW / DISPLAY_W
 
 window = pygame.display.set_mode((screenW, screenH))
-canvas = pygame.Surface((tile_size * 115 * scale, tile_size * 115 * scale))
+canvas = pygame.Surface((tile_size * 100 * scale, tile_size * 100 * scale))
 
 
 running = True
@@ -40,10 +40,10 @@ maps = [TileMap('Levels/MainLevel_Water.csv', waterSpritesheet, tile_size, scale
 
 #player_rect.x, player_rect.y = map.start_x, map.start_y
 
-XOffset = tile_size * 101 /-2
-YOffset = tile_size * 101 /-2
-#XOffset = 0
-#YOffset = 0
+#XOffset = tile_size * 101 /-2
+#YOffset = tile_size * 101 /-2
+XOffset = 0
+YOffset = 0
 
 moveAmount = 10
 moving = False
@@ -61,13 +61,13 @@ while running:
 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_UP:
-                MoveY = moveAmount
-            if event.key == pygame.K_DOWN:
                 MoveY = -moveAmount
+            if event.key == pygame.K_DOWN:
+                MoveY = moveAmount
             if event.key == pygame.K_LEFT:
-                MoveX = moveAmount
-            if event.key == pygame.K_RIGHT:
                 MoveX = -moveAmount
+            if event.key == pygame.K_RIGHT:
+                MoveX = moveAmount
 
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_UP or event.key == pygame.K_DOWN:
@@ -81,7 +81,14 @@ while running:
     for map in maps:
         map.draw_map(canvas)
     #canvas.blit(player_img, player_rect)
-    window.blit(canvas, (XOffset, YOffset))
-    pygame.display.update()
+
+    canvas.set_clip(pygame.Rect((XOffset, YOffset), pygame.display.get_window_size()))
+    cropped_region = ((XOffset, YOffset), pygame.display.get_window_size())
+
+    window.blit(canvas, (0, 0), cropped_region)
+
+    #pygame.display.update()
+    #print(pygame.display.get_window_size())
+    pygame.display.update(pygame.Rect((0, 0), pygame.display.get_window_size()))
 
 pygame.quit()
