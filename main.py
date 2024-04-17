@@ -4,21 +4,15 @@ from spritesheetToJson import SpritesheetToJson
 import pygame
 
 pygame.init()
-tile_size = 16
-
-
-DISPLAY_W, DISPLAY_H = tile_size * 16 * 2, tile_size * 9 * 2
-
-screenW, screenH = pygame.display.Info().current_w, pygame.display.Info().current_h
-#screenW, screenH = screenW / 2, screenH / 2 # til at teste
-scale = screenW / DISPLAY_W
-
-window = pygame.display.set_mode((screenW, screenH))
-canvas = pygame.Surface((tile_size * 100 * scale, tile_size * 100 * scale))
-
-
 running = True
 clock = pygame.time.Clock()
+tile_size = 16
+DISPLAY_W, DISPLAY_H = tile_size * 16 * 2, tile_size * 9 * 2
+
+gameWindowWidth, gameWindowHeight = pygame.display.Info().current_w, pygame.display.Info().current_h
+#gameWindowWidth, gameWindowHeight = gameWindowWidth / 2, gameWindowHeight / 2 # til at teste
+scale = gameWindowWidth / DISPLAY_W
+window = pygame.display.set_mode((gameWindowWidth, gameWindowHeight))
 
 SpritesheetToJson("Images/water.png", tile_size)
 waterSpritesheet = Spritesheet('Images/water.png')
@@ -29,24 +23,21 @@ grassSpritesheet = Spritesheet('Images/grass.png')
 SpritesheetToJson("Images/Wooden House.png", tile_size)
 woodenHouseSpritesheet = Spritesheet('Images/Wooden House.png')
 
-
-#player_img = spritesheet.parse_sprite(('Character.png'))
-#player_rect = player_img.get_rect()
-
 maps = [TileMap('Levels/MainLevel_Water.csv', waterSpritesheet, tile_size, scale),
         TileMap('Levels/MainLevel_Grass.csv', grassSpritesheet, tile_size, scale),
         TileMap('Levels/MainLevel_House floor.csv', woodenHouseSpritesheet, tile_size, scale),
         TileMap('Levels/MainLevel_House walls.csv', woodenHouseSpritesheet, tile_size, scale)]
 
-#player_rect.x, player_rect.y = map.start_x, map.start_y
+canvas = pygame.Surface((maps[0].map_w, maps[0].map_h))
 
-#XOffset = tile_size * 101 /-2
-#YOffset = tile_size * 101 /-2
-XOffset = 0
-YOffset = 0
+# player_img = spritesheet.parse_sprite(('Character.png'))
+# player_rect = player_img.get_rect()
+# player_rect.x, player_rect.y = map.start_x, map.start_y
 
-moveAmount = 10
-moving = False
+
+XOffset = maps[0].map_w / 2 - gameWindowWidth / 2
+YOffset = maps[0].map_h / 2 - gameWindowHeight / 2
+moveAmount = 2.5 * scale
 MoveX = 0
 MoveY = 0
 
@@ -83,12 +74,9 @@ while running:
     #canvas.blit(player_img, player_rect)
 
     canvas.set_clip(pygame.Rect((XOffset, YOffset), pygame.display.get_window_size()))
-    cropped_region = ((XOffset, YOffset), pygame.display.get_window_size())
+    screen_region = ((XOffset, YOffset), pygame.display.get_window_size())
 
-    window.blit(canvas, (0, 0), cropped_region)
-
-    #pygame.display.update()
-    #print(pygame.display.get_window_size())
-    pygame.display.update(pygame.Rect((0, 0), pygame.display.get_window_size()))
+    window.blit(canvas, (0, 0), screen_region)
+    pygame.display.update()
 
 pygame.quit()
