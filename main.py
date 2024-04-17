@@ -7,14 +7,14 @@ pygame.init()
 tile_size = 16
 
 
-DISPLAY_W, DISPLAY_H = tile_size * 16 * 1.7777778, tile_size * 9 * 1.7777778
+DISPLAY_W, DISPLAY_H = tile_size * 16 * 2, tile_size * 9 * 2
 
 screenW, screenH = pygame.display.Info().current_w, pygame.display.Info().current_h
-screenW, screenH = screenW / 2, screenH / 2 # til at teste
+#screenW, screenH = screenW / 2, screenH / 2 # til at teste
 scale = screenW / DISPLAY_W
 
 window = pygame.display.set_mode((screenW, screenH))
-canvas = pygame.Surface((tile_size * 16 * 101, tile_size * 16 * 101))
+canvas = pygame.Surface((tile_size * 115 * scale, tile_size * 115 * scale))
 
 
 running = True
@@ -45,7 +45,10 @@ YOffset = tile_size * 101 /-2
 #XOffset = 0
 #YOffset = 0
 
-moveAmount = 100
+moveAmount = 10
+moving = False
+MoveX = 0
+MoveY = 0
 
 while running:
     clock.tick(60)
@@ -58,13 +61,21 @@ while running:
 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_UP:
-                YOffset += moveAmount
+                MoveY = moveAmount
             if event.key == pygame.K_DOWN:
-                YOffset -= moveAmount
+                MoveY = -moveAmount
             if event.key == pygame.K_LEFT:
-                XOffset += moveAmount
+                MoveX = moveAmount
             if event.key == pygame.K_RIGHT:
-                XOffset -= moveAmount
+                MoveX = -moveAmount
+
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_UP or event.key == pygame.K_DOWN:
+                MoveY = 0
+            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
+                MoveX = 0
+    XOffset += MoveX
+    YOffset += MoveY
 
     canvas.fill((0, 180, 240))
     for map in maps:
