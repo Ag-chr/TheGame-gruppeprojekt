@@ -51,19 +51,19 @@ while running:
             running = False
 
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_UP:
+            if event.key == pygame.K_w:
                 MoveY = -moveAmount
-            if event.key == pygame.K_DOWN:
+            if event.key == pygame.K_s:
                 MoveY = moveAmount
-            if event.key == pygame.K_LEFT:
+            if event.key == pygame.K_a:
                 MoveX = -moveAmount
-            if event.key == pygame.K_RIGHT:
+            if event.key == pygame.K_d:
                 MoveX = moveAmount
 
         if event.type == pygame.KEYUP:
-            if event.key == pygame.K_UP or event.key == pygame.K_DOWN:
+            if event.key == pygame.K_w or event.key == pygame.K_s:
                 MoveY = 0
-            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
+            if event.key == pygame.K_a or event.key == pygame.K_d:
                 MoveX = 0
     XOffset += MoveX
     YOffset += MoveY
