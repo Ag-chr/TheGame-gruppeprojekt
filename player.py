@@ -16,10 +16,10 @@ class Player:
         self.MoveX = 0
         self.MoveY = 0
 
-        SpritesheetToJson("Images/character.png", self.main.tile_size)
+        SpritesheetToJson("Images/character.png", self.main.tile_size, 16, (16, 16), (16, 16))
         self.player_spritesheet = Spritesheet("Images/character.png")
 
-        self.player_img = self.player_spritesheet.parse_sprite("character13.png")
+        self.player_img = self.player_spritesheet.parse_sprite("character0.png")
         self.player_img = pygame.transform.scale_by(self.player_img, self.main.scale)
         self.player_rect = self.player_img.get_rect()
 
