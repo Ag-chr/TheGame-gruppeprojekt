@@ -4,6 +4,8 @@ from spritesheetToJson import SpritesheetToJson
 import pygame
 import os
 
+from player import Player
+
 class Main():
     pygame.init()
     running = True
@@ -33,11 +35,10 @@ class Main():
                      TileMap('Levels/MainLevel_House walls.csv', self.woodenHouseSpritesheet, self.tile_size, self.scale)]
         self.canvas = pygame.Surface((self.maps[0].map_w, self.maps[0].map_h))
 
-        self.XOffset = self.maps[0].map_w / 2 - gameWindowWidth / 2
-        self.YOffset = self.maps[0].map_h / 2 - gameWindowHeight / 2
-        self.moveAmount = 2.5 * self.scale
-        self.MoveX = 0
-        self.MoveY = 0
+        self.XOffset = self.maps[0].map_w / 2 - self.gameWindowWidth / 2
+        self.YOffset = self.maps[0].map_h / 2 - self.gameWindowHeight / 2
+
+        self.player = Player(self, self.gameWindowWidth / 2, self.gameWindowHeight / 2)
 
     def run(self):
         self.running = True
@@ -50,32 +51,18 @@ class Main():
                 elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
                     self.running = False
 
-                if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_w:
-                        self.MoveY = -self.moveAmount
-                    if event.key == pygame.K_s:
-                        self.MoveY = self.moveAmount
-                    if event.key == pygame.K_a:
-                        self.MoveX = -self.moveAmount
-                    if event.key == pygame.K_d:
-                        self.MoveX = self.moveAmount
+                self.player.checkInput(event)
 
-                if event.type == pygame.KEYUP:
-                    if event.key == pygame.K_w or event.key == pygame.K_s:
-                        self.MoveY = 0
-                    if event.key == pygame.K_a or event.key == pygame.K_d:
-                        self.MoveX = 0
-            self.XOffset += self.MoveX
-            self.YOffset += self.MoveY
+            self.XOffset += self.player.MoveX
+            self.YOffset += self.player.MoveY
 
             self.canvas.fill((0, 180, 240))
             for map in self.maps:
                 map.draw_map(self.canvas)
-            # canvas.blit(player_img, player_rect)
+            self.player.draw_player(self.canvas)
 
-            self.canvas.set_clip(pygame.Rect((self.XOffset, self.YOffset), pygame.display.get_window_size()))
             screen_region = ((self.XOffset, self.YOffset), pygame.display.get_window_size())
-
+            self.canvas.set_clip(pygame.Rect(screen_region))
             self.window.blit(self.canvas, (0, 0), screen_region)
             pygame.display.update()
 
