@@ -52,8 +52,6 @@ class SpritesheetToJson:
                                                   y * self.tile_size + y * self.spacing + self.startPos[1],
                                                   self.tile_size, iteration) + needKomma)
 
-                    print("x:", x * self.tile_size + x * self.spacing + self.startPos[0], "y:", y * self.tile_size + y * self.spacing + self.startPos[1], "\n")
-
                     iteration += 1
             file.write(self.end)
 
