@@ -36,8 +36,8 @@ class SpritesheetToJson:
   }""" % (self.name, iteration, x, y, size, size, x, y, size, size, size, size)
 
     def makeJsonFile(self):
-        amount_of_rows = (self.imageH - self.startPos[0] - self.endPos[0]) // (self.tile_size + self.spacing)
-        amount_of_columns = (self.imageW  - self.startPos[1] - self.endPos[1]) // (self.tile_size + self.spacing)
+        amount_of_rows = self.imageH // (self.tile_size + self.spacing)
+        amount_of_columns = self.imageW // (self.tile_size + self.spacing)
 
         iteration = 0
         with open(self.name + ".json", "w") as file:
@@ -51,6 +51,9 @@ class SpritesheetToJson:
                     file.write(self.jsonIteration(x * self.tile_size + x * self.spacing + self.startPos[0],
                                                   y * self.tile_size + y * self.spacing + self.startPos[1],
                                                   self.tile_size, iteration) + needKomma)
+
+                    print("x:", x * self.tile_size + x * self.spacing + self.startPos[0], "y:", y * self.tile_size + y * self.spacing + self.startPos[1], "\n")
+
                     iteration += 1
             file.write(self.end)
 
