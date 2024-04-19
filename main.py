@@ -35,9 +35,6 @@ class Main():
                      TileMap('Levels/MainLevel_House walls.csv', self.woodenHouseSpritesheet, self.tile_size, self.scale)]
         self.canvas = pygame.Surface((self.maps[0].map_w, self.maps[0].map_h))
 
-        self.XOffset = self.maps[0].map_w / 2 - self.gameWindowWidth / 2
-        self.YOffset = self.maps[0].map_h / 2 - self.gameWindowHeight / 2
-
         self.player = Player(self, self.gameWindowWidth / 2, self.gameWindowHeight / 2)
 
     def run(self):
@@ -52,16 +49,15 @@ class Main():
                     self.running = False
 
                 self.player.checkInput(event)
+            self.player.update()
 
-            self.XOffset += self.player.MoveX
-            self.YOffset += self.player.MoveY
 
             self.canvas.fill((0, 180, 240))
             for map in self.maps:
                 map.draw_map(self.canvas)
             self.player.draw_player(self.canvas)
 
-            screen_region = ((self.XOffset, self.YOffset), pygame.display.get_window_size())
+            screen_region = ((self.player.x - self.gameWindowWidth / 2, self.player.y - self.gameWindowHeight / 2), pygame.display.get_window_size())
             self.canvas.set_clip(pygame.Rect(screen_region))
             self.window.blit(self.canvas, (0, 0), screen_region)
             pygame.display.update()
