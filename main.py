@@ -15,10 +15,11 @@ class Main():
     def __init__(self, gameWindowWidth=pygame.display.Info().current_w, gameWindowHeight=pygame.display.Info().current_h, tile_columns=tile_size * 16 * 2, tile_rows=tile_size * 9 * 2):
         self.gameWindowWidth = gameWindowWidth
         self.gameWindowHeight = gameWindowHeight
+        self.window = pygame.display.set_mode((self.gameWindowWidth, self.gameWindowHeight))
         self.DISPLAY_W = tile_columns
         self.DISPLAY_H = tile_rows
         self.scale = self.gameWindowWidth / self.DISPLAY_W
-        self.window = pygame.display.set_mode((self.gameWindowWidth, self.gameWindowHeight))
+        self.real_tile_size = self.tile_size * self.scale
 
         SpritesheetToJson("Images/water.png", self.tile_size)
         self.waterSpritesheet = Spritesheet('Images/water.png')
@@ -55,7 +56,9 @@ class Main():
             self.canvas.fill((0, 180, 240))
             for map in self.maps:
                 map.draw_map(self.canvas)
+            self.player.checkTiles('Levels/MainLevel_Grass.csv')
             self.player.draw_player(self.canvas)
+
 
             screen_region = ((self.player.x - self.gameWindowWidth / 2, self.player.y - self.gameWindowHeight / 2), pygame.display.get_window_size())
             self.canvas.set_clip(pygame.Rect(screen_region))
