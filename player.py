@@ -1,11 +1,11 @@
 import pygame, csv, os
 from spritesheetToJson import SpritesheetToJson
 from spritesheet import Spritesheet
+from collider import Collider
 
 
 class Player:
-
-    def __init__(self, main, drawPosX, drawPosY):
+    def __init__(self, main):
         self.main = main
 
         SpritesheetToJson("Images/character.png", self.main.tile_size, 16, (16, 16), (16, 16))
@@ -15,10 +15,10 @@ class Player:
         self.player_img = pygame.transform.scale_by(self.player_img, self.main.scale)
         self.player_rect = self.player_img.get_rect()
 
-        self.drawPosX = drawPosX
-        self.drawPosY = drawPosY
         self.x = self.main.maps[0].map_w / 2 - self.player_rect.width / 2
         self.y = self.main.maps[0].map_h / 2 - self.player_rect.height / 2
+        self.width = 13 * self.main.scale
+        self.height = 15 * self.main.scale
 
         self.moveAmount = 2 * self.main.scale
         self.moveX = 0
@@ -27,21 +27,45 @@ class Player:
     def checkInput(self, event):
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_w:
-                self.moveY = -self.moveAmount
+                self.moveY -= self.moveAmount
             if event.key == pygame.K_s:
-                self.moveY = self.moveAmount
+                self.moveY += self.moveAmount
             if event.key == pygame.K_a:
-                self.moveX = -self.moveAmount
+                self.moveX -= self.moveAmount
             if event.key == pygame.K_d:
-                self.moveX = self.moveAmount
+                self.moveX += self.moveAmount
 
         if event.type == pygame.KEYUP:
-            if event.key == pygame.K_w or event.key == pygame.K_s:
-                self.moveY = 0
-            if event.key == pygame.K_a or event.key == pygame.K_d:
-                self.moveX = 0
+            if event.key == pygame.K_w:
+                self.moveY += self.moveAmount
+            if event.key == pygame.K_s:
+                self.moveY -= self.moveAmount
+            if event.key == pygame.K_a:
+                self.moveX += self.moveAmount
+            if event.key == pygame.K_d:
+                self.moveX -= self.moveAmount
 
-    def checkTiles(self, csvFile):
+
+    def update(self):
+        xFuture = self.x + self.moveX
+        yFuture = self.y + self.moveY
+        xObstructed = False
+        yObstructed = False
+
+        colliders = self.checkCollision('Levels/MainLevel_Collision_Player.csv')
+        for collider in colliders:
+            if self.x + self.width > collider.x and self.x < collider.x + collider.width and yFuture + self.height > collider.y and yFuture < collider.y + collider.height:
+                yObstructed = True
+
+            if self.y + self.height > collider.y and self.y < collider.y + collider.height and xFuture + self.width > collider.x and xFuture < collider.x + collider.width:
+                xObstructed = True
+
+        if not xObstructed:
+            self.x += self.moveX
+        if not yObstructed:
+            self.y += self.moveY
+
+    def checkCollision(self, csvFile):
         def read_csv(filename):
             map = []
             with open(os.path.join(filename)) as data:
@@ -49,30 +73,20 @@ class Player:
                 for row in data:
                     map.append(list(row))
             return map
-        spritesheet_ = self.main.grassSpritesheet
+
         map = read_csv(csvFile)
+        scanHeight, scanWidth = 3, 3
+        nearbyColliders = []
 
-        tilenumY = int(self.y // self.main.real_tile_size - 1)
-        tilenumX = int(self.x // self.main.real_tile_size - 1)
+        yGrid = int(self.y // self.main.real_tile_size - 1)
+        xGrid = int(self.x // self.main.real_tile_size - 1)
 
-        scanheight = 3
-        scanwidth = 3
-
-        for y in range(tilenumY, tilenumY + scanheight + 1):
-            for x in range(tilenumX, tilenumX + scanwidth + 1):
+        for y in range(yGrid, yGrid + scanHeight + 1):
+            for x in range(xGrid, xGrid + scanWidth + 1):
                 tilenum = map[y][x]
                 if tilenum == "-1": continue
-
-                sprite_img = spritesheet_.parse_sprite(f"grass{tilenum}.png")
-                sprite_img = pygame.transform.scale_by(sprite_img, self.main.scale)
-                sprite_img_rect = sprite_img.get_rect()
-                sprite_img_rect.x, sprite_img_rect.y = x * self.main.real_tile_size, y * self.main.real_tile_size
-                self.main.canvas.blit(sprite_img, sprite_img_rect)
-
-
-    def update(self):
-        self.x += self.moveX
-        self.y += self.moveY
+                nearbyColliders.append(Collider(self.main, tilenum, x * self.main.real_tile_size, y * self.main.real_tile_size))
+        return nearbyColliders
 
     def draw_player(self, canvas):
         self.player_rect.x = self.x

@@ -30,13 +30,16 @@ class Main():
         SpritesheetToJson("Images/Wooden House.png", self.tile_size)
         self.woodenHouseSpritesheet = Spritesheet('Images/Wooden House.png')
 
+        SpritesheetToJson("Images/collision.png", self.tile_size)
+        self.collisionSpritesheet = Spritesheet("Images/collision.png")
+
         self.maps = [TileMap('Levels/MainLevel_Water.csv', self.waterSpritesheet, self.tile_size, self.scale),
                      TileMap('Levels/MainLevel_Grass.csv', self.grassSpritesheet, self.tile_size, self.scale),
                      TileMap('Levels/MainLevel_House floor.csv', self.woodenHouseSpritesheet, self.tile_size, self.scale),
                      TileMap('Levels/MainLevel_House walls.csv', self.woodenHouseSpritesheet, self.tile_size, self.scale)]
         self.canvas = pygame.Surface((self.maps[0].map_w, self.maps[0].map_h))
 
-        self.player = Player(self, self.gameWindowWidth / 2, self.gameWindowHeight / 2)
+        self.player = Player(self)
 
     def run(self):
         self.running = True
@@ -56,7 +59,11 @@ class Main():
             self.canvas.fill((0, 180, 240))
             for map in self.maps:
                 map.draw_map(self.canvas)
-            self.player.checkTiles('Levels/MainLevel_Grass.csv')
+
+            # visualisere colliders
+            for collider in self.player.checkCollision('Levels/MainLevel_Collision_Player.csv'):
+                pygame.draw.rect(self.canvas, (255, 0, 0), pygame.Rect(collider.x, collider.y, collider.width, collider.height))
+
             self.player.draw_player(self.canvas)
 
 
