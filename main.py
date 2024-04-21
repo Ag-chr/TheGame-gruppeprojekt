@@ -41,6 +41,17 @@ class Main():
 
         self.player = Player(self)
 
+    def rectCollisionChecker(self, entityCollider, wallCollider, speedX, speedY, xObstructed, yObstructed):
+        xFuture = entityCollider.x + speedX
+        yFuture = entityCollider.y + speedY
+
+        if entityCollider.x + entityCollider.width > wallCollider.x and entityCollider.x < wallCollider.x + wallCollider.width and yFuture + entityCollider.height > wallCollider.y and yFuture < wallCollider.y + wallCollider.height:
+            yObstructed = True
+        if entityCollider.y + entityCollider.height > wallCollider.y and entityCollider.y < wallCollider.y + wallCollider.height and xFuture + entityCollider.width > wallCollider.x and xFuture < wallCollider.x + wallCollider.width:
+            xObstructed = True
+
+        return xObstructed, yObstructed
+
     def run(self):
         self.running = True
         while self.running:
@@ -65,13 +76,13 @@ class Main():
                 pygame.draw.rect(self.canvas, (255, 0, 0), pygame.Rect(collider.x, collider.y, collider.width, collider.height))
 
             self.player.draw_player(self.canvas)
+            self.player.playerCollider.draw(self.canvas)  # tegner player collider
 
 
             screen_region = ((self.player.x - self.gameWindowWidth / 2, self.player.y - self.gameWindowHeight / 2), pygame.display.get_window_size())
             self.canvas.set_clip(pygame.Rect(screen_region))
             self.window.blit(self.canvas, (0, 0), screen_region)
             pygame.display.update()
-
 
 main = Main()
 main.run()

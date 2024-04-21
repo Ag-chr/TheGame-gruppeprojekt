@@ -17,8 +17,9 @@ class Player:
 
         self.x = self.main.maps[0].map_w / 2 - self.player_rect.width / 2
         self.y = self.main.maps[0].map_h / 2 - self.player_rect.height / 2
-        self.width = 13 * self.main.scale
-        self.height = 15 * self.main.scale
+        self.width = 10 * self.main.scale
+        self.height = 12 * self.main.scale
+        self.playerCollider = None
 
         self.moveAmount = 2 * self.main.scale
         self.moveX = 0
@@ -45,8 +46,8 @@ class Player:
             if event.key == pygame.K_d:
                 self.moveX -= self.moveAmount
 
-
     def update(self):
+        self.playerCollider = Collider(main=self.main, x=self.x + 3 * self.main.scale, y=self.y + 2 * self.main.scale, width=self.width, height=self.height)
         xFuture = self.x + self.moveX
         yFuture = self.y + self.moveY
         xObstructed = False
@@ -54,11 +55,7 @@ class Player:
 
         colliders = self.checkCollision('Levels/MainLevel_Collision_Player.csv')
         for collider in colliders:
-            if self.x + self.width > collider.x and self.x < collider.x + collider.width and yFuture + self.height > collider.y and yFuture < collider.y + collider.height:
-                yObstructed = True
-
-            if self.y + self.height > collider.y and self.y < collider.y + collider.height and xFuture + self.width > collider.x and xFuture < collider.x + collider.width:
-                xObstructed = True
+            xObstructed, yObstructed = self.main.rectCollisionChecker(self.playerCollider, collider, self.moveX, self.moveY, xObstructed, yObstructed)
 
         if not xObstructed:
             self.x += self.moveX
@@ -83,9 +80,9 @@ class Player:
 
         for y in range(yGrid, yGrid + scanHeight + 1):
             for x in range(xGrid, xGrid + scanWidth + 1):
-                tilenum = map[y][x]
-                if tilenum == "-1": continue
-                nearbyColliders.append(Collider(self.main, tilenum, x * self.main.real_tile_size, y * self.main.real_tile_size))
+                tileID = map[y][x]
+                if tileID == "-1": continue
+                nearbyColliders.append(Collider(self.main, x * self.main.real_tile_size, y * self.main.real_tile_size, tileID=tileID))
         return nearbyColliders
 
     def draw_player(self, canvas):
