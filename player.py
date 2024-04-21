@@ -2,7 +2,7 @@ import pygame, csv, os
 from spritesheetToJson import SpritesheetToJson
 from spritesheet import Spritesheet
 from collider import Collider
-
+import math
 
 class Player:
     def __init__(self, main):
@@ -17,6 +17,7 @@ class Player:
 
         self.x = self.main.maps[0].map_w / 2 - self.player_rect.width / 2
         self.y = self.main.maps[0].map_h / 2 - self.player_rect.height / 2
+        self.XOffset, self.YOffset = 3 * self.main.scale, 2 * self.main.scale
         self.width = 10 * self.main.scale
         self.height = 12 * self.main.scale
         self.playerCollider = None
@@ -47,20 +48,23 @@ class Player:
                 self.moveX -= self.moveAmount
 
     def update(self):
-        self.playerCollider = Collider(main=self.main, x=self.x + 3 * self.main.scale, y=self.y + 2 * self.main.scale, width=self.width, height=self.height)
-        xFuture = self.x + self.moveX
-        yFuture = self.y + self.moveY
+        self.playerCollider = Collider(main=self.main, x=self.x + self.XOffset, y=self.y + self.YOffset, width=self.width, height=self.height)
         xObstructed = False
         yObstructed = False
+        amountToCorrect = 1
 
         colliders = self.checkCollision('Levels/MainLevel_Collision_Player.csv')
         for collider in colliders:
             xObstructed, yObstructed = self.main.rectCollisionChecker(self.playerCollider, collider, self.moveX, self.moveY, xObstructed, yObstructed)
+        
+        distanceMoved = math.sqrt(self.moveX ** 2 + self.moveY ** 2)
+        if distanceMoved > self.moveAmount:
+            amountToCorrect = self.moveAmount / distanceMoved
 
         if not xObstructed:
-            self.x += self.moveX
+            self.x += self.moveX * amountToCorrect
         if not yObstructed:
-            self.y += self.moveY
+            self.y += self.moveY * amountToCorrect
 
     def checkCollision(self, csvFile):
         def read_csv(filename):
@@ -72,14 +76,14 @@ class Player:
             return map
 
         map = read_csv(csvFile)
-        scanHeight, scanWidth = 3, 3
+        scanHeight, scanWidth = 2, 2
         nearbyColliders = []
 
-        yGrid = int(self.y // self.main.real_tile_size - 1)
-        xGrid = int(self.x // self.main.real_tile_size - 1)
+        yGrid = int(self.y // self.main.real_tile_size)
+        xGrid = int(self.x // self.main.real_tile_size)
 
-        for y in range(yGrid, yGrid + scanHeight + 1):
-            for x in range(xGrid, xGrid + scanWidth + 1):
+        for y in range(yGrid, yGrid + scanHeight):
+            for x in range(xGrid, xGrid + scanWidth):
                 tileID = map[y][x]
                 if tileID == "-1": continue
                 nearbyColliders.append(Collider(self.main, x * self.main.real_tile_size, y * self.main.real_tile_size, tileID=tileID))
@@ -89,6 +93,3 @@ class Player:
         self.player_rect.x = self.x
         self.player_rect.y = self.y
         canvas.blit(self.player_img, self.player_rect)
-
-
-
