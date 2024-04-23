@@ -28,12 +28,8 @@ class SpritesheetToJson:
         return """
 "%s%i.png":
   {
-    "frame": {"x": %i,"y": %i,"w": %i,"h": %i},
-    "rotated": false,
-    "trimmed": false,
-    "spriteSourceSize": {"x": %i,"y": %i,"w": %i,"h": %i},
-    "sourceSize": {"w": %i, "h": %i}
-  }""" % (self.name, iteration, x, y, size, size, x, y, size, size, size, size)
+    "frame": {"x": %i,"y": %i,"w": %i,"h": %i}
+  }""" % (self.name, iteration, x, y, size, size)
 
     def makeJsonFile(self):
         amount_of_rows = self.imageH // (self.tile_size + self.spacing)

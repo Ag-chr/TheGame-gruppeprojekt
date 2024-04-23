@@ -72,11 +72,11 @@ class Main():
                 map.draw_map(self.canvas)
 
             # visualisere colliders
-            for collider in self.player.checkCollision('Levels/MainLevel_Collision_Player.csv'):
-                pygame.draw.rect(self.canvas, (255, 0, 0), pygame.Rect(collider.x, collider.y, collider.width, collider.height))
+            #for collider in self.player.checkCollision('Levels/MainLevel_Collision_Player.csv'):
+            #    pygame.draw.rect(self.canvas, (255, 0, 0), pygame.Rect(collider.x, collider.y, collider.width, collider.height))
 
             self.player.draw_player(self.canvas)
-            self.player.playerCollider.draw(self.canvas)  # tegner player collider
+            #self.player.playerCollider.draw(self.canvas)  # tegner player collider
 
 
             screen_region = ((self.player.x - self.gameWindowWidth / 2, self.player.y - self.gameWindowHeight / 2), pygame.display.get_window_size())
