@@ -3,6 +3,7 @@ from spritesheet import Spritesheet
 from spritesheetToJson import SpritesheetToJson
 import pygame
 import os
+import math
 
 from player import Player
 
@@ -18,7 +19,7 @@ class Main():
         self.window = pygame.display.set_mode((self.gameWindowWidth, self.gameWindowHeight))
         self.DISPLAY_W = tile_columns
         self.DISPLAY_H = tile_rows
-        self.scale = self.gameWindowWidth / self.DISPLAY_W
+        self.scale = int(self.gameWindowWidth / self.DISPLAY_W)
         self.real_tile_size = self.tile_size * self.scale
 
         SpritesheetToJson("Images/water.png", self.tile_size)
@@ -84,6 +85,8 @@ class Main():
             self.window.blit(self.canvas, (0, 0), screen_region)
             pygame.display.update()
 
-main = Main()
+tile_size = 16
+
+main = Main(pygame.display.Info().current_w, pygame.display.Info().current_h, tile_size * 16 * 2, tile_size * 9 * 2)
 main.run()
 pygame.quit()
