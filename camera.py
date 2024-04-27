@@ -40,8 +40,6 @@ class Camera:
 
         self.speed = self.acceleration * distanceFromPlayer / self.main.scale
 
-        self.speed = self.constrain(self.speed, 0, self.player.speed)
-
         xVel = math.cos(angleToPlayer) * self.speed
         yVel = math.sin(angleToPlayer) * self.speed
 
@@ -49,10 +47,3 @@ class Camera:
         self.y = self.y + yVel
 
         return self.x - self.gameWindowWidth / 2, self.y - self.gameWindowHeight / 2
-
-    def constrain(self, num, min=None, max=None):
-        if num < min and min is not None:
-            num = min
-        if num > max and max is not None:
-            num = max
-        return num
