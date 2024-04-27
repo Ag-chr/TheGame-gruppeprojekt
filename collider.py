@@ -1,7 +1,7 @@
 import pygame
 
 class Collider:
-    def __init__(self, main, x, y, tileID=None, width=0, height=0):
+    def __init__(self, main, x, y, width=0, height=0, tileID=None):
         self.x = x
         self.y = y
         self.width = width
