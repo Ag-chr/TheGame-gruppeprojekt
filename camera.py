@@ -25,10 +25,6 @@ class Camera:
         xVel = math.cos(angleToPlayer) * self.speed
         yVel = math.sin(angleToPlayer) * self.speed
 
-        if distanceFromPlayer < self.speed * 1.5:
-            self.speed -= self.acceleration * 100
-            self.speed = self.constrain(self.speed, 0, self.player.speed / 2)
-
         self.x = self.x + xVel
         self.y = self.y + yVel
 
