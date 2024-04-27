@@ -18,7 +18,8 @@ class Camera:
         distanceFromPlayer = math.sqrt((yPlayer - self.y) ** 2 + (xPlayer - self.x) ** 2)
         angleToPlayer = math.atan2(yPlayer - self.y, xPlayer - self.x)
 
-        self.speed += self.acceleration
+        self.speed = self.acceleration * distanceFromPlayer / self.main.scale
+
         self.speed = self.constrain(self.speed, 0, self.player.speed / 2)
 
         xVel = math.cos(angleToPlayer) * self.speed
