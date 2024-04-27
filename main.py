@@ -6,6 +6,7 @@ import os
 import math
 
 from player import Player
+from camera import Camera
 
 class Main():
     pygame.init()
@@ -41,6 +42,7 @@ class Main():
         self.canvas = pygame.Surface((self.maps[0].map_w, self.maps[0].map_h))
 
         self.player = Player(self)
+        self.camera = Camera(self, self.player, 0.04 * self.scale, 3 * self.scale)
 
     def rectCollisionChecker(self, entityCollider, wallCollider, speedX, speedY, xObstructed, yObstructed):
         xFuture = entityCollider.x + speedX
@@ -66,6 +68,7 @@ class Main():
 
                 self.player.checkInput(event)
             self.player.update()
+            self.camera.update()
 
 
             self.canvas.fill((0, 180, 240))
@@ -77,10 +80,9 @@ class Main():
             #    pygame.draw.rect(self.canvas, (255, 0, 0), pygame.Rect(collider.x, collider.y, collider.width, collider.height))
 
             self.player.draw_player(self.canvas)
-            #self.player.playerCollider.draw(self.canvas)  # tegner player collider
 
 
-            screen_region = ((self.player.x - self.gameWindowWidth / 2, self.player.y - self.gameWindowHeight / 2), pygame.display.get_window_size())
+            screen_region = (self.camera.update(), pygame.display.get_window_size())
             self.canvas.set_clip(pygame.Rect(screen_region))
             self.window.blit(self.canvas, (0, 0), screen_region)
             pygame.display.update()

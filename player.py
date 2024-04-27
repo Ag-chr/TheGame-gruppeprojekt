@@ -22,30 +22,30 @@ class Player:
         self.height = 12 * self.main.scale
         self.playerCollider = None
 
-        self.moveAmount = 2 * self.main.scale
+        self.speed = 2 * self.main.scale
         self.moveX = 0
         self.moveY = 0
 
     def checkInput(self, event):
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_w:
-                self.moveY -= self.moveAmount
+                self.moveY -= self.speed
             if event.key == pygame.K_s:
-                self.moveY += self.moveAmount
+                self.moveY += self.speed
             if event.key == pygame.K_a:
-                self.moveX -= self.moveAmount
+                self.moveX -= self.speed
             if event.key == pygame.K_d:
-                self.moveX += self.moveAmount
+                self.moveX += self.speed
 
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_w:
-                self.moveY += self.moveAmount
+                self.moveY += self.speed
             if event.key == pygame.K_s:
-                self.moveY -= self.moveAmount
+                self.moveY -= self.speed
             if event.key == pygame.K_a:
-                self.moveX += self.moveAmount
+                self.moveX += self.speed
             if event.key == pygame.K_d:
-                self.moveX -= self.moveAmount
+                self.moveX -= self.speed
 
     def update(self):
         self.playerCollider = Collider(main=self.main, x=self.x + self.XOffset, y=self.y + self.YOffset, width=self.width, height=self.height)
@@ -58,8 +58,8 @@ class Player:
             xObstructed, yObstructed = self.main.rectCollisionChecker(self.playerCollider, collider, self.moveX, self.moveY, xObstructed, yObstructed)
         
         distanceMoved = math.sqrt(self.moveX ** 2 + self.moveY ** 2)
-        if distanceMoved > self.moveAmount:
-            amountToCorrect = self.moveAmount / distanceMoved
+        if distanceMoved > self.speed:
+            amountToCorrect = self.speed / distanceMoved
 
         if not xObstructed:
             self.x += self.moveX * amountToCorrect
