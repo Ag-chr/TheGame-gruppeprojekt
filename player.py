@@ -1,6 +1,5 @@
 import pygame, csv, os
-from spritesheetToJson import SpritesheetToJson
-from spritesheet import Spritesheet
+from getSpritesheets import playerSpritesheet
 from collider import Collider
 import math
 
@@ -8,10 +7,7 @@ class Player:
     def __init__(self, main):
         self.main = main
 
-        SpritesheetToJson("Images/character.png", self.main.tile_size, 16, (16, 16), (16, 16))
-        self.player_spritesheet = Spritesheet("Images/character.png")
-
-        self.player_img = self.player_spritesheet.parse_sprite("character0.png")
+        self.player_img = playerSpritesheet.parse_sprite("character0.png")
         self.player_img = pygame.transform.scale_by(self.player_img, self.main.scale)
         self.player_rect = self.player_img.get_rect()
 
@@ -53,7 +49,7 @@ class Player:
         yObstructed = False
         amountToCorrect = 1
 
-        colliders = self.checkCollision('Levels/MainLevel_Collision_Player.csv')
+        colliders = self.checkCollision('Levels/MainLevel_Collision player.csv')
         for collider in colliders:
             xObstructed, yObstructed = self.main.rectCollisionChecker(self.playerCollider, collider, self.moveX, self.moveY, xObstructed, yObstructed)
         

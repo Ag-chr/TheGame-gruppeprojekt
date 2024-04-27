@@ -1,9 +1,7 @@
 from tiles import *
-from spritesheet import Spritesheet
-from spritesheetToJson import SpritesheetToJson
+from getSpritesheets import updateJson, waterSpritesheet, grassSpritesheet, woodenHouseSpritesheet
 import pygame
-import os
-import math
+
 
 from player import Player
 from camera import Camera
@@ -23,22 +21,11 @@ class Main():
         self.scale = int(self.gameWindowWidth / self.DISPLAY_W)
         self.real_tile_size = self.tile_size * self.scale
 
-        SpritesheetToJson("Images/water.png", self.tile_size)
-        self.waterSpritesheet = Spritesheet('Images/water.png')
-
-        SpritesheetToJson("Images/grass.png", self.tile_size)
-        self.grassSpritesheet = Spritesheet('Images/grass.png')
-
-        SpritesheetToJson("Images/Wooden House.png", self.tile_size)
-        self.woodenHouseSpritesheet = Spritesheet('Images/Wooden House.png')
-
-        SpritesheetToJson("Images/collision.png", self.tile_size)
-        self.collisionSpritesheet = Spritesheet("Images/collision.png")
-
-        self.maps = [TileMap('Levels/MainLevel_Water.csv', self.waterSpritesheet, self.tile_size, self.scale),
-                     TileMap('Levels/MainLevel_Grass.csv', self.grassSpritesheet, self.tile_size, self.scale),
-                     TileMap('Levels/MainLevel_House floor.csv', self.woodenHouseSpritesheet, self.tile_size, self.scale),
-                     TileMap('Levels/MainLevel_House walls.csv', self.woodenHouseSpritesheet, self.tile_size, self.scale)]
+        updateJson(self.tile_size)
+        self.maps = [TileMap('Levels/MainLevel_Water.csv', waterSpritesheet, self.tile_size, self.scale),
+                     TileMap('Levels/MainLevel_Grass.csv', grassSpritesheet, self.tile_size, self.scale),
+                     TileMap('Levels/MainLevel_House floor.csv', woodenHouseSpritesheet, self.tile_size, self.scale),
+                     TileMap('Levels/MainLevel_House walls.csv', woodenHouseSpritesheet, self.tile_size, self.scale)]
         self.canvas = pygame.Surface((self.maps[0].map_w, self.maps[0].map_h))
 
         self.player = Player(self)
