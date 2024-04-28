@@ -24,7 +24,7 @@ class Camera:
         xMouse, yMouse = pygame.mouse.get_pos()
         mouse = pygame.Rect(xMouse, yMouse, 0, 0)
 
-        isXInNoLookZone, isYInNoLookZone = self.main.rectCollisionChecker(mouse, self.noLookZone)
+        isXInNoLookZone, isYInNoLookZone = rectCollisionChecker(mouse, self.noLookZone)
         xOffset = 0
         yOffset = 0
 

@@ -22,6 +22,7 @@ class Player:
         self.speed = 2 * self.main.scale
         self.moveX = 0
         self.moveY = 0
+        self.collisionMap = read_csv('Levels/MainLevel_Collision player.csv')
 
     def checkInput(self, event):
         if event.type == pygame.KEYDOWN:
@@ -50,7 +51,7 @@ class Player:
         yObstructed = False
         amountToCorrect = 1
 
-        colliders = checkCollision('Levels/MainLevel_Collision player.csv', self.x, self.y, self.main.tile_size, self.main.scale)
+        colliders = checkCollision(self.collisionMap, self.x, self.y, self.main.tile_size, self.main.scale)
         for collider in colliders:
             xObstructed, yObstructed = rectCollisionChecker(self.playerCollider, collider, self.moveX, self.moveY, xObstructed, yObstructed)
         

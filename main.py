@@ -29,17 +29,7 @@ class Main():
         self.canvas = pygame.Surface((self.maps[0].map_w, self.maps[0].map_h))
 
         self.player = Player(self)
-        self.camera = Camera(self, self.player, 0.05 * self.scale, 100 * self.scale)
-
-    def rectCollisionChecker(self, entityCollider, wallCollider, speedX=0, speedY=0, xObstructed=False, yObstructed=False):
-        xFuture = entityCollider.x + speedX
-        yFuture = entityCollider.y + speedY
-
-        if entityCollider.x + entityCollider.width > wallCollider.x and entityCollider.x < wallCollider.x + wallCollider.width and yFuture + entityCollider.height > wallCollider.y and yFuture < wallCollider.y + wallCollider.height:
-            yObstructed = True
-        if entityCollider.y + entityCollider.height > wallCollider.y and entityCollider.y < wallCollider.y + wallCollider.height and xFuture + entityCollider.width > wallCollider.x and xFuture < wallCollider.x + wallCollider.width:
-            xObstructed = True
-        return xObstructed, yObstructed
+        self.camera = Camera(self, self.player, 0.04 * self.scale, 100 * self.scale)
 
     def run(self):
         self.running = True
