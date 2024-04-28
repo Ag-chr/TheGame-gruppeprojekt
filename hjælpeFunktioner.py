@@ -22,9 +22,9 @@ def rectCollisionChecker(entityCollider, wallCollider, speedX=0, speedY=0, xObst
     return xObstructed, yObstructed
 
 
-def checkCollision(collisionMap, x, y, tile_size, scale):
+def checkCollision(tile_size, scale, collisionMap, x, y, scanArea=(2, 2)):
     real_tile_size = tile_size * scale
-    scanHeight, scanWidth = 2, 2
+    scanWidth, scanHeight = scanArea[0], scanArea[1]
     nearbyColliders = []
 
     yGrid = int(y // real_tile_size)

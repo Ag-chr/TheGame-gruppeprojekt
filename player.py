@@ -53,7 +53,7 @@ class Player:
         yObstructed = False
         amountToCorrect = 1
 
-        colliders = checkCollision(self.collisionMap, self.x, self.y, self.tile_size, self.scale)
+        colliders = checkCollision(self.tile_size, self.scale, self.collisionMap, self.x, self.y, scanArea=(2,2))
         for collider in colliders:
             xObstructed, yObstructed = rectCollisionChecker(self.playerCollider, collider, self.moveX, self.moveY, xObstructed, yObstructed)
         
