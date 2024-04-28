@@ -1,6 +1,6 @@
 import math
 import pygame
-from collider import Collider
+from hjælpeFunktioner import rectCollisionChecker
 
 class Camera:
     def __init__(self, main, player, acceleration, lookingDistance):

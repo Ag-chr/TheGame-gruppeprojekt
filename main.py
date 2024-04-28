@@ -39,7 +39,6 @@ class Main():
             yObstructed = True
         if entityCollider.y + entityCollider.height > wallCollider.y and entityCollider.y < wallCollider.y + wallCollider.height and xFuture + entityCollider.width > wallCollider.x and xFuture < wallCollider.x + wallCollider.width:
             xObstructed = True
-
         return xObstructed, yObstructed
 
     def run(self):

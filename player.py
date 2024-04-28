@@ -2,6 +2,7 @@ import pygame, csv, os
 from getSpritesheets import playerSpritesheet
 from collider import Collider
 import math
+from hjælpeFunktioner import read_csv, rectCollisionChecker
 
 class Player:
     def __init__(self, main):
@@ -51,7 +52,7 @@ class Player:
 
         colliders = self.checkCollision('Levels/MainLevel_Collision player.csv')
         for collider in colliders:
-            xObstructed, yObstructed = self.main.rectCollisionChecker(self.playerCollider, collider, self.moveX, self.moveY, xObstructed, yObstructed)
+            xObstructed, yObstructed = rectCollisionChecker(self.playerCollider, collider, self.moveX, self.moveY, xObstructed, yObstructed)
         
         distanceMoved = math.sqrt(self.moveX ** 2 + self.moveY ** 2)
         if distanceMoved > self.speed:
@@ -63,14 +64,6 @@ class Player:
             self.y += self.moveY * amountToCorrect
 
     def checkCollision(self, csvFile):
-        def read_csv(filename):
-            map = []
-            with open(os.path.join(filename)) as data:
-                data = csv.reader(data, delimiter=',')
-                for row in data:
-                    map.append(list(row))
-            return map
-
         map = read_csv(csvFile)
         scanHeight, scanWidth = 2, 2
         nearbyColliders = []
