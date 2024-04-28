@@ -1,7 +1,7 @@
 import pygame
 
 class Collider:
-    def __init__(self, main, x, y, width=0, height=0, tileID=None):
+    def __init__(self, tile_size, scale, x, y, width=0, height=0, tileID=None):
         self.x = x
         self.y = y
         self.width = width
@@ -9,17 +9,17 @@ class Collider:
 
         if tileID is not None:
             if tileID == "0":
-                self.x += 11 * main.scale  # flytter 11 pixel fremad fordi tile starter ikke oppe i venstre hjørne
-                self.width = 5 * main.scale
+                self.x += 11 * scale  # flytter 11 pixel fremad fordi tile starter ikke oppe i venstre hjørne
+                self.width = 5 * scale
             elif tileID == "1":
                 pass
             elif tileID == "2":
-                self.width = 5 * main.scale
+                self.width = 5 * scale
 
         if self.width == 0:
-            self.width = main.tile_size * main.scale
+            self.width = tile_size * scale
         if self.height == 0:
-            self.height = main.tile_size * main.scale
+            self.height = tile_size * scale
 
     def __str__(self):
         return f"x: {self.x}, y: {self.y}\nwidth: {self.width}, height: {self.height}"

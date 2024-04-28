@@ -1,4 +1,5 @@
 import csv, os
+from collider import Collider
 
 
 def read_csv(filename):
@@ -19,3 +20,20 @@ def rectCollisionChecker(entityCollider, wallCollider, speedX=0, speedY=0, xObst
     if entityCollider.y + entityCollider.height > wallCollider.y and entityCollider.y < wallCollider.y + wallCollider.height and xFuture + entityCollider.width > wallCollider.x and xFuture < wallCollider.x + wallCollider.width:
         xObstructed = True
     return xObstructed, yObstructed
+
+
+def checkCollision(csvFile, x, y, tile_size, scale):
+    real_tile_size = tile_size * scale
+    map = read_csv(csvFile)
+    scanHeight, scanWidth = 2, 2
+    nearbyColliders = []
+
+    yGrid = int(y // real_tile_size)
+    xGrid = int(x // real_tile_size)
+
+    for y in range(yGrid, yGrid + scanHeight):
+        for x in range(xGrid, xGrid + scanWidth):
+            tileID = map[y][x]
+            if tileID == "-1": continue
+            nearbyColliders.append(Collider(tile_size, scale, x * real_tile_size, y * real_tile_size, tileID=tileID))
+    return nearbyColliders

@@ -2,7 +2,7 @@ import pygame, csv, os
 from getSpritesheets import playerSpritesheet
 from collider import Collider
 import math
-from hjælpeFunktioner import read_csv, rectCollisionChecker
+from hjælpeFunktioner import read_csv, rectCollisionChecker, checkCollision
 
 class Player:
     def __init__(self, main):
@@ -45,12 +45,12 @@ class Player:
                 self.moveX -= self.speed
 
     def update(self):
-        self.playerCollider = Collider(main=self.main, x=self.x + self.XOffset, y=self.y + self.YOffset, width=self.width, height=self.height)
+        self.playerCollider = Collider(tile_size=self.main.tile_size, scale=self.main.scale, x=self.x + self.XOffset, y=self.y + self.YOffset, width=self.width, height=self.height)
         xObstructed = False
         yObstructed = False
         amountToCorrect = 1
 
-        colliders = self.checkCollision('Levels/MainLevel_Collision player.csv')
+        colliders = checkCollision('Levels/MainLevel_Collision player.csv', self.x, self.y, self.main.tile_size, self.main.scale)
         for collider in colliders:
             xObstructed, yObstructed = rectCollisionChecker(self.playerCollider, collider, self.moveX, self.moveY, xObstructed, yObstructed)
         
@@ -62,21 +62,6 @@ class Player:
             self.x += self.moveX * amountToCorrect
         if not yObstructed:
             self.y += self.moveY * amountToCorrect
-
-    def checkCollision(self, csvFile):
-        map = read_csv(csvFile)
-        scanHeight, scanWidth = 2, 2
-        nearbyColliders = []
-
-        yGrid = int(self.y // self.main.real_tile_size)
-        xGrid = int(self.x // self.main.real_tile_size)
-
-        for y in range(yGrid, yGrid + scanHeight):
-            for x in range(xGrid, xGrid + scanWidth):
-                tileID = map[y][x]
-                if tileID == "-1": continue
-                nearbyColliders.append(Collider(self.main, x * self.main.real_tile_size, y * self.main.real_tile_size, tileID=tileID))
-        return nearbyColliders
 
     def draw_player(self, canvas):
         self.player_rect.x = self.x
