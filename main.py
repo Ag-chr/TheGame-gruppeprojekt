@@ -28,8 +28,8 @@ class Main():
                      TileMap('Levels/MainLevel_House walls.csv', woodenHouseSpritesheet, self.tile_size, self.scale)]
         self.canvas = pygame.Surface((self.maps[0].map_w, self.maps[0].map_h))
 
-        self.player = Player(self)
-        self.camera = Camera(self, self.player, 0.04 * self.scale, 100 * self.scale)
+        self.player = Player(self.scale, self.tile_size, self.maps[0].map_w / 2, self.maps[0].map_h / 2)
+        self.camera = Camera(self.scale, self.gameWindowWidth, self.gameWindowHeight, self.player, 0.04 * self.scale, 100 * self.scale)
 
     def run(self):
         self.running = True
