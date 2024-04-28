@@ -1,6 +1,6 @@
 from tiles import *
 from getSpritesheets import updateJson, waterSpritesheet, grassSpritesheet, woodenHouseSpritesheet
-from hjælpeFunktioner import checkCollision, read_csv
+from hjælpeFunktioner import checkNearbyTiles, read_csv
 import pygame
 
 
@@ -55,8 +55,8 @@ class Main():
                 map.draw_map(self.canvas)
 
             # visualisere colliders
-            #for collider in checkCollision(self.tile_size, self.scale, self.collisionMap, self.player.x, self.player.y, scanArea=(2,2)):
-            #    pygame.draw.rect(self.canvas, (255, 0, 0), pygame.Rect(collider.x, collider.y, collider.width, collider.height))
+            # for collider in checkCollision(self.tile_size, self.scale, self.collisionMap, self.player.x + self.player.width, self.player.y + self.player.height, scanTiles=((0,-1), (-1, 0), (0, 1), (1, 0))):
+            #     pygame.draw.rect(self.canvas, (255, 0, 0), pygame.Rect(collider.x, collider.y, collider.width, collider.height))
 
             self.player.draw_player(self.canvas)
 

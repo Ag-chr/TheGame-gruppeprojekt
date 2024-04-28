@@ -2,7 +2,7 @@ import pygame, csv, os
 from getSpritesheets import playerSpritesheet
 from collider import Collider
 import math
-from hjælpeFunktioner import read_csv, rectCollisionChecker, checkCollision
+from hjælpeFunktioner import read_csv, rectCollisionChecker, checkNearbyTiles
 
 class Player:
     def __init__(self, scale, tile_size, xStart, yStart):
@@ -16,10 +16,10 @@ class Player:
         self.x = xStart - self.player_rect.width / 2
         self.y = yStart - self.player_rect.height / 2
 
-        self.XOffset, self.YOffset = 3 * self.scale, 2 * self.scale
+        self.xOffset, self.yOffset = 3 * self.scale, 2 * self.scale
         self.width = 10 * self.scale
         self.height = 12 * self.scale
-        self.playerCollider = Collider(tile_size=self.tile_size, scale=self.scale, x=self.x + self.XOffset, y=self.y + self.YOffset, width=self.width, height=self.height)
+        self.playerCollider = Collider(tile_size=self.tile_size, scale=self.scale, x=self.x + self.xOffset, y=self.y + self.yOffset, width=self.width, height=self.height)
 
         self.speed = 2 * self.scale
         self.moveX = 0
@@ -48,12 +48,12 @@ class Player:
                 self.moveX -= self.speed
 
     def update(self):
-        self.playerCollider.x, self.playerCollider.y = self.x + self.XOffset, self.y + self.YOffset
+        self.playerCollider.x, self.playerCollider.y = self.x + self.xOffset, self.y + self.yOffset
         xObstructed = False
         yObstructed = False
         amountToCorrect = 1
 
-        colliders = checkCollision(self.tile_size, self.scale, self.collisionMap, self.x, self.y, scanArea=(2,2))
+        colliders = checkNearbyTiles(self.tile_size, self.scale, self.collisionMap, self.x, self.y, scanArea=(2, 2))
         for collider in colliders:
             xObstructed, yObstructed = rectCollisionChecker(self.playerCollider, collider, self.moveX, self.moveY, xObstructed, yObstructed)
         
