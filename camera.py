@@ -32,7 +32,7 @@ class Camera:
         if isXInNoLookZone and isYInNoLookZone:
             xOffset = yOffset = 0
 
-        # players x og y koords og oppe i venstre side af sprite så det centreres
+        # players x og y koords oppe i venstre side af sprite så det centreres
         xPlayer = self.player.x + 16 * self.main.scale / 2
         yPlayer = self.player.y + 16 * self.main.scale / 2
 
