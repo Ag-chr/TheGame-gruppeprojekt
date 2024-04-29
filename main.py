@@ -14,31 +14,30 @@ class Main():
     tile_size = 16
 
     def __init__(self, gameWindowWidth=pygame.display.Info().current_w, gameWindowHeight=pygame.display.Info().current_h, tile_columns=16 * 2, tile_rows=9 * 2):
-        self.gameWindowWidth = gameWindowWidth
-        self.gameWindowHeight = gameWindowHeight
-        self.window = pygame.display.set_mode((self.gameWindowWidth, self.gameWindowHeight))
+        self.windowWidth, self.windowHeight = gameWindowWidth, gameWindowHeight
+        self.window = pygame.display.set_mode((self.windowWidth, self.windowHeight))  # sætter størrelse af vinduet
         pygame.display.toggle_fullscreen()
-        self.DISPLAY_W = tile_columns * self.tile_size
-        self.DISPLAY_H = tile_rows * self.tile_size
-        self.scale = round(self.gameWindowWidth / self.DISPLAY_W)
 
-        updateJson(self.tile_size)
+        self.DISPLAY_W, self.DISPLAY_H = tile_columns * self.tile_size, tile_rows * self.tile_size  # ønsket antal af viste tiles på begge led
+        self.scale = round(self.windowWidth / self.DISPLAY_W)  # forholdet for en pixel når den forstørres til at fylde hele skærmen
+
+        updateJson(self.tile_size)  # Json filer er dem som giver lokationen og størrelse for alle sprites
+        # forskellige niveauer af tilemaps, så græs bliver tegnet oven på vand, osv.
         self.maps = [TileMap('Levels/MainLevel_Water.csv', waterSpritesheet, self.tile_size, self.scale),
                      TileMap('Levels/MainLevel_Grass.csv', grassSpritesheet, self.tile_size, self.scale),
                      TileMap('Levels/MainLevel_House floor.csv', woodenHouseSpritesheet, self.tile_size, self.scale),
                      TileMap('Levels/MainLevel_House walls.csv', woodenHouseSpritesheet, self.tile_size, self.scale)]
+
+        # tegnefladen skal være samme størrelse som map for at tegne det hele i starten
         self.canvas = pygame.Surface((self.maps[0].map_w, self.maps[0].map_h))
 
         self.player = Player(self, self.maps[0].map_w / 2, self.maps[0].map_h / 2)
-
-        self.camera = Camera(self, self.gameWindowWidth, self.gameWindowHeight, self.player, 0.04, 100)
-
-        self.collisionMap = read_csv('Levels/MainLevel_Collision player.csv')
+        self.camera = Camera(self, self.windowWidth, self.windowHeight, self.player, 0.04, 100)
 
     def run(self):
         self.running = True
         while self.running:
-            self.clock.tick(60)
+            self.clock.tick(60)  # 60 fps
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -48,27 +47,24 @@ class Main():
                 if event.type == pygame.KEYDOWN and event.key == pygame.K_f:
                     pygame.display.toggle_fullscreen()
 
-
                 self.player.checkInput(event)
             self.player.update()
             self.camera.update()
-
 
             self.canvas.fill((0, 180, 240))
             for map in self.maps:
                 map.draw_map(self.canvas)
 
             # visualisere colliders
-            # for collider in checkCollision(self.tile_size, self.scale, self.collisionMap, self.player.x + self.player.width, self.player.y + self.player.height, scanTiles=((0,-1), (-1, 0), (0, 1), (1, 0))):
-            #     pygame.draw.rect(self.canvas, (255, 0, 0), pygame.Rect(collider.x, collider.y, collider.width, collider.height))
+            #for collider in checkNearbyTiles(self.tile_size, self.scale, read_csv('Levels/MainLevel_Collision player.csv'), self.player.x + self.player.width, self.player.y + self.player.height, scanTiles=((0,-1), (-1, 0), (0, 1), (1, 0))):
+            #    pygame.draw.rect(self.canvas, (255, 0, 0), pygame.Rect(collider.x, collider.y, collider.width, collider.height))
 
             self.player.draw_player(self.canvas)
 
-
-            screen_region = (self.camera.update(), pygame.display.get_window_size())
-            self.canvas.set_clip(pygame.Rect(screen_region))
-            self.window.blit(self.canvas, (0, 0), screen_region)
-            pygame.display.update()
+            screen_region = (self.camera.update(), pygame.display.get_window_size())  # området hvor skærmen er
+            self.canvas.set_clip(pygame.Rect(screen_region))  # modificere pixels kun indenfor skærm området
+            self.window.blit(self.canvas, (0, 0), screen_region)  # tegner canvas på skærm og kun område som kan ses
+            pygame.display.update()  # updater skærm så disse ændringer kan ses
 
 main = Main(pygame.display.Info().current_w, pygame.display.Info().current_h, 16 * 1.6, 9 * 1.6)
 main.run()
