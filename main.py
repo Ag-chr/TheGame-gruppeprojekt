@@ -32,7 +32,7 @@ class Main():
         self.canvas = pygame.Surface((self.maps[0].map_w, self.maps[0].map_h))
 
         self.player = Player(self, self.maps[0].map_w / 2, self.maps[0].map_h / 2)
-        self.camera = Camera(self, self.player, 0.04, 100)
+        self.camera = Camera(self, self.player, 0.075, 100)
 
     def run(self):
         self.running = True
@@ -49,7 +49,6 @@ class Main():
 
                 self.player.checkInput(event)
             self.player.update()
-            self.camera.update()
 
             self.canvas.fill((0, 180, 240))
             for map in self.maps:
