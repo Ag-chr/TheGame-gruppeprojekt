@@ -21,7 +21,6 @@ class Main():
         self.DISPLAY_W = tile_columns * self.tile_size
         self.DISPLAY_H = tile_rows * self.tile_size
         self.scale = round(self.gameWindowWidth / self.DISPLAY_W)
-        self.real_tile_size = self.tile_size * self.scale
 
         updateJson(self.tile_size)
         self.maps = [TileMap('Levels/MainLevel_Water.csv', waterSpritesheet, self.tile_size, self.scale),
@@ -30,8 +29,9 @@ class Main():
                      TileMap('Levels/MainLevel_House walls.csv', woodenHouseSpritesheet, self.tile_size, self.scale)]
         self.canvas = pygame.Surface((self.maps[0].map_w, self.maps[0].map_h))
 
-        self.player = Player(self.scale, self.tile_size, self.maps[0].map_w / 2, self.maps[0].map_h / 2)
-        self.camera = Camera(self.scale, self.gameWindowWidth, self.gameWindowHeight, self.player, 0.04 * self.scale, 100 * self.scale)
+        self.player = Player(self, self.maps[0].map_w / 2, self.maps[0].map_h / 2)
+
+        self.camera = Camera(self, self.gameWindowWidth, self.gameWindowHeight, self.player, 0.04, 100)
 
         self.collisionMap = read_csv('Levels/MainLevel_Collision player.csv')
 

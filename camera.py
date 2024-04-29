@@ -3,18 +3,18 @@ import pygame
 from hjælpeFunktioner import rectCollisionChecker
 
 class Camera:
-    def __init__(self, scale, gameWindowWidth, gameWindowHeight, player, acceleration, lookingDistance):
-        self.scale = scale
+    def __init__(self, main, gameWindowWidth, gameWindowHeight, player, acceleration, lookingDistance):
+        self.main = main
         self.gameWindowWidth, self.gameWindowHeight = gameWindowWidth, gameWindowHeight
 
         self.player = player
 
-        self.x = self.player.x + (16 * self.scale) / 2
-        self.y = self.player.y + (16 * self.scale) / 2
-        self.acceleration = acceleration
-        self.speed = 0.25 * self.scale
+        self.x = self.player.x + (16 * self.main.scale) / 2
+        self.y = self.player.y + (16 * self.main.scale) / 2
+        self.acceleration = acceleration * self.main.scale
+        self.speed = 0.25 * self.main.scale
 
-        self.lookingDistance = lookingDistance
+        self.lookingDistance = lookingDistance * self.main.scale
         self.xLookingScale = self.lookingDistance / self.gameWindowWidth
         self.yLookingScale = self.lookingDistance / self.gameWindowHeight
 
@@ -32,13 +32,13 @@ class Camera:
             xOffset = mouse.x * self.xLookingScale - self.lookingDistance / 2
             yOffset = mouse.y * self.yLookingScale - self.lookingDistance / 2
 
-        xPlayer = self.player.x + 16 * self.scale / 2
-        yPlayer = self.player.y + 16 * self.scale / 2
+        xPlayer = self.player.x + 16 * self.main.scale / 2
+        yPlayer = self.player.y + 16 * self.main.scale / 2
 
         distanceFromPlayer = math.sqrt((yPlayer - self.y + yOffset) ** 2 + (xPlayer - self.x + xOffset) ** 2)
         angleToPlayer = math.atan2(yPlayer - self.y + yOffset, xPlayer - self.x + xOffset)
 
-        self.speed = self.acceleration * distanceFromPlayer / self.scale
+        self.speed = self.acceleration * distanceFromPlayer / self.main.scale
 
         xVel = math.cos(angleToPlayer) * self.speed
         yVel = math.sin(angleToPlayer) * self.speed

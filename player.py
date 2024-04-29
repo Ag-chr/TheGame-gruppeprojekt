@@ -5,23 +5,22 @@ import math
 from hjælpeFunktioner import read_csv, rectCollisionChecker, checkNearbyTiles
 
 class Player:
-    def __init__(self, scale, tile_size, xStart, yStart):
-        self.scale = scale
-        self.tile_size = tile_size
+    def __init__(self, main, xStart, yStart):
+        self.main = main
 
         self.player_img = playerSpritesheet.parse_sprite("character0.png")
-        self.player_img = pygame.transform.scale_by(self.player_img, self.scale)
+        self.player_img = pygame.transform.scale_by(self.player_img, self.main.scale)
         self.player_rect = self.player_img.get_rect()
 
         self.x = xStart - self.player_rect.width / 2
         self.y = yStart - self.player_rect.height / 2
 
-        self.xOffset, self.yOffset = 3 * self.scale, 2 * self.scale
-        self.width = 10 * self.scale
-        self.height = 12 * self.scale
-        self.playerCollider = Collider(tile_size=self.tile_size, scale=self.scale, x=self.x + self.xOffset, y=self.y + self.yOffset, width=self.width, height=self.height)
+        self.xOffset, self.yOffset = 3 * self.main.scale, 2 * self.main.scale
+        self.width = 10 * self.main.scale
+        self.height = 12 * self.main.scale
+        self.playerCollider = Collider(tile_size=self.main.tile_size, scale=self.main.scale, x=self.x + self.xOffset, y=self.y + self.yOffset, width=self.width, height=self.height)
 
-        self.speed = 2 * self.scale
+        self.speed = 2 * self.main.scale
         self.moveX = 0
         self.moveY = 0
         self.collisionMap = read_csv('Levels/MainLevel_Collision player.csv')
@@ -53,7 +52,7 @@ class Player:
         yObstructed = False
         amountToCorrect = 1
 
-        colliders = checkNearbyTiles(self.tile_size, self.scale, self.collisionMap, self.x, self.y, scanArea=(2, 2))
+        colliders = checkNearbyTiles(self.main.tile_size, self.main.scale, self.collisionMap, self.x, self.y, scanArea=(2, 2))
         for collider in colliders:
             xObstructed, yObstructed = rectCollisionChecker(self.playerCollider, collider, self.moveX, self.moveY, xObstructed, yObstructed)
         
