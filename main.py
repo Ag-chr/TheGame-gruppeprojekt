@@ -17,9 +17,10 @@ class Main():
         self.gameWindowWidth = gameWindowWidth
         self.gameWindowHeight = gameWindowHeight
         self.window = pygame.display.set_mode((self.gameWindowWidth, self.gameWindowHeight))
+        pygame.display.toggle_fullscreen()
         self.DISPLAY_W = tile_columns * self.tile_size
         self.DISPLAY_H = tile_rows * self.tile_size
-        self.scale = int(self.gameWindowWidth / self.DISPLAY_W)
+        self.scale = round(self.gameWindowWidth / self.DISPLAY_W)
         self.real_tile_size = self.tile_size * self.scale
 
         updateJson(self.tile_size)
@@ -44,6 +45,9 @@ class Main():
                     self.running = False
                 elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
                     self.running = False
+                if event.type == pygame.KEYDOWN and event.key == pygame.K_f:
+                    pygame.display.toggle_fullscreen()
+
 
                 self.player.checkInput(event)
             self.player.update()
@@ -66,6 +70,6 @@ class Main():
             self.window.blit(self.canvas, (0, 0), screen_region)
             pygame.display.update()
 
-main = Main(pygame.display.Info().current_w, pygame.display.Info().current_h, 16 * 2, 9 * 2)
+main = Main(pygame.display.Info().current_w, pygame.display.Info().current_h, 16 * 1.6, 9 * 1.6)
 main.run()
 pygame.quit()
