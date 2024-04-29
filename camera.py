@@ -3,35 +3,36 @@ import pygame
 from hjælpeFunktioner import rectCollisionChecker
 
 class Camera:
-    def __init__(self, main, gameWindowWidth, gameWindowHeight, player, acceleration, lookingDistance):
+    def __init__(self, main, player, acceleration, lookingDistance):
         self.main = main
-        self.gameWindowWidth, self.gameWindowHeight = gameWindowWidth, gameWindowHeight
 
         self.player = player
 
-        self.x = self.player.x + (16 * self.main.scale) / 2
-        self.y = self.player.y + (16 * self.main.scale) / 2
-        self.acceleration = acceleration * self.main.scale
-        self.speed = 0.25 * self.main.scale
+        self.x = self.player.x + 16 * self.main.scale / 2
+        self.y = self.player.y + 16 * self.main.scale / 2
+        self.acceleration = acceleration * self.main.scale  # hvor hurtigt kamera accelererer efter player
+        self.speed = 0  # nu værende hastighed mod player
 
-        self.lookingDistance = lookingDistance * self.main.scale
-        self.xLookingScale = self.lookingDistance / self.gameWindowWidth
-        self.yLookingScale = self.lookingDistance / self.gameWindowHeight
+        self.lookingDistance = lookingDistance * self.main.scale  # afstand for hvor langt man kan kigge væk
+        self.xLookingScale = self.lookingDistance / self.main.windowWidth
+        self.yLookingScale = self.lookingDistance / self.main.windowHeight
 
-        self.noLookZone = pygame.Rect(self.gameWindowWidth / 4, self.gameWindowHeight / 4, self.gameWindowWidth / 2, self.gameWindowHeight / 2)
+        # område hvor man ikke kigger længere
+        self.noLookZone = pygame.Rect(self.main.windowWidth / 4, self.main.windowHeight / 4, self.main.windowWidth / 2, self.main.windowHeight / 2)
 
     def update(self):
         xMouse, yMouse = pygame.mouse.get_pos()
-        mouse = pygame.Rect(xMouse, yMouse, 0, 0)
+        mouse = pygame.Rect(xMouse, yMouse, 0, 0)  # bruges til når man skal tjekke om hvis mus er inde i noLookZone
 
+        xOffset = mouse.x * self.xLookingScale - self.lookingDistance / 2
+        yOffset = mouse.y * self.yLookingScale - self.lookingDistance / 2
+
+        # tjekker om mus er indenfor noLookZone
         isXInNoLookZone, isYInNoLookZone = rectCollisionChecker(mouse, self.noLookZone)
-        xOffset = 0
-        yOffset = 0
+        if isXInNoLookZone and isYInNoLookZone:
+            xOffset = yOffset = 0
 
-        if not (isXInNoLookZone and isYInNoLookZone):
-            xOffset = mouse.x * self.xLookingScale - self.lookingDistance / 2
-            yOffset = mouse.y * self.yLookingScale - self.lookingDistance / 2
-
+        # players x og y koords og oppe i venstre side af sprite så det centreres
         xPlayer = self.player.x + 16 * self.main.scale / 2
         yPlayer = self.player.y + 16 * self.main.scale / 2
 
@@ -46,4 +47,5 @@ class Camera:
         self.x = self.x + xVel
         self.y = self.y + yVel
 
-        return self.x - self.gameWindowWidth / 2, self.y - self.gameWindowHeight / 2
+        # x og y er i midten af skærm. De flyttes oppe til venstre så hele skærm bliver brugt
+        return self.x - self.main.windowWidth / 2, self.y - self.main.windowHeight / 2
