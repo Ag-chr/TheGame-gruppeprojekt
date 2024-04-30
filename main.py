@@ -66,5 +66,6 @@ class Main():
             pygame.display.update()  # updater skærm så disse ændringer kan ses
 
 main = Main(pygame.display.Info().current_w, pygame.display.Info().current_h, 16 * 1.6, 9 * 1.6)
+main.start()
 main.run()
 pygame.quit()
