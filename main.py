@@ -65,6 +65,34 @@ class Main():
             self.window.blit(self.canvas, (0, 0), screen_region)  # tegner canvas på skærm og kun område som kan ses
             pygame.display.update()  # updater skærm så disse ændringer kan ses
 
+    def start(self):
+        self.running = True
+        startCanvas = pygame.Surface((self.windowWidth, self.windowHeight))
+
+        font = pygame.font.Font('freesansbold.ttf', 50)
+        text = font.render("Storm the Farm", False, (255, 0, 0))
+        textRect = text.get_rect()
+        textRect.center = (self.windowWidth // 2, self.windowHeight // 2)
+
+        while self.running:
+            self.clock.tick(60)  # 60 fps
+
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    self.running = False
+                elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                    self.running = False
+                if event.type == pygame.KEYDOWN and event.key == pygame.K_f:
+                    pygame.display.toggle_fullscreen()
+
+
+            startCanvas.fill((0, 180, 240))
+            startCanvas.blit(text, textRect)
+
+            self.window.blit(startCanvas, (0, 0))  # tegner canvas på skærm og kun område som kan ses
+            pygame.display.update()  # updater skærm så disse ændringer kan ses
+
+
 main = Main(pygame.display.Info().current_w, pygame.display.Info().current_h, 16 * 1.6, 9 * 1.6)
 main.start()
 main.run()
