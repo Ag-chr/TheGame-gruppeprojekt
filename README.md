@@ -5,4 +5,4 @@ https://trello.com/invite/b/gkLVz2gj/ATTIc8deef5c725b5c29da4362bbdcafc133236B5E8
 
 
 Vores brainstorm:
-https://miro.com/app/board/uXjVKVxnM3E=/?share_link_id=625490122674
+[https://miro.com/app/board/uXjVKVxnM3E=/?share_link_id=625490122674](https://miro.com/app/board/uXjVKVxnM3E=/?share_link_id=727724828573)
