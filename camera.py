@@ -47,5 +47,6 @@ class Camera:
         self.x = self.x + xVel
         self.y = self.y + yVel
 
+    def getCameraPos(self):
         # x og y er i midten af skærm. De flyttes oppe til venstre så hele skærm bliver brugt
         return self.x - self.main.windowWidth / 2, self.y - self.main.windowHeight / 2
