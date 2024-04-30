@@ -33,7 +33,7 @@ class Main():
 
         self.player = Player(self, self.maps[0].map_w / 2, self.maps[0].map_h / 2)
         self.camera = Camera(self, self.player, 0.075, 100)
-        self.gun = Gun(self, self.player, self.camera, "Images/gun.png", 22)
+        self.gun = Gun(self, self.player, self.camera, "Images/gun.png", 15)
 
     def run(self):
         self.running = True
