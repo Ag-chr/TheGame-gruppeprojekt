@@ -3,9 +3,9 @@ from getSpritesheets import updateJson, waterSpritesheet, grassSpritesheet, wood
 from hjælpeFunktioner import checkNearbyTiles, read_csv
 import pygame
 
-
 from player import Player
 from camera import Camera
+from gun import Gun
 
 class Main():
     pygame.init()
@@ -33,6 +33,7 @@ class Main():
 
         self.player = Player(self, self.maps[0].map_w / 2, self.maps[0].map_h / 2)
         self.camera = Camera(self, self.player, 0.075, 100)
+        self.gun = Gun(self, self.player, self.camera, "Images/gun.png", 22)
 
     def run(self):
         self.running = True
@@ -48,7 +49,10 @@ class Main():
                     pygame.display.toggle_fullscreen()
 
                 self.player.checkInput(event)
+                self.gun.checkInput(event)
             self.player.update()
+            self.gun.update()
+            self.camera.update()
 
             self.canvas.fill((0, 180, 240))
             for map in self.maps:
@@ -59,8 +63,9 @@ class Main():
             #    pygame.draw.rect(self.canvas, (255, 0, 0), pygame.Rect(collider.x, collider.y, collider.width, collider.height))
 
             self.player.draw_player(self.canvas)
+            self.gun.draw_gun(self.canvas)
 
-            screen_region = (self.camera.update(), pygame.display.get_window_size())  # området hvor skærmen er
+            screen_region = (self.camera.getCameraPos(), pygame.display.get_window_size())  # området hvor skærmen er
             self.canvas.set_clip(pygame.Rect(screen_region))  # modificere pixels kun indenfor skærm området
             self.window.blit(self.canvas, (0, 0), screen_region)  # tegner canvas på skærm og kun område som kan ses
             pygame.display.update()  # updater skærm så disse ændringer kan ses
