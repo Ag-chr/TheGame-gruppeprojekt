@@ -31,7 +31,7 @@ class Main():
         # tegnefladen skal være samme størrelse som map for at tegne det hele i starten
         self.canvas = pygame.Surface((self.maps[0].map_w, self.maps[0].map_h))
 
-        self.player = Player(self, self.maps[0].map_w / 2, self.maps[0].map_h / 2)
+        self.player = Player(self, self.maps[0].map_w / 2, self.maps[0].map_h / 2, 3, 2, 10, 12, 2, "Levels/MainLevel_Collision player.csv", scanArea=(2,2))
         self.camera = Camera(self, self.player, 0.075, 100)
         self.gun = Gun(self, self.player, self.camera, "Images/gun.png", 15)
 
