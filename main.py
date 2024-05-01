@@ -19,7 +19,7 @@ class Main():
         pygame.display.toggle_fullscreen()
 
         self.DISPLAY_W, self.DISPLAY_H = tile_columns * self.tile_size, tile_rows * self.tile_size  # ønsket antal af viste tiles på begge led
-        self.scale = round(self.windowWidth / self.DISPLAY_W)  # forholdet for en pixel når den forstørres til at fylde hele skærmen
+        self.scale = round(self.windowWidth / self.DISPLAY_W)  # forholdet for en pixel når den forstørres på skærm
 
         updateJson(self.tile_size)  # Json filer er dem som giver lokationen og størrelse for alle sprites
         # forskellige niveauer af tilemaps, så græs bliver tegnet oven på vand, osv.
@@ -28,7 +28,7 @@ class Main():
                      TileMap('Levels/MainLevel_House floor.csv', woodenHouseSpritesheet, self.tile_size, self.scale),
                      TileMap('Levels/MainLevel_House walls.csv', woodenHouseSpritesheet, self.tile_size, self.scale)]
 
-        # tegnefladen skal være samme størrelse som map for at tegne det hele i starten
+        # Canvas/surface skal være samme størrelse som map for at tegne det hele i starten
         self.canvas = pygame.Surface((self.maps[0].map_w, self.maps[0].map_h))
 
         self.player = Player(self, self.maps[0].map_w / 2, self.maps[0].map_h / 2, 3, 2, 10, 12, 2, "Levels/MainLevel_Collision player.csv", scanArea=(2,2))

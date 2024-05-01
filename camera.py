@@ -17,7 +17,7 @@ class Camera:
         self.xLookingScale = self.lookingDistance / self.main.windowWidth
         self.yLookingScale = self.lookingDistance / self.main.windowHeight
 
-        # område hvor man ikke kigger længere
+        # område hvor man ikke kigger rundt længere
         self.noLookZone = pygame.Rect(self.main.windowWidth / 4, self.main.windowHeight / 4, self.main.windowWidth / 2, self.main.windowHeight / 2)
 
     def update(self):
@@ -32,7 +32,7 @@ class Camera:
         if isXInNoLookZone and isYInNoLookZone:
             xOffset = yOffset = 0
 
-        # players x og y koords oppe i venstre side af sprite så det centreres
+        # players x og y koords oppe i venstre side af playerens sprite så dette centrer koords
         xPlayer = self.player.x + 16 * self.main.scale / 2
         yPlayer = self.player.y + 16 * self.main.scale / 2
 
