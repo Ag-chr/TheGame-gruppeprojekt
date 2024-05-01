@@ -37,9 +37,16 @@ class Main():
 
     def run(self):
         self.running = True
+
+        # tegner mappet og gemmer i billede/canvas, som kan derefter tegnes
+        mapCanvas = pygame.Surface((self.maps[0].map_w, self.maps[0].map_h))
+        for map in self.maps:
+            map.draw_map(mapCanvas)
+
         while self.running:
             self.clock.tick(60)  # 60 fps
 
+# ------------------------------------------------ TJEKKER FOR INPUT ---------------------------------------------------
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.running = False
@@ -50,14 +57,13 @@ class Main():
 
                 self.player.checkInput(event)
                 self.gun.checkInput(event)
+# ------------------------------------------------ OPDATERE TING OG SAGER ----------------------------------------------
             self.player.update()
             self.gun.update()
             self.camera.update()
 
-            self.canvas.fill((0, 180, 240))
-            for map in self.maps:
-                map.draw_map(self.canvas)
-
+# ------------------------------------------------ TEGNER TING OG SAGER ------------------------------------------------
+            self.canvas.blit(mapCanvas, (0, 0))
             # visualisere colliders
             #for collider in checkNearbyTiles(self.tile_size, self.scale, read_csv('Levels/MainLevel_Collision player.csv'), self.player.x + self.player.width, self.player.y + self.player.height, scanTiles=((0,-1), (-1, 0), (0, 1), (1, 0))):
             #    pygame.draw.rect(self.canvas, (255, 0, 0), pygame.Rect(collider.x, collider.y, collider.width, collider.height))
@@ -65,9 +71,12 @@ class Main():
             self.player.draw_player(self.canvas)
             self.gun.draw_gun(self.canvas)
 
+# ------------------------------------------------ FINDER SKÆRM OMRÅDE -------------------------------------------------
             screen_region = (self.camera.getCameraPos(), pygame.display.get_window_size())  # området hvor skærmen er
             self.canvas.set_clip(pygame.Rect(screen_region))  # modificere pixels kun indenfor skærm området
-            self.window.blit(self.canvas, (0, 0), screen_region)  # tegner canvas på skærm og kun område som kan ses
+
+# ------------------------------------------------ PUTTER TEGNET TING OG SAGER PÅ SKÆRM --------------------------------
+            self.window.blit(self.canvas, (0, 0), screen_region)  # tegner canvas på skærm og kun det område som kan ses
             pygame.display.update()  # updater skærm så disse ændringer kan ses
 
     def start(self):
