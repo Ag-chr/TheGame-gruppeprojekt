@@ -3,7 +3,7 @@ from collider import Collider
 
 
 class EntityCollider:
-    def __init__(self, main, x: float, y: float, xOffset: int, yOffset: int, width: int, height: int, speed: float, collisionMap: str, scanArea=(2,2)):
+    def __init__(self, main, x, y, xOffset, yOffset, width, height, speed, collisionMap, scanArea=(2,2)):
         self.main = main
         self.xOffset = xOffset * self.main.scale
         self.yOffset = yOffset * self.main.scale
@@ -28,7 +28,7 @@ class EntityCollider:
 
         nearbyColliders = checkNearbyTiles(self.main.tile_size, self.main.scale, self.collisionMap, self.x, self.y, scanArea=self.scanArea)
         for collider in nearbyColliders:
-            xObstructed, yObstructed = rectCollisionChecker(self.collider, collider, self.yVel, self.yVel, xObstructed, yObstructed)
+            xObstructed, yObstructed = rectCollisionChecker(self.collider, collider, self.xVel, self.yVel, xObstructed, yObstructed)
 
         return xObstructed, yObstructed
 
