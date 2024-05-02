@@ -6,6 +6,8 @@ import pygame
 from player import Player
 from camera import Camera
 from gun import Gun
+from button import Button
+from enemy import Enemy
 
 class Main():
     pygame.init()
@@ -27,6 +29,9 @@ class Main():
                      TileMap('Levels/MainLevel_Grass.csv', grassSpritesheet, self.tile_size, self.scale),
                      TileMap('Levels/MainLevel_House floor.csv', woodenHouseSpritesheet, self.tile_size, self.scale),
                      TileMap('Levels/MainLevel_House walls.csv', woodenHouseSpritesheet, self.tile_size, self.scale)]
+        self.enemies = [
+            Enemy("Jens",self.maps[0].map_w / 2, self.maps[0].map_h / 2,3,2, 10, 50, 5, self.scale,self)
+        ]
 
         # Canvas/surface skal være samme størrelse som map for at tegne det hele i starten
         self.canvas = pygame.Surface((self.maps[0].map_w, self.maps[0].map_h))
@@ -70,6 +75,8 @@ class Main():
 
             self.player.draw_player(self.canvas)
             self.gun.draw_gun(self.canvas)
+            for enemy in self.enemies:
+                enemy.draw_enemy(self.canvas)
 
 # ------------------------------------------------ FINDER SKÆRM OMRÅDE -------------------------------------------------
             screen_region = (self.camera.getCameraPos(), pygame.display.get_window_size())  # området hvor skærmen er
@@ -83,11 +90,13 @@ class Main():
         self.running = True
         startCanvas = pygame.Surface((self.windowWidth, self.windowHeight))
 
-        font = pygame.font.Font('freesansbold.ttf', 50)
-        text = font.render("Storm the Farm", False, (255, 0, 0))
+        font = pygame.font.Font('freesansbold.ttf', 75)
+        text = font.render("Storm the Farm", True, (0, 0, 0))
         textRect = text.get_rect()
-        textRect.center = (self.windowWidth // 2, self.windowHeight // 2)
+        textRect.center = (self.windowWidth // 2, self.windowHeight // 2-150)
+        play_button = Button(self.windowWidth // 2 - 175, self.windowHeight // 2 - 25, 350, 75, "Play", False, (0, 200, 0))
 
+        startCanvas.fill((255, 255, 255))
         while self.running:
             self.clock.tick(60)  # 60 fps
 
@@ -100,8 +109,8 @@ class Main():
                     pygame.display.toggle_fullscreen()
 
 
-            startCanvas.fill((0, 180, 240))
             startCanvas.blit(text, textRect)
+            play_button.draw(startCanvas)
 
             self.window.blit(startCanvas, (0, 0))  # tegner canvas på skærm og kun område som kan ses
             pygame.display.update()  # updater skærm så disse ændringer kan ses

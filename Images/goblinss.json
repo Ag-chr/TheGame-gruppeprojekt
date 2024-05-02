@@ -1,0 +1,3511 @@
+{"frames": {
+"goblinss0.png":
+  {
+    "frame": {"x": 16,"y": 16,"w": 16,"h": 16}
+  },
+
+"goblinss1.png":
+  {
+    "frame": {"x": 48,"y": 16,"w": 16,"h": 16}
+  },
+
+"goblinss2.png":
+  {
+    "frame": {"x": 80,"y": 16,"w": 16,"h": 16}
+  },
+
+"goblinss3.png":
+  {
+    "frame": {"x": 112,"y": 16,"w": 16,"h": 16}
+  },
+
+"goblinss4.png":
+  {
+    "frame": {"x": 144,"y": 16,"w": 16,"h": 16}
+  },
+
+"goblinss5.png":
+  {
+    "frame": {"x": 176,"y": 16,"w": 16,"h": 16}
+  },
+
+"goblinss6.png":
+  {
+    "frame": {"x": 208,"y": 16,"w": 16,"h": 16}
+  },
+
+"goblinss7.png":
+  {
+    "frame": {"x": 240,"y": 16,"w": 16,"h": 16}
+  },
+
+"goblinss8.png":
+  {
+    "frame": {"x": 272,"y": 16,"w": 16,"h": 16}
+  },
+
+"goblinss9.png":
+  {
+    "frame": {"x": 304,"y": 16,"w": 16,"h": 16}
+  },
+
+"goblinss10.png":
+  {
+    "frame": {"x": 336,"y": 16,"w": 16,"h": 16}
+  },
+
+"goblinss11.png":
+  {
+    "frame": {"x": 368,"y": 16,"w": 16,"h": 16}
+  },
+
+"goblinss12.png":
+  {
+    "frame": {"x": 400,"y": 16,"w": 16,"h": 16}
+  },
+
+"goblinss13.png":
+  {
+    "frame": {"x": 432,"y": 16,"w": 16,"h": 16}
+  },
+
+"goblinss14.png":
+  {
+    "frame": {"x": 464,"y": 16,"w": 16,"h": 16}
+  },
+
+"goblinss15.png":
+  {
+    "frame": {"x": 496,"y": 16,"w": 16,"h": 16}
+  },
+
+"goblinss16.png":
+  {
+    "frame": {"x": 528,"y": 16,"w": 16,"h": 16}
+  },
+
+"goblinss17.png":
+  {
+    "frame": {"x": 560,"y": 16,"w": 16,"h": 16}
+  },
+
+"goblinss18.png":
+  {
+    "frame": {"x": 592,"y": 16,"w": 16,"h": 16}
+  },
+
+"goblinss19.png":
+  {
+    "frame": {"x": 624,"y": 16,"w": 16,"h": 16}
+  },
+
+"goblinss20.png":
+  {
+    "frame": {"x": 656,"y": 16,"w": 16,"h": 16}
+  },
+
+"goblinss21.png":
+  {
+    "frame": {"x": 688,"y": 16,"w": 16,"h": 16}
+  },
+
+"goblinss22.png":
+  {
+    "frame": {"x": 720,"y": 16,"w": 16,"h": 16}
+  },
+
+"goblinss23.png":
+  {
+    "frame": {"x": 752,"y": 16,"w": 16,"h": 16}
+  },
+
+"goblinss24.png":
+  {
+    "frame": {"x": 784,"y": 16,"w": 16,"h": 16}
+  },
+
+"goblinss25.png":
+  {
+    "frame": {"x": 816,"y": 16,"w": 16,"h": 16}
+  },
+
+"goblinss26.png":
+  {
+    "frame": {"x": 848,"y": 16,"w": 16,"h": 16}
+  },
+
+"goblinss27.png":
+  {
+    "frame": {"x": 880,"y": 16,"w": 16,"h": 16}
+  },
+
+"goblinss28.png":
+  {
+    "frame": {"x": 912,"y": 16,"w": 16,"h": 16}
+  },
+
+"goblinss29.png":
+  {
+    "frame": {"x": 944,"y": 16,"w": 16,"h": 16}
+  },
+
+"goblinss30.png":
+  {
+    "frame": {"x": 976,"y": 16,"w": 16,"h": 16}
+  },
+
+"goblinss31.png":
+  {
+    "frame": {"x": 1008,"y": 16,"w": 16,"h": 16}
+  },
+
+"goblinss32.png":
+  {
+    "frame": {"x": 1040,"y": 16,"w": 16,"h": 16}
+  },
+
+"goblinss33.png":
+  {
+    "frame": {"x": 1072,"y": 16,"w": 16,"h": 16}
+  },
+
+"goblinss34.png":
+  {
+    "frame": {"x": 1104,"y": 16,"w": 16,"h": 16}
+  },
+
+"goblinss35.png":
+  {
+    "frame": {"x": 1136,"y": 16,"w": 16,"h": 16}
+  },
+
+"goblinss36.png":
+  {
+    "frame": {"x": 1168,"y": 16,"w": 16,"h": 16}
+  },
+
+"goblinss37.png":
+  {
+    "frame": {"x": 1200,"y": 16,"w": 16,"h": 16}
+  },
+
+"goblinss38.png":
+  {
+    "frame": {"x": 1232,"y": 16,"w": 16,"h": 16}
+  },
+
+"goblinss39.png":
+  {
+    "frame": {"x": 16,"y": 48,"w": 16,"h": 16}
+  },
+
+"goblinss40.png":
+  {
+    "frame": {"x": 48,"y": 48,"w": 16,"h": 16}
+  },
+
+"goblinss41.png":
+  {
+    "frame": {"x": 80,"y": 48,"w": 16,"h": 16}
+  },
+
+"goblinss42.png":
+  {
+    "frame": {"x": 112,"y": 48,"w": 16,"h": 16}
+  },
+
+"goblinss43.png":
+  {
+    "frame": {"x": 144,"y": 48,"w": 16,"h": 16}
+  },
+
+"goblinss44.png":
+  {
+    "frame": {"x": 176,"y": 48,"w": 16,"h": 16}
+  },
+
+"goblinss45.png":
+  {
+    "frame": {"x": 208,"y": 48,"w": 16,"h": 16}
+  },
+
+"goblinss46.png":
+  {
+    "frame": {"x": 240,"y": 48,"w": 16,"h": 16}
+  },
+
+"goblinss47.png":
+  {
+    "frame": {"x": 272,"y": 48,"w": 16,"h": 16}
+  },
+
+"goblinss48.png":
+  {
+    "frame": {"x": 304,"y": 48,"w": 16,"h": 16}
+  },
+
+"goblinss49.png":
+  {
+    "frame": {"x": 336,"y": 48,"w": 16,"h": 16}
+  },
+
+"goblinss50.png":
+  {
+    "frame": {"x": 368,"y": 48,"w": 16,"h": 16}
+  },
+
+"goblinss51.png":
+  {
+    "frame": {"x": 400,"y": 48,"w": 16,"h": 16}
+  },
+
+"goblinss52.png":
+  {
+    "frame": {"x": 432,"y": 48,"w": 16,"h": 16}
+  },
+
+"goblinss53.png":
+  {
+    "frame": {"x": 464,"y": 48,"w": 16,"h": 16}
+  },
+
+"goblinss54.png":
+  {
+    "frame": {"x": 496,"y": 48,"w": 16,"h": 16}
+  },
+
+"goblinss55.png":
+  {
+    "frame": {"x": 528,"y": 48,"w": 16,"h": 16}
+  },
+
+"goblinss56.png":
+  {
+    "frame": {"x": 560,"y": 48,"w": 16,"h": 16}
+  },
+
+"goblinss57.png":
+  {
+    "frame": {"x": 592,"y": 48,"w": 16,"h": 16}
+  },
+
+"goblinss58.png":
+  {
+    "frame": {"x": 624,"y": 48,"w": 16,"h": 16}
+  },
+
+"goblinss59.png":
+  {
+    "frame": {"x": 656,"y": 48,"w": 16,"h": 16}
+  },
+
+"goblinss60.png":
+  {
+    "frame": {"x": 688,"y": 48,"w": 16,"h": 16}
+  },
+
+"goblinss61.png":
+  {
+    "frame": {"x": 720,"y": 48,"w": 16,"h": 16}
+  },
+
+"goblinss62.png":
+  {
+    "frame": {"x": 752,"y": 48,"w": 16,"h": 16}
+  },
+
+"goblinss63.png":
+  {
+    "frame": {"x": 784,"y": 48,"w": 16,"h": 16}
+  },
+
+"goblinss64.png":
+  {
+    "frame": {"x": 816,"y": 48,"w": 16,"h": 16}
+  },
+
+"goblinss65.png":
+  {
+    "frame": {"x": 848,"y": 48,"w": 16,"h": 16}
+  },
+
+"goblinss66.png":
+  {
+    "frame": {"x": 880,"y": 48,"w": 16,"h": 16}
+  },
+
+"goblinss67.png":
+  {
+    "frame": {"x": 912,"y": 48,"w": 16,"h": 16}
+  },
+
+"goblinss68.png":
+  {
+    "frame": {"x": 944,"y": 48,"w": 16,"h": 16}
+  },
+
+"goblinss69.png":
+  {
+    "frame": {"x": 976,"y": 48,"w": 16,"h": 16}
+  },
+
+"goblinss70.png":
+  {
+    "frame": {"x": 1008,"y": 48,"w": 16,"h": 16}
+  },
+
+"goblinss71.png":
+  {
+    "frame": {"x": 1040,"y": 48,"w": 16,"h": 16}
+  },
+
+"goblinss72.png":
+  {
+    "frame": {"x": 1072,"y": 48,"w": 16,"h": 16}
+  },
+
+"goblinss73.png":
+  {
+    "frame": {"x": 1104,"y": 48,"w": 16,"h": 16}
+  },
+
+"goblinss74.png":
+  {
+    "frame": {"x": 1136,"y": 48,"w": 16,"h": 16}
+  },
+
+"goblinss75.png":
+  {
+    "frame": {"x": 1168,"y": 48,"w": 16,"h": 16}
+  },
+
+"goblinss76.png":
+  {
+    "frame": {"x": 1200,"y": 48,"w": 16,"h": 16}
+  },
+
+"goblinss77.png":
+  {
+    "frame": {"x": 1232,"y": 48,"w": 16,"h": 16}
+  },
+
+"goblinss78.png":
+  {
+    "frame": {"x": 16,"y": 80,"w": 16,"h": 16}
+  },
+
+"goblinss79.png":
+  {
+    "frame": {"x": 48,"y": 80,"w": 16,"h": 16}
+  },
+
+"goblinss80.png":
+  {
+    "frame": {"x": 80,"y": 80,"w": 16,"h": 16}
+  },
+
+"goblinss81.png":
+  {
+    "frame": {"x": 112,"y": 80,"w": 16,"h": 16}
+  },
+
+"goblinss82.png":
+  {
+    "frame": {"x": 144,"y": 80,"w": 16,"h": 16}
+  },
+
+"goblinss83.png":
+  {
+    "frame": {"x": 176,"y": 80,"w": 16,"h": 16}
+  },
+
+"goblinss84.png":
+  {
+    "frame": {"x": 208,"y": 80,"w": 16,"h": 16}
+  },
+
+"goblinss85.png":
+  {
+    "frame": {"x": 240,"y": 80,"w": 16,"h": 16}
+  },
+
+"goblinss86.png":
+  {
+    "frame": {"x": 272,"y": 80,"w": 16,"h": 16}
+  },
+
+"goblinss87.png":
+  {
+    "frame": {"x": 304,"y": 80,"w": 16,"h": 16}
+  },
+
+"goblinss88.png":
+  {
+    "frame": {"x": 336,"y": 80,"w": 16,"h": 16}
+  },
+
+"goblinss89.png":
+  {
+    "frame": {"x": 368,"y": 80,"w": 16,"h": 16}
+  },
+
+"goblinss90.png":
+  {
+    "frame": {"x": 400,"y": 80,"w": 16,"h": 16}
+  },
+
+"goblinss91.png":
+  {
+    "frame": {"x": 432,"y": 80,"w": 16,"h": 16}
+  },
+
+"goblinss92.png":
+  {
+    "frame": {"x": 464,"y": 80,"w": 16,"h": 16}
+  },
+
+"goblinss93.png":
+  {
+    "frame": {"x": 496,"y": 80,"w": 16,"h": 16}
+  },
+
+"goblinss94.png":
+  {
+    "frame": {"x": 528,"y": 80,"w": 16,"h": 16}
+  },
+
+"goblinss95.png":
+  {
+    "frame": {"x": 560,"y": 80,"w": 16,"h": 16}
+  },
+
+"goblinss96.png":
+  {
+    "frame": {"x": 592,"y": 80,"w": 16,"h": 16}
+  },
+
+"goblinss97.png":
+  {
+    "frame": {"x": 624,"y": 80,"w": 16,"h": 16}
+  },
+
+"goblinss98.png":
+  {
+    "frame": {"x": 656,"y": 80,"w": 16,"h": 16}
+  },
+
+"goblinss99.png":
+  {
+    "frame": {"x": 688,"y": 80,"w": 16,"h": 16}
+  },
+
+"goblinss100.png":
+  {
+    "frame": {"x": 720,"y": 80,"w": 16,"h": 16}
+  },
+
+"goblinss101.png":
+  {
+    "frame": {"x": 752,"y": 80,"w": 16,"h": 16}
+  },
+
+"goblinss102.png":
+  {
+    "frame": {"x": 784,"y": 80,"w": 16,"h": 16}
+  },
+
+"goblinss103.png":
+  {
+    "frame": {"x": 816,"y": 80,"w": 16,"h": 16}
+  },
+
+"goblinss104.png":
+  {
+    "frame": {"x": 848,"y": 80,"w": 16,"h": 16}
+  },
+
+"goblinss105.png":
+  {
+    "frame": {"x": 880,"y": 80,"w": 16,"h": 16}
+  },
+
+"goblinss106.png":
+  {
+    "frame": {"x": 912,"y": 80,"w": 16,"h": 16}
+  },
+
+"goblinss107.png":
+  {
+    "frame": {"x": 944,"y": 80,"w": 16,"h": 16}
+  },
+
+"goblinss108.png":
+  {
+    "frame": {"x": 976,"y": 80,"w": 16,"h": 16}
+  },
+
+"goblinss109.png":
+  {
+    "frame": {"x": 1008,"y": 80,"w": 16,"h": 16}
+  },
+
+"goblinss110.png":
+  {
+    "frame": {"x": 1040,"y": 80,"w": 16,"h": 16}
+  },
+
+"goblinss111.png":
+  {
+    "frame": {"x": 1072,"y": 80,"w": 16,"h": 16}
+  },
+
+"goblinss112.png":
+  {
+    "frame": {"x": 1104,"y": 80,"w": 16,"h": 16}
+  },
+
+"goblinss113.png":
+  {
+    "frame": {"x": 1136,"y": 80,"w": 16,"h": 16}
+  },
+
+"goblinss114.png":
+  {
+    "frame": {"x": 1168,"y": 80,"w": 16,"h": 16}
+  },
+
+"goblinss115.png":
+  {
+    "frame": {"x": 1200,"y": 80,"w": 16,"h": 16}
+  },
+
+"goblinss116.png":
+  {
+    "frame": {"x": 1232,"y": 80,"w": 16,"h": 16}
+  },
+
+"goblinss117.png":
+  {
+    "frame": {"x": 16,"y": 112,"w": 16,"h": 16}
+  },
+
+"goblinss118.png":
+  {
+    "frame": {"x": 48,"y": 112,"w": 16,"h": 16}
+  },
+
+"goblinss119.png":
+  {
+    "frame": {"x": 80,"y": 112,"w": 16,"h": 16}
+  },
+
+"goblinss120.png":
+  {
+    "frame": {"x": 112,"y": 112,"w": 16,"h": 16}
+  },
+
+"goblinss121.png":
+  {
+    "frame": {"x": 144,"y": 112,"w": 16,"h": 16}
+  },
+
+"goblinss122.png":
+  {
+    "frame": {"x": 176,"y": 112,"w": 16,"h": 16}
+  },
+
+"goblinss123.png":
+  {
+    "frame": {"x": 208,"y": 112,"w": 16,"h": 16}
+  },
+
+"goblinss124.png":
+  {
+    "frame": {"x": 240,"y": 112,"w": 16,"h": 16}
+  },
+
+"goblinss125.png":
+  {
+    "frame": {"x": 272,"y": 112,"w": 16,"h": 16}
+  },
+
+"goblinss126.png":
+  {
+    "frame": {"x": 304,"y": 112,"w": 16,"h": 16}
+  },
+
+"goblinss127.png":
+  {
+    "frame": {"x": 336,"y": 112,"w": 16,"h": 16}
+  },
+
+"goblinss128.png":
+  {
+    "frame": {"x": 368,"y": 112,"w": 16,"h": 16}
+  },
+
+"goblinss129.png":
+  {
+    "frame": {"x": 400,"y": 112,"w": 16,"h": 16}
+  },
+
+"goblinss130.png":
+  {
+    "frame": {"x": 432,"y": 112,"w": 16,"h": 16}
+  },
+
+"goblinss131.png":
+  {
+    "frame": {"x": 464,"y": 112,"w": 16,"h": 16}
+  },
+
+"goblinss132.png":
+  {
+    "frame": {"x": 496,"y": 112,"w": 16,"h": 16}
+  },
+
+"goblinss133.png":
+  {
+    "frame": {"x": 528,"y": 112,"w": 16,"h": 16}
+  },
+
+"goblinss134.png":
+  {
+    "frame": {"x": 560,"y": 112,"w": 16,"h": 16}
+  },
+
+"goblinss135.png":
+  {
+    "frame": {"x": 592,"y": 112,"w": 16,"h": 16}
+  },
+
+"goblinss136.png":
+  {
+    "frame": {"x": 624,"y": 112,"w": 16,"h": 16}
+  },
+
+"goblinss137.png":
+  {
+    "frame": {"x": 656,"y": 112,"w": 16,"h": 16}
+  },
+
+"goblinss138.png":
+  {
+    "frame": {"x": 688,"y": 112,"w": 16,"h": 16}
+  },
+
+"goblinss139.png":
+  {
+    "frame": {"x": 720,"y": 112,"w": 16,"h": 16}
+  },
+
+"goblinss140.png":
+  {
+    "frame": {"x": 752,"y": 112,"w": 16,"h": 16}
+  },
+
+"goblinss141.png":
+  {
+    "frame": {"x": 784,"y": 112,"w": 16,"h": 16}
+  },
+
+"goblinss142.png":
+  {
+    "frame": {"x": 816,"y": 112,"w": 16,"h": 16}
+  },
+
+"goblinss143.png":
+  {
+    "frame": {"x": 848,"y": 112,"w": 16,"h": 16}
+  },
+
+"goblinss144.png":
+  {
+    "frame": {"x": 880,"y": 112,"w": 16,"h": 16}
+  },
+
+"goblinss145.png":
+  {
+    "frame": {"x": 912,"y": 112,"w": 16,"h": 16}
+  },
+
+"goblinss146.png":
+  {
+    "frame": {"x": 944,"y": 112,"w": 16,"h": 16}
+  },
+
+"goblinss147.png":
+  {
+    "frame": {"x": 976,"y": 112,"w": 16,"h": 16}
+  },
+
+"goblinss148.png":
+  {
+    "frame": {"x": 1008,"y": 112,"w": 16,"h": 16}
+  },
+
+"goblinss149.png":
+  {
+    "frame": {"x": 1040,"y": 112,"w": 16,"h": 16}
+  },
+
+"goblinss150.png":
+  {
+    "frame": {"x": 1072,"y": 112,"w": 16,"h": 16}
+  },
+
+"goblinss151.png":
+  {
+    "frame": {"x": 1104,"y": 112,"w": 16,"h": 16}
+  },
+
+"goblinss152.png":
+  {
+    "frame": {"x": 1136,"y": 112,"w": 16,"h": 16}
+  },
+
+"goblinss153.png":
+  {
+    "frame": {"x": 1168,"y": 112,"w": 16,"h": 16}
+  },
+
+"goblinss154.png":
+  {
+    "frame": {"x": 1200,"y": 112,"w": 16,"h": 16}
+  },
+
+"goblinss155.png":
+  {
+    "frame": {"x": 1232,"y": 112,"w": 16,"h": 16}
+  },
+
+"goblinss156.png":
+  {
+    "frame": {"x": 16,"y": 144,"w": 16,"h": 16}
+  },
+
+"goblinss157.png":
+  {
+    "frame": {"x": 48,"y": 144,"w": 16,"h": 16}
+  },
+
+"goblinss158.png":
+  {
+    "frame": {"x": 80,"y": 144,"w": 16,"h": 16}
+  },
+
+"goblinss159.png":
+  {
+    "frame": {"x": 112,"y": 144,"w": 16,"h": 16}
+  },
+
+"goblinss160.png":
+  {
+    "frame": {"x": 144,"y": 144,"w": 16,"h": 16}
+  },
+
+"goblinss161.png":
+  {
+    "frame": {"x": 176,"y": 144,"w": 16,"h": 16}
+  },
+
+"goblinss162.png":
+  {
+    "frame": {"x": 208,"y": 144,"w": 16,"h": 16}
+  },
+
+"goblinss163.png":
+  {
+    "frame": {"x": 240,"y": 144,"w": 16,"h": 16}
+  },
+
+"goblinss164.png":
+  {
+    "frame": {"x": 272,"y": 144,"w": 16,"h": 16}
+  },
+
+"goblinss165.png":
+  {
+    "frame": {"x": 304,"y": 144,"w": 16,"h": 16}
+  },
+
+"goblinss166.png":
+  {
+    "frame": {"x": 336,"y": 144,"w": 16,"h": 16}
+  },
+
+"goblinss167.png":
+  {
+    "frame": {"x": 368,"y": 144,"w": 16,"h": 16}
+  },
+
+"goblinss168.png":
+  {
+    "frame": {"x": 400,"y": 144,"w": 16,"h": 16}
+  },
+
+"goblinss169.png":
+  {
+    "frame": {"x": 432,"y": 144,"w": 16,"h": 16}
+  },
+
+"goblinss170.png":
+  {
+    "frame": {"x": 464,"y": 144,"w": 16,"h": 16}
+  },
+
+"goblinss171.png":
+  {
+    "frame": {"x": 496,"y": 144,"w": 16,"h": 16}
+  },
+
+"goblinss172.png":
+  {
+    "frame": {"x": 528,"y": 144,"w": 16,"h": 16}
+  },
+
+"goblinss173.png":
+  {
+    "frame": {"x": 560,"y": 144,"w": 16,"h": 16}
+  },
+
+"goblinss174.png":
+  {
+    "frame": {"x": 592,"y": 144,"w": 16,"h": 16}
+  },
+
+"goblinss175.png":
+  {
+    "frame": {"x": 624,"y": 144,"w": 16,"h": 16}
+  },
+
+"goblinss176.png":
+  {
+    "frame": {"x": 656,"y": 144,"w": 16,"h": 16}
+  },
+
+"goblinss177.png":
+  {
+    "frame": {"x": 688,"y": 144,"w": 16,"h": 16}
+  },
+
+"goblinss178.png":
+  {
+    "frame": {"x": 720,"y": 144,"w": 16,"h": 16}
+  },
+
+"goblinss179.png":
+  {
+    "frame": {"x": 752,"y": 144,"w": 16,"h": 16}
+  },
+
+"goblinss180.png":
+  {
+    "frame": {"x": 784,"y": 144,"w": 16,"h": 16}
+  },
+
+"goblinss181.png":
+  {
+    "frame": {"x": 816,"y": 144,"w": 16,"h": 16}
+  },
+
+"goblinss182.png":
+  {
+    "frame": {"x": 848,"y": 144,"w": 16,"h": 16}
+  },
+
+"goblinss183.png":
+  {
+    "frame": {"x": 880,"y": 144,"w": 16,"h": 16}
+  },
+
+"goblinss184.png":
+  {
+    "frame": {"x": 912,"y": 144,"w": 16,"h": 16}
+  },
+
+"goblinss185.png":
+  {
+    "frame": {"x": 944,"y": 144,"w": 16,"h": 16}
+  },
+
+"goblinss186.png":
+  {
+    "frame": {"x": 976,"y": 144,"w": 16,"h": 16}
+  },
+
+"goblinss187.png":
+  {
+    "frame": {"x": 1008,"y": 144,"w": 16,"h": 16}
+  },
+
+"goblinss188.png":
+  {
+    "frame": {"x": 1040,"y": 144,"w": 16,"h": 16}
+  },
+
+"goblinss189.png":
+  {
+    "frame": {"x": 1072,"y": 144,"w": 16,"h": 16}
+  },
+
+"goblinss190.png":
+  {
+    "frame": {"x": 1104,"y": 144,"w": 16,"h": 16}
+  },
+
+"goblinss191.png":
+  {
+    "frame": {"x": 1136,"y": 144,"w": 16,"h": 16}
+  },
+
+"goblinss192.png":
+  {
+    "frame": {"x": 1168,"y": 144,"w": 16,"h": 16}
+  },
+
+"goblinss193.png":
+  {
+    "frame": {"x": 1200,"y": 144,"w": 16,"h": 16}
+  },
+
+"goblinss194.png":
+  {
+    "frame": {"x": 1232,"y": 144,"w": 16,"h": 16}
+  },
+
+"goblinss195.png":
+  {
+    "frame": {"x": 16,"y": 176,"w": 16,"h": 16}
+  },
+
+"goblinss196.png":
+  {
+    "frame": {"x": 48,"y": 176,"w": 16,"h": 16}
+  },
+
+"goblinss197.png":
+  {
+    "frame": {"x": 80,"y": 176,"w": 16,"h": 16}
+  },
+
+"goblinss198.png":
+  {
+    "frame": {"x": 112,"y": 176,"w": 16,"h": 16}
+  },
+
+"goblinss199.png":
+  {
+    "frame": {"x": 144,"y": 176,"w": 16,"h": 16}
+  },
+
+"goblinss200.png":
+  {
+    "frame": {"x": 176,"y": 176,"w": 16,"h": 16}
+  },
+
+"goblinss201.png":
+  {
+    "frame": {"x": 208,"y": 176,"w": 16,"h": 16}
+  },
+
+"goblinss202.png":
+  {
+    "frame": {"x": 240,"y": 176,"w": 16,"h": 16}
+  },
+
+"goblinss203.png":
+  {
+    "frame": {"x": 272,"y": 176,"w": 16,"h": 16}
+  },
+
+"goblinss204.png":
+  {
+    "frame": {"x": 304,"y": 176,"w": 16,"h": 16}
+  },
+
+"goblinss205.png":
+  {
+    "frame": {"x": 336,"y": 176,"w": 16,"h": 16}
+  },
+
+"goblinss206.png":
+  {
+    "frame": {"x": 368,"y": 176,"w": 16,"h": 16}
+  },
+
+"goblinss207.png":
+  {
+    "frame": {"x": 400,"y": 176,"w": 16,"h": 16}
+  },
+
+"goblinss208.png":
+  {
+    "frame": {"x": 432,"y": 176,"w": 16,"h": 16}
+  },
+
+"goblinss209.png":
+  {
+    "frame": {"x": 464,"y": 176,"w": 16,"h": 16}
+  },
+
+"goblinss210.png":
+  {
+    "frame": {"x": 496,"y": 176,"w": 16,"h": 16}
+  },
+
+"goblinss211.png":
+  {
+    "frame": {"x": 528,"y": 176,"w": 16,"h": 16}
+  },
+
+"goblinss212.png":
+  {
+    "frame": {"x": 560,"y": 176,"w": 16,"h": 16}
+  },
+
+"goblinss213.png":
+  {
+    "frame": {"x": 592,"y": 176,"w": 16,"h": 16}
+  },
+
+"goblinss214.png":
+  {
+    "frame": {"x": 624,"y": 176,"w": 16,"h": 16}
+  },
+
+"goblinss215.png":
+  {
+    "frame": {"x": 656,"y": 176,"w": 16,"h": 16}
+  },
+
+"goblinss216.png":
+  {
+    "frame": {"x": 688,"y": 176,"w": 16,"h": 16}
+  },
+
+"goblinss217.png":
+  {
+    "frame": {"x": 720,"y": 176,"w": 16,"h": 16}
+  },
+
+"goblinss218.png":
+  {
+    "frame": {"x": 752,"y": 176,"w": 16,"h": 16}
+  },
+
+"goblinss219.png":
+  {
+    "frame": {"x": 784,"y": 176,"w": 16,"h": 16}
+  },
+
+"goblinss220.png":
+  {
+    "frame": {"x": 816,"y": 176,"w": 16,"h": 16}
+  },
+
+"goblinss221.png":
+  {
+    "frame": {"x": 848,"y": 176,"w": 16,"h": 16}
+  },
+
+"goblinss222.png":
+  {
+    "frame": {"x": 880,"y": 176,"w": 16,"h": 16}
+  },
+
+"goblinss223.png":
+  {
+    "frame": {"x": 912,"y": 176,"w": 16,"h": 16}
+  },
+
+"goblinss224.png":
+  {
+    "frame": {"x": 944,"y": 176,"w": 16,"h": 16}
+  },
+
+"goblinss225.png":
+  {
+    "frame": {"x": 976,"y": 176,"w": 16,"h": 16}
+  },
+
+"goblinss226.png":
+  {
+    "frame": {"x": 1008,"y": 176,"w": 16,"h": 16}
+  },
+
+"goblinss227.png":
+  {
+    "frame": {"x": 1040,"y": 176,"w": 16,"h": 16}
+  },
+
+"goblinss228.png":
+  {
+    "frame": {"x": 1072,"y": 176,"w": 16,"h": 16}
+  },
+
+"goblinss229.png":
+  {
+    "frame": {"x": 1104,"y": 176,"w": 16,"h": 16}
+  },
+
+"goblinss230.png":
+  {
+    "frame": {"x": 1136,"y": 176,"w": 16,"h": 16}
+  },
+
+"goblinss231.png":
+  {
+    "frame": {"x": 1168,"y": 176,"w": 16,"h": 16}
+  },
+
+"goblinss232.png":
+  {
+    "frame": {"x": 1200,"y": 176,"w": 16,"h": 16}
+  },
+
+"goblinss233.png":
+  {
+    "frame": {"x": 1232,"y": 176,"w": 16,"h": 16}
+  },
+
+"goblinss234.png":
+  {
+    "frame": {"x": 16,"y": 208,"w": 16,"h": 16}
+  },
+
+"goblinss235.png":
+  {
+    "frame": {"x": 48,"y": 208,"w": 16,"h": 16}
+  },
+
+"goblinss236.png":
+  {
+    "frame": {"x": 80,"y": 208,"w": 16,"h": 16}
+  },
+
+"goblinss237.png":
+  {
+    "frame": {"x": 112,"y": 208,"w": 16,"h": 16}
+  },
+
+"goblinss238.png":
+  {
+    "frame": {"x": 144,"y": 208,"w": 16,"h": 16}
+  },
+
+"goblinss239.png":
+  {
+    "frame": {"x": 176,"y": 208,"w": 16,"h": 16}
+  },
+
+"goblinss240.png":
+  {
+    "frame": {"x": 208,"y": 208,"w": 16,"h": 16}
+  },
+
+"goblinss241.png":
+  {
+    "frame": {"x": 240,"y": 208,"w": 16,"h": 16}
+  },
+
+"goblinss242.png":
+  {
+    "frame": {"x": 272,"y": 208,"w": 16,"h": 16}
+  },
+
+"goblinss243.png":
+  {
+    "frame": {"x": 304,"y": 208,"w": 16,"h": 16}
+  },
+
+"goblinss244.png":
+  {
+    "frame": {"x": 336,"y": 208,"w": 16,"h": 16}
+  },
+
+"goblinss245.png":
+  {
+    "frame": {"x": 368,"y": 208,"w": 16,"h": 16}
+  },
+
+"goblinss246.png":
+  {
+    "frame": {"x": 400,"y": 208,"w": 16,"h": 16}
+  },
+
+"goblinss247.png":
+  {
+    "frame": {"x": 432,"y": 208,"w": 16,"h": 16}
+  },
+
+"goblinss248.png":
+  {
+    "frame": {"x": 464,"y": 208,"w": 16,"h": 16}
+  },
+
+"goblinss249.png":
+  {
+    "frame": {"x": 496,"y": 208,"w": 16,"h": 16}
+  },
+
+"goblinss250.png":
+  {
+    "frame": {"x": 528,"y": 208,"w": 16,"h": 16}
+  },
+
+"goblinss251.png":
+  {
+    "frame": {"x": 560,"y": 208,"w": 16,"h": 16}
+  },
+
+"goblinss252.png":
+  {
+    "frame": {"x": 592,"y": 208,"w": 16,"h": 16}
+  },
+
+"goblinss253.png":
+  {
+    "frame": {"x": 624,"y": 208,"w": 16,"h": 16}
+  },
+
+"goblinss254.png":
+  {
+    "frame": {"x": 656,"y": 208,"w": 16,"h": 16}
+  },
+
+"goblinss255.png":
+  {
+    "frame": {"x": 688,"y": 208,"w": 16,"h": 16}
+  },
+
+"goblinss256.png":
+  {
+    "frame": {"x": 720,"y": 208,"w": 16,"h": 16}
+  },
+
+"goblinss257.png":
+  {
+    "frame": {"x": 752,"y": 208,"w": 16,"h": 16}
+  },
+
+"goblinss258.png":
+  {
+    "frame": {"x": 784,"y": 208,"w": 16,"h": 16}
+  },
+
+"goblinss259.png":
+  {
+    "frame": {"x": 816,"y": 208,"w": 16,"h": 16}
+  },
+
+"goblinss260.png":
+  {
+    "frame": {"x": 848,"y": 208,"w": 16,"h": 16}
+  },
+
+"goblinss261.png":
+  {
+    "frame": {"x": 880,"y": 208,"w": 16,"h": 16}
+  },
+
+"goblinss262.png":
+  {
+    "frame": {"x": 912,"y": 208,"w": 16,"h": 16}
+  },
+
+"goblinss263.png":
+  {
+    "frame": {"x": 944,"y": 208,"w": 16,"h": 16}
+  },
+
+"goblinss264.png":
+  {
+    "frame": {"x": 976,"y": 208,"w": 16,"h": 16}
+  },
+
+"goblinss265.png":
+  {
+    "frame": {"x": 1008,"y": 208,"w": 16,"h": 16}
+  },
+
+"goblinss266.png":
+  {
+    "frame": {"x": 1040,"y": 208,"w": 16,"h": 16}
+  },
+
+"goblinss267.png":
+  {
+    "frame": {"x": 1072,"y": 208,"w": 16,"h": 16}
+  },
+
+"goblinss268.png":
+  {
+    "frame": {"x": 1104,"y": 208,"w": 16,"h": 16}
+  },
+
+"goblinss269.png":
+  {
+    "frame": {"x": 1136,"y": 208,"w": 16,"h": 16}
+  },
+
+"goblinss270.png":
+  {
+    "frame": {"x": 1168,"y": 208,"w": 16,"h": 16}
+  },
+
+"goblinss271.png":
+  {
+    "frame": {"x": 1200,"y": 208,"w": 16,"h": 16}
+  },
+
+"goblinss272.png":
+  {
+    "frame": {"x": 1232,"y": 208,"w": 16,"h": 16}
+  },
+
+"goblinss273.png":
+  {
+    "frame": {"x": 16,"y": 240,"w": 16,"h": 16}
+  },
+
+"goblinss274.png":
+  {
+    "frame": {"x": 48,"y": 240,"w": 16,"h": 16}
+  },
+
+"goblinss275.png":
+  {
+    "frame": {"x": 80,"y": 240,"w": 16,"h": 16}
+  },
+
+"goblinss276.png":
+  {
+    "frame": {"x": 112,"y": 240,"w": 16,"h": 16}
+  },
+
+"goblinss277.png":
+  {
+    "frame": {"x": 144,"y": 240,"w": 16,"h": 16}
+  },
+
+"goblinss278.png":
+  {
+    "frame": {"x": 176,"y": 240,"w": 16,"h": 16}
+  },
+
+"goblinss279.png":
+  {
+    "frame": {"x": 208,"y": 240,"w": 16,"h": 16}
+  },
+
+"goblinss280.png":
+  {
+    "frame": {"x": 240,"y": 240,"w": 16,"h": 16}
+  },
+
+"goblinss281.png":
+  {
+    "frame": {"x": 272,"y": 240,"w": 16,"h": 16}
+  },
+
+"goblinss282.png":
+  {
+    "frame": {"x": 304,"y": 240,"w": 16,"h": 16}
+  },
+
+"goblinss283.png":
+  {
+    "frame": {"x": 336,"y": 240,"w": 16,"h": 16}
+  },
+
+"goblinss284.png":
+  {
+    "frame": {"x": 368,"y": 240,"w": 16,"h": 16}
+  },
+
+"goblinss285.png":
+  {
+    "frame": {"x": 400,"y": 240,"w": 16,"h": 16}
+  },
+
+"goblinss286.png":
+  {
+    "frame": {"x": 432,"y": 240,"w": 16,"h": 16}
+  },
+
+"goblinss287.png":
+  {
+    "frame": {"x": 464,"y": 240,"w": 16,"h": 16}
+  },
+
+"goblinss288.png":
+  {
+    "frame": {"x": 496,"y": 240,"w": 16,"h": 16}
+  },
+
+"goblinss289.png":
+  {
+    "frame": {"x": 528,"y": 240,"w": 16,"h": 16}
+  },
+
+"goblinss290.png":
+  {
+    "frame": {"x": 560,"y": 240,"w": 16,"h": 16}
+  },
+
+"goblinss291.png":
+  {
+    "frame": {"x": 592,"y": 240,"w": 16,"h": 16}
+  },
+
+"goblinss292.png":
+  {
+    "frame": {"x": 624,"y": 240,"w": 16,"h": 16}
+  },
+
+"goblinss293.png":
+  {
+    "frame": {"x": 656,"y": 240,"w": 16,"h": 16}
+  },
+
+"goblinss294.png":
+  {
+    "frame": {"x": 688,"y": 240,"w": 16,"h": 16}
+  },
+
+"goblinss295.png":
+  {
+    "frame": {"x": 720,"y": 240,"w": 16,"h": 16}
+  },
+
+"goblinss296.png":
+  {
+    "frame": {"x": 752,"y": 240,"w": 16,"h": 16}
+  },
+
+"goblinss297.png":
+  {
+    "frame": {"x": 784,"y": 240,"w": 16,"h": 16}
+  },
+
+"goblinss298.png":
+  {
+    "frame": {"x": 816,"y": 240,"w": 16,"h": 16}
+  },
+
+"goblinss299.png":
+  {
+    "frame": {"x": 848,"y": 240,"w": 16,"h": 16}
+  },
+
+"goblinss300.png":
+  {
+    "frame": {"x": 880,"y": 240,"w": 16,"h": 16}
+  },
+
+"goblinss301.png":
+  {
+    "frame": {"x": 912,"y": 240,"w": 16,"h": 16}
+  },
+
+"goblinss302.png":
+  {
+    "frame": {"x": 944,"y": 240,"w": 16,"h": 16}
+  },
+
+"goblinss303.png":
+  {
+    "frame": {"x": 976,"y": 240,"w": 16,"h": 16}
+  },
+
+"goblinss304.png":
+  {
+    "frame": {"x": 1008,"y": 240,"w": 16,"h": 16}
+  },
+
+"goblinss305.png":
+  {
+    "frame": {"x": 1040,"y": 240,"w": 16,"h": 16}
+  },
+
+"goblinss306.png":
+  {
+    "frame": {"x": 1072,"y": 240,"w": 16,"h": 16}
+  },
+
+"goblinss307.png":
+  {
+    "frame": {"x": 1104,"y": 240,"w": 16,"h": 16}
+  },
+
+"goblinss308.png":
+  {
+    "frame": {"x": 1136,"y": 240,"w": 16,"h": 16}
+  },
+
+"goblinss309.png":
+  {
+    "frame": {"x": 1168,"y": 240,"w": 16,"h": 16}
+  },
+
+"goblinss310.png":
+  {
+    "frame": {"x": 1200,"y": 240,"w": 16,"h": 16}
+  },
+
+"goblinss311.png":
+  {
+    "frame": {"x": 1232,"y": 240,"w": 16,"h": 16}
+  },
+
+"goblinss312.png":
+  {
+    "frame": {"x": 16,"y": 272,"w": 16,"h": 16}
+  },
+
+"goblinss313.png":
+  {
+    "frame": {"x": 48,"y": 272,"w": 16,"h": 16}
+  },
+
+"goblinss314.png":
+  {
+    "frame": {"x": 80,"y": 272,"w": 16,"h": 16}
+  },
+
+"goblinss315.png":
+  {
+    "frame": {"x": 112,"y": 272,"w": 16,"h": 16}
+  },
+
+"goblinss316.png":
+  {
+    "frame": {"x": 144,"y": 272,"w": 16,"h": 16}
+  },
+
+"goblinss317.png":
+  {
+    "frame": {"x": 176,"y": 272,"w": 16,"h": 16}
+  },
+
+"goblinss318.png":
+  {
+    "frame": {"x": 208,"y": 272,"w": 16,"h": 16}
+  },
+
+"goblinss319.png":
+  {
+    "frame": {"x": 240,"y": 272,"w": 16,"h": 16}
+  },
+
+"goblinss320.png":
+  {
+    "frame": {"x": 272,"y": 272,"w": 16,"h": 16}
+  },
+
+"goblinss321.png":
+  {
+    "frame": {"x": 304,"y": 272,"w": 16,"h": 16}
+  },
+
+"goblinss322.png":
+  {
+    "frame": {"x": 336,"y": 272,"w": 16,"h": 16}
+  },
+
+"goblinss323.png":
+  {
+    "frame": {"x": 368,"y": 272,"w": 16,"h": 16}
+  },
+
+"goblinss324.png":
+  {
+    "frame": {"x": 400,"y": 272,"w": 16,"h": 16}
+  },
+
+"goblinss325.png":
+  {
+    "frame": {"x": 432,"y": 272,"w": 16,"h": 16}
+  },
+
+"goblinss326.png":
+  {
+    "frame": {"x": 464,"y": 272,"w": 16,"h": 16}
+  },
+
+"goblinss327.png":
+  {
+    "frame": {"x": 496,"y": 272,"w": 16,"h": 16}
+  },
+
+"goblinss328.png":
+  {
+    "frame": {"x": 528,"y": 272,"w": 16,"h": 16}
+  },
+
+"goblinss329.png":
+  {
+    "frame": {"x": 560,"y": 272,"w": 16,"h": 16}
+  },
+
+"goblinss330.png":
+  {
+    "frame": {"x": 592,"y": 272,"w": 16,"h": 16}
+  },
+
+"goblinss331.png":
+  {
+    "frame": {"x": 624,"y": 272,"w": 16,"h": 16}
+  },
+
+"goblinss332.png":
+  {
+    "frame": {"x": 656,"y": 272,"w": 16,"h": 16}
+  },
+
+"goblinss333.png":
+  {
+    "frame": {"x": 688,"y": 272,"w": 16,"h": 16}
+  },
+
+"goblinss334.png":
+  {
+    "frame": {"x": 720,"y": 272,"w": 16,"h": 16}
+  },
+
+"goblinss335.png":
+  {
+    "frame": {"x": 752,"y": 272,"w": 16,"h": 16}
+  },
+
+"goblinss336.png":
+  {
+    "frame": {"x": 784,"y": 272,"w": 16,"h": 16}
+  },
+
+"goblinss337.png":
+  {
+    "frame": {"x": 816,"y": 272,"w": 16,"h": 16}
+  },
+
+"goblinss338.png":
+  {
+    "frame": {"x": 848,"y": 272,"w": 16,"h": 16}
+  },
+
+"goblinss339.png":
+  {
+    "frame": {"x": 880,"y": 272,"w": 16,"h": 16}
+  },
+
+"goblinss340.png":
+  {
+    "frame": {"x": 912,"y": 272,"w": 16,"h": 16}
+  },
+
+"goblinss341.png":
+  {
+    "frame": {"x": 944,"y": 272,"w": 16,"h": 16}
+  },
+
+"goblinss342.png":
+  {
+    "frame": {"x": 976,"y": 272,"w": 16,"h": 16}
+  },
+
+"goblinss343.png":
+  {
+    "frame": {"x": 1008,"y": 272,"w": 16,"h": 16}
+  },
+
+"goblinss344.png":
+  {
+    "frame": {"x": 1040,"y": 272,"w": 16,"h": 16}
+  },
+
+"goblinss345.png":
+  {
+    "frame": {"x": 1072,"y": 272,"w": 16,"h": 16}
+  },
+
+"goblinss346.png":
+  {
+    "frame": {"x": 1104,"y": 272,"w": 16,"h": 16}
+  },
+
+"goblinss347.png":
+  {
+    "frame": {"x": 1136,"y": 272,"w": 16,"h": 16}
+  },
+
+"goblinss348.png":
+  {
+    "frame": {"x": 1168,"y": 272,"w": 16,"h": 16}
+  },
+
+"goblinss349.png":
+  {
+    "frame": {"x": 1200,"y": 272,"w": 16,"h": 16}
+  },
+
+"goblinss350.png":
+  {
+    "frame": {"x": 1232,"y": 272,"w": 16,"h": 16}
+  },
+
+"goblinss351.png":
+  {
+    "frame": {"x": 16,"y": 304,"w": 16,"h": 16}
+  },
+
+"goblinss352.png":
+  {
+    "frame": {"x": 48,"y": 304,"w": 16,"h": 16}
+  },
+
+"goblinss353.png":
+  {
+    "frame": {"x": 80,"y": 304,"w": 16,"h": 16}
+  },
+
+"goblinss354.png":
+  {
+    "frame": {"x": 112,"y": 304,"w": 16,"h": 16}
+  },
+
+"goblinss355.png":
+  {
+    "frame": {"x": 144,"y": 304,"w": 16,"h": 16}
+  },
+
+"goblinss356.png":
+  {
+    "frame": {"x": 176,"y": 304,"w": 16,"h": 16}
+  },
+
+"goblinss357.png":
+  {
+    "frame": {"x": 208,"y": 304,"w": 16,"h": 16}
+  },
+
+"goblinss358.png":
+  {
+    "frame": {"x": 240,"y": 304,"w": 16,"h": 16}
+  },
+
+"goblinss359.png":
+  {
+    "frame": {"x": 272,"y": 304,"w": 16,"h": 16}
+  },
+
+"goblinss360.png":
+  {
+    "frame": {"x": 304,"y": 304,"w": 16,"h": 16}
+  },
+
+"goblinss361.png":
+  {
+    "frame": {"x": 336,"y": 304,"w": 16,"h": 16}
+  },
+
+"goblinss362.png":
+  {
+    "frame": {"x": 368,"y": 304,"w": 16,"h": 16}
+  },
+
+"goblinss363.png":
+  {
+    "frame": {"x": 400,"y": 304,"w": 16,"h": 16}
+  },
+
+"goblinss364.png":
+  {
+    "frame": {"x": 432,"y": 304,"w": 16,"h": 16}
+  },
+
+"goblinss365.png":
+  {
+    "frame": {"x": 464,"y": 304,"w": 16,"h": 16}
+  },
+
+"goblinss366.png":
+  {
+    "frame": {"x": 496,"y": 304,"w": 16,"h": 16}
+  },
+
+"goblinss367.png":
+  {
+    "frame": {"x": 528,"y": 304,"w": 16,"h": 16}
+  },
+
+"goblinss368.png":
+  {
+    "frame": {"x": 560,"y": 304,"w": 16,"h": 16}
+  },
+
+"goblinss369.png":
+  {
+    "frame": {"x": 592,"y": 304,"w": 16,"h": 16}
+  },
+
+"goblinss370.png":
+  {
+    "frame": {"x": 624,"y": 304,"w": 16,"h": 16}
+  },
+
+"goblinss371.png":
+  {
+    "frame": {"x": 656,"y": 304,"w": 16,"h": 16}
+  },
+
+"goblinss372.png":
+  {
+    "frame": {"x": 688,"y": 304,"w": 16,"h": 16}
+  },
+
+"goblinss373.png":
+  {
+    "frame": {"x": 720,"y": 304,"w": 16,"h": 16}
+  },
+
+"goblinss374.png":
+  {
+    "frame": {"x": 752,"y": 304,"w": 16,"h": 16}
+  },
+
+"goblinss375.png":
+  {
+    "frame": {"x": 784,"y": 304,"w": 16,"h": 16}
+  },
+
+"goblinss376.png":
+  {
+    "frame": {"x": 816,"y": 304,"w": 16,"h": 16}
+  },
+
+"goblinss377.png":
+  {
+    "frame": {"x": 848,"y": 304,"w": 16,"h": 16}
+  },
+
+"goblinss378.png":
+  {
+    "frame": {"x": 880,"y": 304,"w": 16,"h": 16}
+  },
+
+"goblinss379.png":
+  {
+    "frame": {"x": 912,"y": 304,"w": 16,"h": 16}
+  },
+
+"goblinss380.png":
+  {
+    "frame": {"x": 944,"y": 304,"w": 16,"h": 16}
+  },
+
+"goblinss381.png":
+  {
+    "frame": {"x": 976,"y": 304,"w": 16,"h": 16}
+  },
+
+"goblinss382.png":
+  {
+    "frame": {"x": 1008,"y": 304,"w": 16,"h": 16}
+  },
+
+"goblinss383.png":
+  {
+    "frame": {"x": 1040,"y": 304,"w": 16,"h": 16}
+  },
+
+"goblinss384.png":
+  {
+    "frame": {"x": 1072,"y": 304,"w": 16,"h": 16}
+  },
+
+"goblinss385.png":
+  {
+    "frame": {"x": 1104,"y": 304,"w": 16,"h": 16}
+  },
+
+"goblinss386.png":
+  {
+    "frame": {"x": 1136,"y": 304,"w": 16,"h": 16}
+  },
+
+"goblinss387.png":
+  {
+    "frame": {"x": 1168,"y": 304,"w": 16,"h": 16}
+  },
+
+"goblinss388.png":
+  {
+    "frame": {"x": 1200,"y": 304,"w": 16,"h": 16}
+  },
+
+"goblinss389.png":
+  {
+    "frame": {"x": 1232,"y": 304,"w": 16,"h": 16}
+  },
+
+"goblinss390.png":
+  {
+    "frame": {"x": 16,"y": 336,"w": 16,"h": 16}
+  },
+
+"goblinss391.png":
+  {
+    "frame": {"x": 48,"y": 336,"w": 16,"h": 16}
+  },
+
+"goblinss392.png":
+  {
+    "frame": {"x": 80,"y": 336,"w": 16,"h": 16}
+  },
+
+"goblinss393.png":
+  {
+    "frame": {"x": 112,"y": 336,"w": 16,"h": 16}
+  },
+
+"goblinss394.png":
+  {
+    "frame": {"x": 144,"y": 336,"w": 16,"h": 16}
+  },
+
+"goblinss395.png":
+  {
+    "frame": {"x": 176,"y": 336,"w": 16,"h": 16}
+  },
+
+"goblinss396.png":
+  {
+    "frame": {"x": 208,"y": 336,"w": 16,"h": 16}
+  },
+
+"goblinss397.png":
+  {
+    "frame": {"x": 240,"y": 336,"w": 16,"h": 16}
+  },
+
+"goblinss398.png":
+  {
+    "frame": {"x": 272,"y": 336,"w": 16,"h": 16}
+  },
+
+"goblinss399.png":
+  {
+    "frame": {"x": 304,"y": 336,"w": 16,"h": 16}
+  },
+
+"goblinss400.png":
+  {
+    "frame": {"x": 336,"y": 336,"w": 16,"h": 16}
+  },
+
+"goblinss401.png":
+  {
+    "frame": {"x": 368,"y": 336,"w": 16,"h": 16}
+  },
+
+"goblinss402.png":
+  {
+    "frame": {"x": 400,"y": 336,"w": 16,"h": 16}
+  },
+
+"goblinss403.png":
+  {
+    "frame": {"x": 432,"y": 336,"w": 16,"h": 16}
+  },
+
+"goblinss404.png":
+  {
+    "frame": {"x": 464,"y": 336,"w": 16,"h": 16}
+  },
+
+"goblinss405.png":
+  {
+    "frame": {"x": 496,"y": 336,"w": 16,"h": 16}
+  },
+
+"goblinss406.png":
+  {
+    "frame": {"x": 528,"y": 336,"w": 16,"h": 16}
+  },
+
+"goblinss407.png":
+  {
+    "frame": {"x": 560,"y": 336,"w": 16,"h": 16}
+  },
+
+"goblinss408.png":
+  {
+    "frame": {"x": 592,"y": 336,"w": 16,"h": 16}
+  },
+
+"goblinss409.png":
+  {
+    "frame": {"x": 624,"y": 336,"w": 16,"h": 16}
+  },
+
+"goblinss410.png":
+  {
+    "frame": {"x": 656,"y": 336,"w": 16,"h": 16}
+  },
+
+"goblinss411.png":
+  {
+    "frame": {"x": 688,"y": 336,"w": 16,"h": 16}
+  },
+
+"goblinss412.png":
+  {
+    "frame": {"x": 720,"y": 336,"w": 16,"h": 16}
+  },
+
+"goblinss413.png":
+  {
+    "frame": {"x": 752,"y": 336,"w": 16,"h": 16}
+  },
+
+"goblinss414.png":
+  {
+    "frame": {"x": 784,"y": 336,"w": 16,"h": 16}
+  },
+
+"goblinss415.png":
+  {
+    "frame": {"x": 816,"y": 336,"w": 16,"h": 16}
+  },
+
+"goblinss416.png":
+  {
+    "frame": {"x": 848,"y": 336,"w": 16,"h": 16}
+  },
+
+"goblinss417.png":
+  {
+    "frame": {"x": 880,"y": 336,"w": 16,"h": 16}
+  },
+
+"goblinss418.png":
+  {
+    "frame": {"x": 912,"y": 336,"w": 16,"h": 16}
+  },
+
+"goblinss419.png":
+  {
+    "frame": {"x": 944,"y": 336,"w": 16,"h": 16}
+  },
+
+"goblinss420.png":
+  {
+    "frame": {"x": 976,"y": 336,"w": 16,"h": 16}
+  },
+
+"goblinss421.png":
+  {
+    "frame": {"x": 1008,"y": 336,"w": 16,"h": 16}
+  },
+
+"goblinss422.png":
+  {
+    "frame": {"x": 1040,"y": 336,"w": 16,"h": 16}
+  },
+
+"goblinss423.png":
+  {
+    "frame": {"x": 1072,"y": 336,"w": 16,"h": 16}
+  },
+
+"goblinss424.png":
+  {
+    "frame": {"x": 1104,"y": 336,"w": 16,"h": 16}
+  },
+
+"goblinss425.png":
+  {
+    "frame": {"x": 1136,"y": 336,"w": 16,"h": 16}
+  },
+
+"goblinss426.png":
+  {
+    "frame": {"x": 1168,"y": 336,"w": 16,"h": 16}
+  },
+
+"goblinss427.png":
+  {
+    "frame": {"x": 1200,"y": 336,"w": 16,"h": 16}
+  },
+
+"goblinss428.png":
+  {
+    "frame": {"x": 1232,"y": 336,"w": 16,"h": 16}
+  },
+
+"goblinss429.png":
+  {
+    "frame": {"x": 16,"y": 368,"w": 16,"h": 16}
+  },
+
+"goblinss430.png":
+  {
+    "frame": {"x": 48,"y": 368,"w": 16,"h": 16}
+  },
+
+"goblinss431.png":
+  {
+    "frame": {"x": 80,"y": 368,"w": 16,"h": 16}
+  },
+
+"goblinss432.png":
+  {
+    "frame": {"x": 112,"y": 368,"w": 16,"h": 16}
+  },
+
+"goblinss433.png":
+  {
+    "frame": {"x": 144,"y": 368,"w": 16,"h": 16}
+  },
+
+"goblinss434.png":
+  {
+    "frame": {"x": 176,"y": 368,"w": 16,"h": 16}
+  },
+
+"goblinss435.png":
+  {
+    "frame": {"x": 208,"y": 368,"w": 16,"h": 16}
+  },
+
+"goblinss436.png":
+  {
+    "frame": {"x": 240,"y": 368,"w": 16,"h": 16}
+  },
+
+"goblinss437.png":
+  {
+    "frame": {"x": 272,"y": 368,"w": 16,"h": 16}
+  },
+
+"goblinss438.png":
+  {
+    "frame": {"x": 304,"y": 368,"w": 16,"h": 16}
+  },
+
+"goblinss439.png":
+  {
+    "frame": {"x": 336,"y": 368,"w": 16,"h": 16}
+  },
+
+"goblinss440.png":
+  {
+    "frame": {"x": 368,"y": 368,"w": 16,"h": 16}
+  },
+
+"goblinss441.png":
+  {
+    "frame": {"x": 400,"y": 368,"w": 16,"h": 16}
+  },
+
+"goblinss442.png":
+  {
+    "frame": {"x": 432,"y": 368,"w": 16,"h": 16}
+  },
+
+"goblinss443.png":
+  {
+    "frame": {"x": 464,"y": 368,"w": 16,"h": 16}
+  },
+
+"goblinss444.png":
+  {
+    "frame": {"x": 496,"y": 368,"w": 16,"h": 16}
+  },
+
+"goblinss445.png":
+  {
+    "frame": {"x": 528,"y": 368,"w": 16,"h": 16}
+  },
+
+"goblinss446.png":
+  {
+    "frame": {"x": 560,"y": 368,"w": 16,"h": 16}
+  },
+
+"goblinss447.png":
+  {
+    "frame": {"x": 592,"y": 368,"w": 16,"h": 16}
+  },
+
+"goblinss448.png":
+  {
+    "frame": {"x": 624,"y": 368,"w": 16,"h": 16}
+  },
+
+"goblinss449.png":
+  {
+    "frame": {"x": 656,"y": 368,"w": 16,"h": 16}
+  },
+
+"goblinss450.png":
+  {
+    "frame": {"x": 688,"y": 368,"w": 16,"h": 16}
+  },
+
+"goblinss451.png":
+  {
+    "frame": {"x": 720,"y": 368,"w": 16,"h": 16}
+  },
+
+"goblinss452.png":
+  {
+    "frame": {"x": 752,"y": 368,"w": 16,"h": 16}
+  },
+
+"goblinss453.png":
+  {
+    "frame": {"x": 784,"y": 368,"w": 16,"h": 16}
+  },
+
+"goblinss454.png":
+  {
+    "frame": {"x": 816,"y": 368,"w": 16,"h": 16}
+  },
+
+"goblinss455.png":
+  {
+    "frame": {"x": 848,"y": 368,"w": 16,"h": 16}
+  },
+
+"goblinss456.png":
+  {
+    "frame": {"x": 880,"y": 368,"w": 16,"h": 16}
+  },
+
+"goblinss457.png":
+  {
+    "frame": {"x": 912,"y": 368,"w": 16,"h": 16}
+  },
+
+"goblinss458.png":
+  {
+    "frame": {"x": 944,"y": 368,"w": 16,"h": 16}
+  },
+
+"goblinss459.png":
+  {
+    "frame": {"x": 976,"y": 368,"w": 16,"h": 16}
+  },
+
+"goblinss460.png":
+  {
+    "frame": {"x": 1008,"y": 368,"w": 16,"h": 16}
+  },
+
+"goblinss461.png":
+  {
+    "frame": {"x": 1040,"y": 368,"w": 16,"h": 16}
+  },
+
+"goblinss462.png":
+  {
+    "frame": {"x": 1072,"y": 368,"w": 16,"h": 16}
+  },
+
+"goblinss463.png":
+  {
+    "frame": {"x": 1104,"y": 368,"w": 16,"h": 16}
+  },
+
+"goblinss464.png":
+  {
+    "frame": {"x": 1136,"y": 368,"w": 16,"h": 16}
+  },
+
+"goblinss465.png":
+  {
+    "frame": {"x": 1168,"y": 368,"w": 16,"h": 16}
+  },
+
+"goblinss466.png":
+  {
+    "frame": {"x": 1200,"y": 368,"w": 16,"h": 16}
+  },
+
+"goblinss467.png":
+  {
+    "frame": {"x": 1232,"y": 368,"w": 16,"h": 16}
+  },
+
+"goblinss468.png":
+  {
+    "frame": {"x": 16,"y": 400,"w": 16,"h": 16}
+  },
+
+"goblinss469.png":
+  {
+    "frame": {"x": 48,"y": 400,"w": 16,"h": 16}
+  },
+
+"goblinss470.png":
+  {
+    "frame": {"x": 80,"y": 400,"w": 16,"h": 16}
+  },
+
+"goblinss471.png":
+  {
+    "frame": {"x": 112,"y": 400,"w": 16,"h": 16}
+  },
+
+"goblinss472.png":
+  {
+    "frame": {"x": 144,"y": 400,"w": 16,"h": 16}
+  },
+
+"goblinss473.png":
+  {
+    "frame": {"x": 176,"y": 400,"w": 16,"h": 16}
+  },
+
+"goblinss474.png":
+  {
+    "frame": {"x": 208,"y": 400,"w": 16,"h": 16}
+  },
+
+"goblinss475.png":
+  {
+    "frame": {"x": 240,"y": 400,"w": 16,"h": 16}
+  },
+
+"goblinss476.png":
+  {
+    "frame": {"x": 272,"y": 400,"w": 16,"h": 16}
+  },
+
+"goblinss477.png":
+  {
+    "frame": {"x": 304,"y": 400,"w": 16,"h": 16}
+  },
+
+"goblinss478.png":
+  {
+    "frame": {"x": 336,"y": 400,"w": 16,"h": 16}
+  },
+
+"goblinss479.png":
+  {
+    "frame": {"x": 368,"y": 400,"w": 16,"h": 16}
+  },
+
+"goblinss480.png":
+  {
+    "frame": {"x": 400,"y": 400,"w": 16,"h": 16}
+  },
+
+"goblinss481.png":
+  {
+    "frame": {"x": 432,"y": 400,"w": 16,"h": 16}
+  },
+
+"goblinss482.png":
+  {
+    "frame": {"x": 464,"y": 400,"w": 16,"h": 16}
+  },
+
+"goblinss483.png":
+  {
+    "frame": {"x": 496,"y": 400,"w": 16,"h": 16}
+  },
+
+"goblinss484.png":
+  {
+    "frame": {"x": 528,"y": 400,"w": 16,"h": 16}
+  },
+
+"goblinss485.png":
+  {
+    "frame": {"x": 560,"y": 400,"w": 16,"h": 16}
+  },
+
+"goblinss486.png":
+  {
+    "frame": {"x": 592,"y": 400,"w": 16,"h": 16}
+  },
+
+"goblinss487.png":
+  {
+    "frame": {"x": 624,"y": 400,"w": 16,"h": 16}
+  },
+
+"goblinss488.png":
+  {
+    "frame": {"x": 656,"y": 400,"w": 16,"h": 16}
+  },
+
+"goblinss489.png":
+  {
+    "frame": {"x": 688,"y": 400,"w": 16,"h": 16}
+  },
+
+"goblinss490.png":
+  {
+    "frame": {"x": 720,"y": 400,"w": 16,"h": 16}
+  },
+
+"goblinss491.png":
+  {
+    "frame": {"x": 752,"y": 400,"w": 16,"h": 16}
+  },
+
+"goblinss492.png":
+  {
+    "frame": {"x": 784,"y": 400,"w": 16,"h": 16}
+  },
+
+"goblinss493.png":
+  {
+    "frame": {"x": 816,"y": 400,"w": 16,"h": 16}
+  },
+
+"goblinss494.png":
+  {
+    "frame": {"x": 848,"y": 400,"w": 16,"h": 16}
+  },
+
+"goblinss495.png":
+  {
+    "frame": {"x": 880,"y": 400,"w": 16,"h": 16}
+  },
+
+"goblinss496.png":
+  {
+    "frame": {"x": 912,"y": 400,"w": 16,"h": 16}
+  },
+
+"goblinss497.png":
+  {
+    "frame": {"x": 944,"y": 400,"w": 16,"h": 16}
+  },
+
+"goblinss498.png":
+  {
+    "frame": {"x": 976,"y": 400,"w": 16,"h": 16}
+  },
+
+"goblinss499.png":
+  {
+    "frame": {"x": 1008,"y": 400,"w": 16,"h": 16}
+  },
+
+"goblinss500.png":
+  {
+    "frame": {"x": 1040,"y": 400,"w": 16,"h": 16}
+  },
+
+"goblinss501.png":
+  {
+    "frame": {"x": 1072,"y": 400,"w": 16,"h": 16}
+  },
+
+"goblinss502.png":
+  {
+    "frame": {"x": 1104,"y": 400,"w": 16,"h": 16}
+  },
+
+"goblinss503.png":
+  {
+    "frame": {"x": 1136,"y": 400,"w": 16,"h": 16}
+  },
+
+"goblinss504.png":
+  {
+    "frame": {"x": 1168,"y": 400,"w": 16,"h": 16}
+  },
+
+"goblinss505.png":
+  {
+    "frame": {"x": 1200,"y": 400,"w": 16,"h": 16}
+  },
+
+"goblinss506.png":
+  {
+    "frame": {"x": 1232,"y": 400,"w": 16,"h": 16}
+  },
+
+"goblinss507.png":
+  {
+    "frame": {"x": 16,"y": 432,"w": 16,"h": 16}
+  },
+
+"goblinss508.png":
+  {
+    "frame": {"x": 48,"y": 432,"w": 16,"h": 16}
+  },
+
+"goblinss509.png":
+  {
+    "frame": {"x": 80,"y": 432,"w": 16,"h": 16}
+  },
+
+"goblinss510.png":
+  {
+    "frame": {"x": 112,"y": 432,"w": 16,"h": 16}
+  },
+
+"goblinss511.png":
+  {
+    "frame": {"x": 144,"y": 432,"w": 16,"h": 16}
+  },
+
+"goblinss512.png":
+  {
+    "frame": {"x": 176,"y": 432,"w": 16,"h": 16}
+  },
+
+"goblinss513.png":
+  {
+    "frame": {"x": 208,"y": 432,"w": 16,"h": 16}
+  },
+
+"goblinss514.png":
+  {
+    "frame": {"x": 240,"y": 432,"w": 16,"h": 16}
+  },
+
+"goblinss515.png":
+  {
+    "frame": {"x": 272,"y": 432,"w": 16,"h": 16}
+  },
+
+"goblinss516.png":
+  {
+    "frame": {"x": 304,"y": 432,"w": 16,"h": 16}
+  },
+
+"goblinss517.png":
+  {
+    "frame": {"x": 336,"y": 432,"w": 16,"h": 16}
+  },
+
+"goblinss518.png":
+  {
+    "frame": {"x": 368,"y": 432,"w": 16,"h": 16}
+  },
+
+"goblinss519.png":
+  {
+    "frame": {"x": 400,"y": 432,"w": 16,"h": 16}
+  },
+
+"goblinss520.png":
+  {
+    "frame": {"x": 432,"y": 432,"w": 16,"h": 16}
+  },
+
+"goblinss521.png":
+  {
+    "frame": {"x": 464,"y": 432,"w": 16,"h": 16}
+  },
+
+"goblinss522.png":
+  {
+    "frame": {"x": 496,"y": 432,"w": 16,"h": 16}
+  },
+
+"goblinss523.png":
+  {
+    "frame": {"x": 528,"y": 432,"w": 16,"h": 16}
+  },
+
+"goblinss524.png":
+  {
+    "frame": {"x": 560,"y": 432,"w": 16,"h": 16}
+  },
+
+"goblinss525.png":
+  {
+    "frame": {"x": 592,"y": 432,"w": 16,"h": 16}
+  },
+
+"goblinss526.png":
+  {
+    "frame": {"x": 624,"y": 432,"w": 16,"h": 16}
+  },
+
+"goblinss527.png":
+  {
+    "frame": {"x": 656,"y": 432,"w": 16,"h": 16}
+  },
+
+"goblinss528.png":
+  {
+    "frame": {"x": 688,"y": 432,"w": 16,"h": 16}
+  },
+
+"goblinss529.png":
+  {
+    "frame": {"x": 720,"y": 432,"w": 16,"h": 16}
+  },
+
+"goblinss530.png":
+  {
+    "frame": {"x": 752,"y": 432,"w": 16,"h": 16}
+  },
+
+"goblinss531.png":
+  {
+    "frame": {"x": 784,"y": 432,"w": 16,"h": 16}
+  },
+
+"goblinss532.png":
+  {
+    "frame": {"x": 816,"y": 432,"w": 16,"h": 16}
+  },
+
+"goblinss533.png":
+  {
+    "frame": {"x": 848,"y": 432,"w": 16,"h": 16}
+  },
+
+"goblinss534.png":
+  {
+    "frame": {"x": 880,"y": 432,"w": 16,"h": 16}
+  },
+
+"goblinss535.png":
+  {
+    "frame": {"x": 912,"y": 432,"w": 16,"h": 16}
+  },
+
+"goblinss536.png":
+  {
+    "frame": {"x": 944,"y": 432,"w": 16,"h": 16}
+  },
+
+"goblinss537.png":
+  {
+    "frame": {"x": 976,"y": 432,"w": 16,"h": 16}
+  },
+
+"goblinss538.png":
+  {
+    "frame": {"x": 1008,"y": 432,"w": 16,"h": 16}
+  },
+
+"goblinss539.png":
+  {
+    "frame": {"x": 1040,"y": 432,"w": 16,"h": 16}
+  },
+
+"goblinss540.png":
+  {
+    "frame": {"x": 1072,"y": 432,"w": 16,"h": 16}
+  },
+
+"goblinss541.png":
+  {
+    "frame": {"x": 1104,"y": 432,"w": 16,"h": 16}
+  },
+
+"goblinss542.png":
+  {
+    "frame": {"x": 1136,"y": 432,"w": 16,"h": 16}
+  },
+
+"goblinss543.png":
+  {
+    "frame": {"x": 1168,"y": 432,"w": 16,"h": 16}
+  },
+
+"goblinss544.png":
+  {
+    "frame": {"x": 1200,"y": 432,"w": 16,"h": 16}
+  },
+
+"goblinss545.png":
+  {
+    "frame": {"x": 1232,"y": 432,"w": 16,"h": 16}
+  },
+
+"goblinss546.png":
+  {
+    "frame": {"x": 16,"y": 464,"w": 16,"h": 16}
+  },
+
+"goblinss547.png":
+  {
+    "frame": {"x": 48,"y": 464,"w": 16,"h": 16}
+  },
+
+"goblinss548.png":
+  {
+    "frame": {"x": 80,"y": 464,"w": 16,"h": 16}
+  },
+
+"goblinss549.png":
+  {
+    "frame": {"x": 112,"y": 464,"w": 16,"h": 16}
+  },
+
+"goblinss550.png":
+  {
+    "frame": {"x": 144,"y": 464,"w": 16,"h": 16}
+  },
+
+"goblinss551.png":
+  {
+    "frame": {"x": 176,"y": 464,"w": 16,"h": 16}
+  },
+
+"goblinss552.png":
+  {
+    "frame": {"x": 208,"y": 464,"w": 16,"h": 16}
+  },
+
+"goblinss553.png":
+  {
+    "frame": {"x": 240,"y": 464,"w": 16,"h": 16}
+  },
+
+"goblinss554.png":
+  {
+    "frame": {"x": 272,"y": 464,"w": 16,"h": 16}
+  },
+
+"goblinss555.png":
+  {
+    "frame": {"x": 304,"y": 464,"w": 16,"h": 16}
+  },
+
+"goblinss556.png":
+  {
+    "frame": {"x": 336,"y": 464,"w": 16,"h": 16}
+  },
+
+"goblinss557.png":
+  {
+    "frame": {"x": 368,"y": 464,"w": 16,"h": 16}
+  },
+
+"goblinss558.png":
+  {
+    "frame": {"x": 400,"y": 464,"w": 16,"h": 16}
+  },
+
+"goblinss559.png":
+  {
+    "frame": {"x": 432,"y": 464,"w": 16,"h": 16}
+  },
+
+"goblinss560.png":
+  {
+    "frame": {"x": 464,"y": 464,"w": 16,"h": 16}
+  },
+
+"goblinss561.png":
+  {
+    "frame": {"x": 496,"y": 464,"w": 16,"h": 16}
+  },
+
+"goblinss562.png":
+  {
+    "frame": {"x": 528,"y": 464,"w": 16,"h": 16}
+  },
+
+"goblinss563.png":
+  {
+    "frame": {"x": 560,"y": 464,"w": 16,"h": 16}
+  },
+
+"goblinss564.png":
+  {
+    "frame": {"x": 592,"y": 464,"w": 16,"h": 16}
+  },
+
+"goblinss565.png":
+  {
+    "frame": {"x": 624,"y": 464,"w": 16,"h": 16}
+  },
+
+"goblinss566.png":
+  {
+    "frame": {"x": 656,"y": 464,"w": 16,"h": 16}
+  },
+
+"goblinss567.png":
+  {
+    "frame": {"x": 688,"y": 464,"w": 16,"h": 16}
+  },
+
+"goblinss568.png":
+  {
+    "frame": {"x": 720,"y": 464,"w": 16,"h": 16}
+  },
+
+"goblinss569.png":
+  {
+    "frame": {"x": 752,"y": 464,"w": 16,"h": 16}
+  },
+
+"goblinss570.png":
+  {
+    "frame": {"x": 784,"y": 464,"w": 16,"h": 16}
+  },
+
+"goblinss571.png":
+  {
+    "frame": {"x": 816,"y": 464,"w": 16,"h": 16}
+  },
+
+"goblinss572.png":
+  {
+    "frame": {"x": 848,"y": 464,"w": 16,"h": 16}
+  },
+
+"goblinss573.png":
+  {
+    "frame": {"x": 880,"y": 464,"w": 16,"h": 16}
+  },
+
+"goblinss574.png":
+  {
+    "frame": {"x": 912,"y": 464,"w": 16,"h": 16}
+  },
+
+"goblinss575.png":
+  {
+    "frame": {"x": 944,"y": 464,"w": 16,"h": 16}
+  },
+
+"goblinss576.png":
+  {
+    "frame": {"x": 976,"y": 464,"w": 16,"h": 16}
+  },
+
+"goblinss577.png":
+  {
+    "frame": {"x": 1008,"y": 464,"w": 16,"h": 16}
+  },
+
+"goblinss578.png":
+  {
+    "frame": {"x": 1040,"y": 464,"w": 16,"h": 16}
+  },
+
+"goblinss579.png":
+  {
+    "frame": {"x": 1072,"y": 464,"w": 16,"h": 16}
+  },
+
+"goblinss580.png":
+  {
+    "frame": {"x": 1104,"y": 464,"w": 16,"h": 16}
+  },
+
+"goblinss581.png":
+  {
+    "frame": {"x": 1136,"y": 464,"w": 16,"h": 16}
+  },
+
+"goblinss582.png":
+  {
+    "frame": {"x": 1168,"y": 464,"w": 16,"h": 16}
+  },
+
+"goblinss583.png":
+  {
+    "frame": {"x": 1200,"y": 464,"w": 16,"h": 16}
+  },
+
+"goblinss584.png":
+  {
+    "frame": {"x": 1232,"y": 464,"w": 16,"h": 16}
+  },
+
+"goblinss585.png":
+  {
+    "frame": {"x": 16,"y": 496,"w": 16,"h": 16}
+  },
+
+"goblinss586.png":
+  {
+    "frame": {"x": 48,"y": 496,"w": 16,"h": 16}
+  },
+
+"goblinss587.png":
+  {
+    "frame": {"x": 80,"y": 496,"w": 16,"h": 16}
+  },
+
+"goblinss588.png":
+  {
+    "frame": {"x": 112,"y": 496,"w": 16,"h": 16}
+  },
+
+"goblinss589.png":
+  {
+    "frame": {"x": 144,"y": 496,"w": 16,"h": 16}
+  },
+
+"goblinss590.png":
+  {
+    "frame": {"x": 176,"y": 496,"w": 16,"h": 16}
+  },
+
+"goblinss591.png":
+  {
+    "frame": {"x": 208,"y": 496,"w": 16,"h": 16}
+  },
+
+"goblinss592.png":
+  {
+    "frame": {"x": 240,"y": 496,"w": 16,"h": 16}
+  },
+
+"goblinss593.png":
+  {
+    "frame": {"x": 272,"y": 496,"w": 16,"h": 16}
+  },
+
+"goblinss594.png":
+  {
+    "frame": {"x": 304,"y": 496,"w": 16,"h": 16}
+  },
+
+"goblinss595.png":
+  {
+    "frame": {"x": 336,"y": 496,"w": 16,"h": 16}
+  },
+
+"goblinss596.png":
+  {
+    "frame": {"x": 368,"y": 496,"w": 16,"h": 16}
+  },
+
+"goblinss597.png":
+  {
+    "frame": {"x": 400,"y": 496,"w": 16,"h": 16}
+  },
+
+"goblinss598.png":
+  {
+    "frame": {"x": 432,"y": 496,"w": 16,"h": 16}
+  },
+
+"goblinss599.png":
+  {
+    "frame": {"x": 464,"y": 496,"w": 16,"h": 16}
+  },
+
+"goblinss600.png":
+  {
+    "frame": {"x": 496,"y": 496,"w": 16,"h": 16}
+  },
+
+"goblinss601.png":
+  {
+    "frame": {"x": 528,"y": 496,"w": 16,"h": 16}
+  },
+
+"goblinss602.png":
+  {
+    "frame": {"x": 560,"y": 496,"w": 16,"h": 16}
+  },
+
+"goblinss603.png":
+  {
+    "frame": {"x": 592,"y": 496,"w": 16,"h": 16}
+  },
+
+"goblinss604.png":
+  {
+    "frame": {"x": 624,"y": 496,"w": 16,"h": 16}
+  },
+
+"goblinss605.png":
+  {
+    "frame": {"x": 656,"y": 496,"w": 16,"h": 16}
+  },
+
+"goblinss606.png":
+  {
+    "frame": {"x": 688,"y": 496,"w": 16,"h": 16}
+  },
+
+"goblinss607.png":
+  {
+    "frame": {"x": 720,"y": 496,"w": 16,"h": 16}
+  },
+
+"goblinss608.png":
+  {
+    "frame": {"x": 752,"y": 496,"w": 16,"h": 16}
+  },
+
+"goblinss609.png":
+  {
+    "frame": {"x": 784,"y": 496,"w": 16,"h": 16}
+  },
+
+"goblinss610.png":
+  {
+    "frame": {"x": 816,"y": 496,"w": 16,"h": 16}
+  },
+
+"goblinss611.png":
+  {
+    "frame": {"x": 848,"y": 496,"w": 16,"h": 16}
+  },
+
+"goblinss612.png":
+  {
+    "frame": {"x": 880,"y": 496,"w": 16,"h": 16}
+  },
+
+"goblinss613.png":
+  {
+    "frame": {"x": 912,"y": 496,"w": 16,"h": 16}
+  },
+
+"goblinss614.png":
+  {
+    "frame": {"x": 944,"y": 496,"w": 16,"h": 16}
+  },
+
+"goblinss615.png":
+  {
+    "frame": {"x": 976,"y": 496,"w": 16,"h": 16}
+  },
+
+"goblinss616.png":
+  {
+    "frame": {"x": 1008,"y": 496,"w": 16,"h": 16}
+  },
+
+"goblinss617.png":
+  {
+    "frame": {"x": 1040,"y": 496,"w": 16,"h": 16}
+  },
+
+"goblinss618.png":
+  {
+    "frame": {"x": 1072,"y": 496,"w": 16,"h": 16}
+  },
+
+"goblinss619.png":
+  {
+    "frame": {"x": 1104,"y": 496,"w": 16,"h": 16}
+  },
+
+"goblinss620.png":
+  {
+    "frame": {"x": 1136,"y": 496,"w": 16,"h": 16}
+  },
+
+"goblinss621.png":
+  {
+    "frame": {"x": 1168,"y": 496,"w": 16,"h": 16}
+  },
+
+"goblinss622.png":
+  {
+    "frame": {"x": 1200,"y": 496,"w": 16,"h": 16}
+  },
+
+"goblinss623.png":
+  {
+    "frame": {"x": 1232,"y": 496,"w": 16,"h": 16}
+  },
+
+"goblinss624.png":
+  {
+    "frame": {"x": 16,"y": 528,"w": 16,"h": 16}
+  },
+
+"goblinss625.png":
+  {
+    "frame": {"x": 48,"y": 528,"w": 16,"h": 16}
+  },
+
+"goblinss626.png":
+  {
+    "frame": {"x": 80,"y": 528,"w": 16,"h": 16}
+  },
+
+"goblinss627.png":
+  {
+    "frame": {"x": 112,"y": 528,"w": 16,"h": 16}
+  },
+
+"goblinss628.png":
+  {
+    "frame": {"x": 144,"y": 528,"w": 16,"h": 16}
+  },
+
+"goblinss629.png":
+  {
+    "frame": {"x": 176,"y": 528,"w": 16,"h": 16}
+  },
+
+"goblinss630.png":
+  {
+    "frame": {"x": 208,"y": 528,"w": 16,"h": 16}
+  },
+
+"goblinss631.png":
+  {
+    "frame": {"x": 240,"y": 528,"w": 16,"h": 16}
+  },
+
+"goblinss632.png":
+  {
+    "frame": {"x": 272,"y": 528,"w": 16,"h": 16}
+  },
+
+"goblinss633.png":
+  {
+    "frame": {"x": 304,"y": 528,"w": 16,"h": 16}
+  },
+
+"goblinss634.png":
+  {
+    "frame": {"x": 336,"y": 528,"w": 16,"h": 16}
+  },
+
+"goblinss635.png":
+  {
+    "frame": {"x": 368,"y": 528,"w": 16,"h": 16}
+  },
+
+"goblinss636.png":
+  {
+    "frame": {"x": 400,"y": 528,"w": 16,"h": 16}
+  },
+
+"goblinss637.png":
+  {
+    "frame": {"x": 432,"y": 528,"w": 16,"h": 16}
+  },
+
+"goblinss638.png":
+  {
+    "frame": {"x": 464,"y": 528,"w": 16,"h": 16}
+  },
+
+"goblinss639.png":
+  {
+    "frame": {"x": 496,"y": 528,"w": 16,"h": 16}
+  },
+
+"goblinss640.png":
+  {
+    "frame": {"x": 528,"y": 528,"w": 16,"h": 16}
+  },
+
+"goblinss641.png":
+  {
+    "frame": {"x": 560,"y": 528,"w": 16,"h": 16}
+  },
+
+"goblinss642.png":
+  {
+    "frame": {"x": 592,"y": 528,"w": 16,"h": 16}
+  },
+
+"goblinss643.png":
+  {
+    "frame": {"x": 624,"y": 528,"w": 16,"h": 16}
+  },
+
+"goblinss644.png":
+  {
+    "frame": {"x": 656,"y": 528,"w": 16,"h": 16}
+  },
+
+"goblinss645.png":
+  {
+    "frame": {"x": 688,"y": 528,"w": 16,"h": 16}
+  },
+
+"goblinss646.png":
+  {
+    "frame": {"x": 720,"y": 528,"w": 16,"h": 16}
+  },
+
+"goblinss647.png":
+  {
+    "frame": {"x": 752,"y": 528,"w": 16,"h": 16}
+  },
+
+"goblinss648.png":
+  {
+    "frame": {"x": 784,"y": 528,"w": 16,"h": 16}
+  },
+
+"goblinss649.png":
+  {
+    "frame": {"x": 816,"y": 528,"w": 16,"h": 16}
+  },
+
+"goblinss650.png":
+  {
+    "frame": {"x": 848,"y": 528,"w": 16,"h": 16}
+  },
+
+"goblinss651.png":
+  {
+    "frame": {"x": 880,"y": 528,"w": 16,"h": 16}
+  },
+
+"goblinss652.png":
+  {
+    "frame": {"x": 912,"y": 528,"w": 16,"h": 16}
+  },
+
+"goblinss653.png":
+  {
+    "frame": {"x": 944,"y": 528,"w": 16,"h": 16}
+  },
+
+"goblinss654.png":
+  {
+    "frame": {"x": 976,"y": 528,"w": 16,"h": 16}
+  },
+
+"goblinss655.png":
+  {
+    "frame": {"x": 1008,"y": 528,"w": 16,"h": 16}
+  },
+
+"goblinss656.png":
+  {
+    "frame": {"x": 1040,"y": 528,"w": 16,"h": 16}
+  },
+
+"goblinss657.png":
+  {
+    "frame": {"x": 1072,"y": 528,"w": 16,"h": 16}
+  },
+
+"goblinss658.png":
+  {
+    "frame": {"x": 1104,"y": 528,"w": 16,"h": 16}
+  },
+
+"goblinss659.png":
+  {
+    "frame": {"x": 1136,"y": 528,"w": 16,"h": 16}
+  },
+
+"goblinss660.png":
+  {
+    "frame": {"x": 1168,"y": 528,"w": 16,"h": 16}
+  },
+
+"goblinss661.png":
+  {
+    "frame": {"x": 1200,"y": 528,"w": 16,"h": 16}
+  },
+
+"goblinss662.png":
+  {
+    "frame": {"x": 1232,"y": 528,"w": 16,"h": 16}
+  },
+
+"goblinss663.png":
+  {
+    "frame": {"x": 16,"y": 560,"w": 16,"h": 16}
+  },
+
+"goblinss664.png":
+  {
+    "frame": {"x": 48,"y": 560,"w": 16,"h": 16}
+  },
+
+"goblinss665.png":
+  {
+    "frame": {"x": 80,"y": 560,"w": 16,"h": 16}
+  },
+
+"goblinss666.png":
+  {
+    "frame": {"x": 112,"y": 560,"w": 16,"h": 16}
+  },
+
+"goblinss667.png":
+  {
+    "frame": {"x": 144,"y": 560,"w": 16,"h": 16}
+  },
+
+"goblinss668.png":
+  {
+    "frame": {"x": 176,"y": 560,"w": 16,"h": 16}
+  },
+
+"goblinss669.png":
+  {
+    "frame": {"x": 208,"y": 560,"w": 16,"h": 16}
+  },
+
+"goblinss670.png":
+  {
+    "frame": {"x": 240,"y": 560,"w": 16,"h": 16}
+  },
+
+"goblinss671.png":
+  {
+    "frame": {"x": 272,"y": 560,"w": 16,"h": 16}
+  },
+
+"goblinss672.png":
+  {
+    "frame": {"x": 304,"y": 560,"w": 16,"h": 16}
+  },
+
+"goblinss673.png":
+  {
+    "frame": {"x": 336,"y": 560,"w": 16,"h": 16}
+  },
+
+"goblinss674.png":
+  {
+    "frame": {"x": 368,"y": 560,"w": 16,"h": 16}
+  },
+
+"goblinss675.png":
+  {
+    "frame": {"x": 400,"y": 560,"w": 16,"h": 16}
+  },
+
+"goblinss676.png":
+  {
+    "frame": {"x": 432,"y": 560,"w": 16,"h": 16}
+  },
+
+"goblinss677.png":
+  {
+    "frame": {"x": 464,"y": 560,"w": 16,"h": 16}
+  },
+
+"goblinss678.png":
+  {
+    "frame": {"x": 496,"y": 560,"w": 16,"h": 16}
+  },
+
+"goblinss679.png":
+  {
+    "frame": {"x": 528,"y": 560,"w": 16,"h": 16}
+  },
+
+"goblinss680.png":
+  {
+    "frame": {"x": 560,"y": 560,"w": 16,"h": 16}
+  },
+
+"goblinss681.png":
+  {
+    "frame": {"x": 592,"y": 560,"w": 16,"h": 16}
+  },
+
+"goblinss682.png":
+  {
+    "frame": {"x": 624,"y": 560,"w": 16,"h": 16}
+  },
+
+"goblinss683.png":
+  {
+    "frame": {"x": 656,"y": 560,"w": 16,"h": 16}
+  },
+
+"goblinss684.png":
+  {
+    "frame": {"x": 688,"y": 560,"w": 16,"h": 16}
+  },
+
+"goblinss685.png":
+  {
+    "frame": {"x": 720,"y": 560,"w": 16,"h": 16}
+  },
+
+"goblinss686.png":
+  {
+    "frame": {"x": 752,"y": 560,"w": 16,"h": 16}
+  },
+
+"goblinss687.png":
+  {
+    "frame": {"x": 784,"y": 560,"w": 16,"h": 16}
+  },
+
+"goblinss688.png":
+  {
+    "frame": {"x": 816,"y": 560,"w": 16,"h": 16}
+  },
+
+"goblinss689.png":
+  {
+    "frame": {"x": 848,"y": 560,"w": 16,"h": 16}
+  },
+
+"goblinss690.png":
+  {
+    "frame": {"x": 880,"y": 560,"w": 16,"h": 16}
+  },
+
+"goblinss691.png":
+  {
+    "frame": {"x": 912,"y": 560,"w": 16,"h": 16}
+  },
+
+"goblinss692.png":
+  {
+    "frame": {"x": 944,"y": 560,"w": 16,"h": 16}
+  },
+
+"goblinss693.png":
+  {
+    "frame": {"x": 976,"y": 560,"w": 16,"h": 16}
+  },
+
+"goblinss694.png":
+  {
+    "frame": {"x": 1008,"y": 560,"w": 16,"h": 16}
+  },
+
+"goblinss695.png":
+  {
+    "frame": {"x": 1040,"y": 560,"w": 16,"h": 16}
+  },
+
+"goblinss696.png":
+  {
+    "frame": {"x": 1072,"y": 560,"w": 16,"h": 16}
+  },
+
+"goblinss697.png":
+  {
+    "frame": {"x": 1104,"y": 560,"w": 16,"h": 16}
+  },
+
+"goblinss698.png":
+  {
+    "frame": {"x": 1136,"y": 560,"w": 16,"h": 16}
+  },
+
+"goblinss699.png":
+  {
+    "frame": {"x": 1168,"y": 560,"w": 16,"h": 16}
+  },
+
+"goblinss700.png":
+  {
+    "frame": {"x": 1200,"y": 560,"w": 16,"h": 16}
+  },
+
+"goblinss701.png":
+  {
+    "frame": {"x": 1232,"y": 560,"w": 16,"h": 16}
+  }
+}}
