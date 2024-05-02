@@ -84,7 +84,7 @@ class Main():
         startCanvas = pygame.Surface((self.windowWidth, self.windowHeight))
 
         font = pygame.font.Font('freesansbold.ttf', 50)
-        text = font.render("Storm the Farm", False, (255, 0, 0))
+        text = font.render("Storm the Farm", True, (0, 0, 0))
         textRect = text.get_rect()
         textRect.center = (self.windowWidth // 2, self.windowHeight // 2)
 
@@ -100,7 +100,7 @@ class Main():
                     pygame.display.toggle_fullscreen()
 
 
-            startCanvas.fill((0, 180, 240))
+            startCanvas.fill((255, 255, 255))
             startCanvas.blit(text, textRect)
 
             self.window.blit(startCanvas, (0, 0))  # tegner canvas på skærm og kun område som kan ses
