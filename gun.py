@@ -20,6 +20,9 @@ class Gun:
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == pygame.BUTTON_LEFT:
                 print("BANG")
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                print("Ikk smid med skrald, det kan blive din sidste fejl")
 
     def update(self):
         # få musets koordinater
