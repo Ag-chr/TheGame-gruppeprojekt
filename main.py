@@ -6,6 +6,7 @@ import pygame
 from player import Player
 from camera import Camera
 from gun import Gun
+from button import Button
 
 class Main():
     pygame.init()
@@ -83,11 +84,13 @@ class Main():
         self.running = True
         startCanvas = pygame.Surface((self.windowWidth, self.windowHeight))
 
-        font = pygame.font.Font('freesansbold.ttf', 50)
+        font = pygame.font.Font('freesansbold.ttf', 75)
         text = font.render("Storm the Farm", True, (0, 0, 0))
         textRect = text.get_rect()
-        textRect.center = (self.windowWidth // 2, self.windowHeight // 2)
+        textRect.center = (self.windowWidth // 2, self.windowHeight // 2-150)
+        play_button = Button(self.windowWidth // 2 - 175, self.windowHeight // 2 - 25, 350, 75, "Play", False, (0, 200, 0))
 
+        startCanvas.fill((255, 255, 255))
         while self.running:
             self.clock.tick(60)  # 60 fps
 
@@ -100,8 +103,8 @@ class Main():
                     pygame.display.toggle_fullscreen()
 
 
-            startCanvas.fill((255, 255, 255))
             startCanvas.blit(text, textRect)
+            play_button.draw(startCanvas)
 
             self.window.blit(startCanvas, (0, 0))  # tegner canvas på skærm og kun område som kan ses
             pygame.display.update()  # updater skærm så disse ændringer kan ses
