@@ -7,6 +7,7 @@ from player import Player
 from camera import Camera
 from gun import Gun
 from button import Button
+from enemy import Enemy
 
 class Main():
     pygame.init()
@@ -28,6 +29,9 @@ class Main():
                      TileMap('Levels/MainLevel_Grass.csv', grassSpritesheet, self.tile_size, self.scale),
                      TileMap('Levels/MainLevel_House floor.csv', woodenHouseSpritesheet, self.tile_size, self.scale),
                      TileMap('Levels/MainLevel_House walls.csv', woodenHouseSpritesheet, self.tile_size, self.scale)]
+        self.enemies = [
+            Enemy("Jens",self.maps[0].map_w / 2, self.maps[0].map_h / 2,3,2, 10, 50, 5, self.scale,self)
+        ]
 
         # Canvas/surface skal være samme størrelse som map for at tegne det hele i starten
         self.canvas = pygame.Surface((self.maps[0].map_w, self.maps[0].map_h))
@@ -71,6 +75,8 @@ class Main():
 
             self.player.draw_player(self.canvas)
             self.gun.draw_gun(self.canvas)
+            for enemy in self.enemies:
+                enemy.draw_enemy(self.canvas)
 
 # ------------------------------------------------ FINDER SKÆRM OMRÅDE -------------------------------------------------
             screen_region = (self.camera.getCameraPos(), pygame.display.get_window_size())  # området hvor skærmen er
