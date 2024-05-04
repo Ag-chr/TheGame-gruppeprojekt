@@ -9,6 +9,11 @@ class Farm:
         self.main = main
         self.player = player
         self.real_tile_size = self.main.tile_size * self.main.scale
+        self.farmland_tile = "12"
+        self.farmland_image = farmSpritesheet.parse_sprite("tilled dirt12.png").convert()
+        self.farmland_image = pygame.transform.scale_by(self.farmland_image, self.main.scale)
+        self.farmland_image.set_alpha(200)
+        self.farmland_rect = self.farmland_image.get_rect()
 
         self.farm_csv_file = farm_csv
         self.farm_boundary = read_csv(farm_boundary)
@@ -25,20 +30,33 @@ class Farm:
     def draw_farm(self, canvas):
         self.farm_map.draw_map(canvas)
 
-    def load_farm(self):
-        self.farm_map.load_map()
+    def draw_transparent_farmland(self, canvas):
+        x_player_grid = int((self.player.x + self.real_tile_size / 2) // self.real_tile_size - self.start[0])
+        y_player_grid = int((self.player.y + self.real_tile_size / 2) // self.real_tile_size - self.start[1])
+        try:
+            tile = self.farm_csv_array[y_player_grid][x_player_grid]
+        except:
+            print("Out of Bounds")
+            return
+        if tile != "-1":
+            return
+        self.farmland_rect.x = ((self.player.x + self.real_tile_size / 2) // self.real_tile_size) * self.real_tile_size
+        self.farmland_rect.y = ((self.player.y + self.real_tile_size / 2) // self.real_tile_size) * self.real_tile_size
+        print(self.farmland_rect.x, self.player.x)
+
+        canvas.blit(self.farmland_image, self.farmland_rect)
+
 
 
     def place_farmland(self):
         x_player_grid = int((self.player.x + self.real_tile_size / 2) // self.real_tile_size - self.start[0])
         y_player_grid = int((self.player.y + self.real_tile_size / 2) // self.real_tile_size - self.start[1])
+        tile = None
 
         try:
             tile = self.farm_csv_array[y_player_grid][x_player_grid]
         except:
-            tile = "Out of Bounds"
-            print(tile)
-
+            print("Out of Bounds")
         if tile != "-1":
             return
 
@@ -68,9 +86,9 @@ class Farm:
             for tile in row:
                 if boundary[y][x] != "-1":
                     if not bool(self.start):
-                        self.start = (x, y)
+                        self.start = (x + 1, y + 1)
                     else:
-                        self.end = (x + 1, y + 1)
+                        self.end = (x, y)
                 x += 1
             y += 1
 
