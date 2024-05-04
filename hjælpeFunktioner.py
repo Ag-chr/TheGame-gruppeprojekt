@@ -2,10 +2,10 @@ import csv, os
 from collider import Collider
 
 
-def read_csv(filename):
+def read_csv(filename, dialect="excel"):
     map = []
     with open(os.path.join(filename)) as data:
-        data = csv.reader(data, delimiter=',')
+        data = csv.reader(data, delimiter=',', dialect=dialect)
         for row in data:
             map.append(list(row))
     return map

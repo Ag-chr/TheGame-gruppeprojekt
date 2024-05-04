@@ -9,10 +9,12 @@ grassSpritesheet = Spritesheet('Images/grass.png')
 woodenHouseSpritesheet = Spritesheet('Images/Wooden House.png')
 collisionSpritesheet = Spritesheet("Images/collision.png")
 playerSpritesheet = Spritesheet("Images/character.png")
+farmSpritesheet = Spritesheet("Images/tilled dirt.png")
 
 pygame.quit()
 
 def updateJson(tile_size):
+    SpritesheetToJson("Images/tilled dirt.png", tile_size)
     SpritesheetToJson("Images/water.png", tile_size)
     SpritesheetToJson("Images/grass.png", tile_size)
     SpritesheetToJson("Images/Wooden House.png", tile_size)
