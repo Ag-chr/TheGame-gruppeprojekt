@@ -34,17 +34,12 @@ class Player:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_w:
                 self.yVel -= self.speed
-                self.lastMove = "UP"
             if event.key == pygame.K_s:
                 self.yVel += self.speed
-                self.lastMove = "DOWN"
             if event.key == pygame.K_a:
                 self.xVel -= self.speed
-                self.lastMove = "LEFT"
             if event.key == pygame.K_d:
                 self.xVel += self.speed
-                self.lastMove = "RIGHT"
-            print(self.lastMove)
 
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_w:
@@ -82,6 +77,17 @@ class Player:
             xObstructed, yObstructed = rectCollisionChecker(self.collider, collider, self.xVel, self.yVel, xObstructed, yObstructed)
 
         return xObstructed, yObstructed
+
+    def getDirection(self):
+        if self.yVel < 0:
+            self.lastMove = "UP"
+        elif self.yVel > 0:
+            self.lastMove = "DOWN"
+        elif self.xVel < 0:
+            self.lastMove = "LEFT"
+        elif self.xVel > 0:
+            self.lastMove = "RIGHT"
+        return self.lastMove
 
     def draw_player(self, canvas):
         self.player_rect.x = self.x

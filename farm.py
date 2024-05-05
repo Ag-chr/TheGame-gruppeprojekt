@@ -3,6 +3,7 @@ from hjælpeFunktioner import read_csv
 from tiles import TileMap
 from getSpritesheets import farmSpritesheet
 import csv
+import math
 
 class Farm:
     def __init__(self, main, player, farm_csv, farm_boundary):
@@ -28,7 +29,7 @@ class Farm:
         self.farm_map = TileMap("Levels/MainLevel_Farm.csv", farmSpritesheet, self.main.tile_size, self.main.scale, x=self.start[0] * self.real_tile_size, y=self.start[1] * self.real_tile_size)
 
     def getPlayerGrid(self):
-        player_direction = self.player.lastMove
+        player_direction = self.player.getDirection()
         xOffset = 0
         yOffset = 0
         if player_direction == "DOWN":
@@ -55,7 +56,9 @@ class Farm:
         except:
             print("Out of Bounds")
             return
-        if tile != "-1":
+        if tile == "10":
+            return
+        if x_player_boundary < 0 or y_player_boundary < 0:
             return
 
         self.farmland_rect.x = x_player_grid * self.real_tile_size
@@ -73,6 +76,8 @@ class Farm:
             print("Out of Bounds")
         if tile != "-1":
             return
+        if x_player_boundary < 0 or y_player_boundary < 0:
+            return
 
         self.farm_csv_array[y_player_boundary][x_player_boundary] = 12
 
@@ -85,7 +90,7 @@ class Farm:
 
     def checkInput(self, event):
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_t:
+            if event.key == pygame.K_b:
                 self.place_farmland()
 
 
