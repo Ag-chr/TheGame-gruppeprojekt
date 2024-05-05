@@ -12,6 +12,8 @@ class Farm:
         self.real_tile_size = self.main.tile_size * self.main.scale
 
         self.farmland_tile = "12"
+        self.empty_tile = "10"
+
         self.farmland_image = farmSpritesheet.parse_sprite(f"tilled dirt{self.farmland_tile}.png").convert()
         self.farmland_image = pygame.transform.scale_by(self.farmland_image, self.main.scale)
         self.farmland_image.set_alpha(200)
@@ -54,9 +56,8 @@ class Farm:
         try:
             tile = self.farm_csv_array[x_player_boundary][y_player_boundary]
         except:
-            print("Out of Bounds")
             return
-        if tile == "10":
+        if tile == self.empty_tile:
             return
         if x_player_boundary < 0 or y_player_boundary < 0:
             return
@@ -73,7 +74,7 @@ class Farm:
         try:
             tile = self.farm_csv_array[y_player_boundary][x_player_boundary]
         except:
-            print("Out of Bounds")
+            "Out of Bounds"
         if tile != "-1":
             return
         if x_player_boundary < 0 or y_player_boundary < 0:
@@ -114,8 +115,8 @@ class Farm:
     def write_csv_farm_area(self):
         with open(self.farm_csv_file, "w") as file:
             for y in range(self.start[1], self.end[1]):
-                file.write('"10"') if self.farm_boundary[y][self.start[0]] != "-1" else file.write('"-1"')
+                file.write(f'{self.empty_tile}') if self.farm_boundary[y][self.start[0]] != "-1" else file.write('"-1"')
 
                 for x in range(self.start[0] + 1, self.end[0]):
-                    file.write(',"10"') if self.farm_boundary[y][x] != "-1" else file.write(',"-1"')
+                    file.write(f',{self.empty_tile}') if self.farm_boundary[y][x] != "-1" else file.write(',"-1"')
                 file.write("\n")
