@@ -32,18 +32,9 @@ class Farm:
 
     def getPlayerGrid(self):
         player_direction = self.player.getDirection()
-        xOffset = 0
-        yOffset = 0
-        if player_direction == "DOWN":
-            yOffset = 1
-        elif player_direction == "UP":
-            yOffset = -1
-        elif player_direction == "RIGHT":
-            xOffset = 1
-        elif player_direction == "LEFT":
-            xOffset = -1
-        x_player_grid = int((self.player.x + self.real_tile_size / 2) // self.real_tile_size + xOffset)
-        y_player_grid = int((self.player.y + self.real_tile_size / 2) // self.real_tile_size + yOffset)
+
+        x_player_grid = int((self.player.x + self.real_tile_size / 2) // self.real_tile_size + player_direction[0])
+        y_player_grid = int((self.player.y + self.real_tile_size / 2) // self.real_tile_size + player_direction[1])
         return x_player_grid, y_player_grid
 
     def draw_farm(self, canvas):
