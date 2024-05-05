@@ -9,8 +9,9 @@ class Farm:
         self.main = main
         self.player = player
         self.real_tile_size = self.main.tile_size * self.main.scale
+
         self.farmland_tile = "12"
-        self.farmland_image = farmSpritesheet.parse_sprite("tilled dirt12.png").convert()
+        self.farmland_image = farmSpritesheet.parse_sprite(f"tilled dirt{self.farmland_tile}.png").convert()
         self.farmland_image = pygame.transform.scale_by(self.farmland_image, self.main.scale)
         self.farmland_image.set_alpha(200)
         self.farmland_rect = self.farmland_image.get_rect()
@@ -26,41 +27,54 @@ class Farm:
                                      self.end[1] * self.real_tile_size - self.start[1] * self.real_tile_size)
         self.farm_map = TileMap("Levels/MainLevel_Farm.csv", farmSpritesheet, self.main.tile_size, self.main.scale, x=self.start[0] * self.real_tile_size, y=self.start[1] * self.real_tile_size)
 
+    def getPlayerGrid(self):
+        player_direction = self.player.lastMove
+        xOffset = 0
+        yOffset = 0
+        if player_direction == "DOWN":
+            yOffset = 1
+        elif player_direction == "UP":
+            yOffset = -1
+        elif player_direction == "RIGHT":
+            xOffset = 1
+        elif player_direction == "LEFT":
+            xOffset = -1
+        x_player_grid = int((self.player.x + self.real_tile_size / 2) // self.real_tile_size + xOffset)
+        y_player_grid = int((self.player.y + self.real_tile_size / 2) // self.real_tile_size + yOffset)
+        return x_player_grid, y_player_grid
 
     def draw_farm(self, canvas):
         self.farm_map.draw_map(canvas)
 
     def draw_transparent_farmland(self, canvas):
-        x_player_grid = int((self.player.x + self.real_tile_size / 2) // self.real_tile_size - self.start[0])
-        y_player_grid = int((self.player.y + self.real_tile_size / 2) // self.real_tile_size - self.start[1])
+        x_player_grid, y_player_grid = self.getPlayerGrid()
+        x_player_boundary, y_player_boundary = x_player_grid - self.start[0], y_player_grid - self.start[1]
+
         try:
-            tile = self.farm_csv_array[y_player_grid][x_player_grid]
+            tile = self.farm_csv_array[x_player_boundary][y_player_boundary]
         except:
             print("Out of Bounds")
             return
         if tile != "-1":
             return
-        self.farmland_rect.x = ((self.player.x + self.real_tile_size / 2) // self.real_tile_size) * self.real_tile_size
-        self.farmland_rect.y = ((self.player.y + self.real_tile_size / 2) // self.real_tile_size) * self.real_tile_size
-        print(self.farmland_rect.x, self.player.x)
 
+        self.farmland_rect.x = x_player_grid * self.real_tile_size
+        self.farmland_rect.y = y_player_grid * self.real_tile_size
         canvas.blit(self.farmland_image, self.farmland_rect)
 
-
-
     def place_farmland(self):
-        x_player_grid = int((self.player.x + self.real_tile_size / 2) // self.real_tile_size - self.start[0])
-        y_player_grid = int((self.player.y + self.real_tile_size / 2) // self.real_tile_size - self.start[1])
+        x_player_grid, y_player_grid = self.getPlayerGrid()
+        x_player_boundary, y_player_boundary = x_player_grid - self.start[0], y_player_grid - self.start[1]
         tile = None
 
         try:
-            tile = self.farm_csv_array[y_player_grid][x_player_grid]
+            tile = self.farm_csv_array[y_player_boundary][x_player_boundary]
         except:
             print("Out of Bounds")
         if tile != "-1":
             return
 
-        self.farm_csv_array[y_player_grid][x_player_grid] = 12
+        self.farm_csv_array[y_player_boundary][x_player_boundary] = 12
 
         with open(self.farm_csv_file, "w") as file:
             csvwriter = csv.writer(file, delimiter=",", dialect="unix")

@@ -25,6 +25,7 @@ class Player:
         self.collider = Collider(tile_size=self.main.tile_size, scale=self.main.scale, x=self.x + self.xOffset,
                                  y=self.y + self.yOffset, width=self.width, height=self.height)
 
+        self.lastMove = "DOWN"
         self.player_img = playerSpritesheet.parse_sprite("character0.png")  # giver udsnit af sprite0 fra json fil
         self.player_img = pygame.transform.scale_by(self.player_img, self.main.scale)
         self.player_rect = self.player_img.get_rect()  # giver bredde og højde af sprite/player
@@ -33,12 +34,17 @@ class Player:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_w:
                 self.yVel -= self.speed
+                self.lastMove = "UP"
             if event.key == pygame.K_s:
                 self.yVel += self.speed
+                self.lastMove = "DOWN"
             if event.key == pygame.K_a:
                 self.xVel -= self.speed
+                self.lastMove = "LEFT"
             if event.key == pygame.K_d:
                 self.xVel += self.speed
+                self.lastMove = "RIGHT"
+            print(self.lastMove)
 
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_w:
