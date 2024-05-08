@@ -12,7 +12,7 @@ class Tile(pygame.sprite.Sprite):
         surface.blit(self.image, (self.rect.x, self.rect.y))
 
 class TileMap():
-    def __init__(self, filename, spritesheet, tile_size, rescale):
+    def __init__(self, filename, spritesheet, tile_size, rescale, x=0, y=0):
         self.rescale = rescale
         self.tile_size = tile_size * rescale # size of tiles in pixels
         self.start_x, self.start_y = 0,0
@@ -21,11 +21,15 @@ class TileMap():
         self.map_surface = pygame.Surface((self.map_w, self.map_h))
         self.map_surface.set_colorkey((0, 0, 0))
         self.load_map()
+        self.x = x
+        self.y = y
 
     def draw_map(self, surface):
-        surface.blit(self.map_surface, (0, 0))
+        surface.blit(self.map_surface, (self.x, self.y))
 
     def load_map(self):
+        self.map_surface = pygame.Surface((self.map_w, self.map_h))
+        self.map_surface.set_colorkey((0, 0, 0))
         for tile in self.tiles:
             tile.image = pygame.transform.scale_by(tile.image, self.rescale)
             tile.draw(self.map_surface)

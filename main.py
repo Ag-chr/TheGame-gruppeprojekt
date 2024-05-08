@@ -1,4 +1,4 @@
-from tiles import *
+from tiles import TileMap
 from getSpritesheets import updateJson, waterSpritesheet, grassSpritesheet, woodenHouseSpritesheet
 from hjælpeFunktioner import checkNearbyTiles, read_csv
 import pygame
@@ -8,6 +8,7 @@ from camera import Camera
 from gun import Gun
 from button import Button
 from enemy import Enemy
+from farm import Farm
 
 class Main():
     pygame.init()
@@ -40,6 +41,7 @@ class Main():
         self.player = Player(self, self.maps[0].map_w / 2, self.maps[0].map_h / 2, 3, 2, 10, 12, 2, "Levels/MainLevel_Collision player.csv", scanArea=(2,2))
         self.camera = Camera(self, self.player, 0.075, 100)
         self.gun = Gun(self, self.player, self.camera, "Images/gun.png", 15)
+        self.farm = Farm(self, self.player, "Levels/MainLevel_Farm.csv", "Levels/MainLevel_Farm boundary.csv")
 
     def run(self):
         self.running = True
@@ -67,6 +69,7 @@ class Main():
 
                 self.player.checkInput(event)
                 self.gun.checkInput(event)
+                self.farm.checkInput(event)
 # ------------------------------------------------ OPDATERE TING OG SAGER ----------------------------------------------
             self.player.update()
             self.gun.update()
@@ -74,6 +77,8 @@ class Main():
 
 # ------------------------------------------------ TEGNER TING OG SAGER ------------------------------------------------
             self.canvas.blit(mapCanvas, (0, 0))
+            self.farm.draw_farm(self.canvas)
+            self.farm.draw_transparent_farmland(self.canvas)
             # visualisere colliders
             #for collider in checkNearbyTiles(self.tile_size, self.scale, read_csv('Levels/MainLevel_Collision player.csv'), self.player.x + self.player.width, self.player.y + self.player.height, scanTiles=((0,-1), (-1, 0), (0, 1), (1, 0))):
             #    pygame.draw.rect(self.canvas, (255, 0, 0), pygame.Rect(collider.x, collider.y, collider.width, collider.height))
@@ -96,11 +101,15 @@ class Main():
         self.running = True
         startCanvas = pygame.Surface((self.windowWidth, self.windowHeight))
 
+        def test():
+                self.running = False
+                self.run()
+
         font = pygame.font.Font('freesansbold.ttf', 75)
         text = font.render("Storm the Farm", True, (0, 0, 0))
         textRect = text.get_rect()
         textRect.center = (self.windowWidth // 2, self.windowHeight // 2-150)
-        play_button = Button(self.windowWidth // 2 - 175, self.windowHeight // 2 - 25, 350, 75, "Play", False, (0, 200, 0))
+        play_button = Button(self.windowWidth // 2 - 175, self.windowHeight // 2 - 25, 350, 75, "Play", False, (0, 200, 0), lambda: test())
 
         startCanvas.fill((255, 255, 255))
         while self.running:
@@ -113,6 +122,7 @@ class Main():
                     self.running = False
                 if event.type == pygame.KEYDOWN and event.key == pygame.K_f:
                     pygame.display.toggle_fullscreen()
+                play_button.update(event)
 
 
             startCanvas.blit(text, textRect)
@@ -124,5 +134,4 @@ class Main():
 
 main = Main(pygame.display.Info().current_w, pygame.display.Info().current_h, 16 * 1.6, 9 * 1.6)
 main.start()
-main.run()
 pygame.quit()

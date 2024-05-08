@@ -1,0 +1,386 @@
+{"frames": {
+"tilled dirt0.png":
+  {
+    "frame": {"x": 0,"y": 0,"w": 16,"h": 16}
+  },
+
+"tilled dirt1.png":
+  {
+    "frame": {"x": 16,"y": 0,"w": 16,"h": 16}
+  },
+
+"tilled dirt2.png":
+  {
+    "frame": {"x": 32,"y": 0,"w": 16,"h": 16}
+  },
+
+"tilled dirt3.png":
+  {
+    "frame": {"x": 48,"y": 0,"w": 16,"h": 16}
+  },
+
+"tilled dirt4.png":
+  {
+    "frame": {"x": 64,"y": 0,"w": 16,"h": 16}
+  },
+
+"tilled dirt5.png":
+  {
+    "frame": {"x": 80,"y": 0,"w": 16,"h": 16}
+  },
+
+"tilled dirt6.png":
+  {
+    "frame": {"x": 96,"y": 0,"w": 16,"h": 16}
+  },
+
+"tilled dirt7.png":
+  {
+    "frame": {"x": 112,"y": 0,"w": 16,"h": 16}
+  },
+
+"tilled dirt8.png":
+  {
+    "frame": {"x": 128,"y": 0,"w": 16,"h": 16}
+  },
+
+"tilled dirt9.png":
+  {
+    "frame": {"x": 144,"y": 0,"w": 16,"h": 16}
+  },
+
+"tilled dirt10.png":
+  {
+    "frame": {"x": 160,"y": 0,"w": 16,"h": 16}
+  },
+
+"tilled dirt11.png":
+  {
+    "frame": {"x": 0,"y": 16,"w": 16,"h": 16}
+  },
+
+"tilled dirt12.png":
+  {
+    "frame": {"x": 16,"y": 16,"w": 16,"h": 16}
+  },
+
+"tilled dirt13.png":
+  {
+    "frame": {"x": 32,"y": 16,"w": 16,"h": 16}
+  },
+
+"tilled dirt14.png":
+  {
+    "frame": {"x": 48,"y": 16,"w": 16,"h": 16}
+  },
+
+"tilled dirt15.png":
+  {
+    "frame": {"x": 64,"y": 16,"w": 16,"h": 16}
+  },
+
+"tilled dirt16.png":
+  {
+    "frame": {"x": 80,"y": 16,"w": 16,"h": 16}
+  },
+
+"tilled dirt17.png":
+  {
+    "frame": {"x": 96,"y": 16,"w": 16,"h": 16}
+  },
+
+"tilled dirt18.png":
+  {
+    "frame": {"x": 112,"y": 16,"w": 16,"h": 16}
+  },
+
+"tilled dirt19.png":
+  {
+    "frame": {"x": 128,"y": 16,"w": 16,"h": 16}
+  },
+
+"tilled dirt20.png":
+  {
+    "frame": {"x": 144,"y": 16,"w": 16,"h": 16}
+  },
+
+"tilled dirt21.png":
+  {
+    "frame": {"x": 160,"y": 16,"w": 16,"h": 16}
+  },
+
+"tilled dirt22.png":
+  {
+    "frame": {"x": 0,"y": 32,"w": 16,"h": 16}
+  },
+
+"tilled dirt23.png":
+  {
+    "frame": {"x": 16,"y": 32,"w": 16,"h": 16}
+  },
+
+"tilled dirt24.png":
+  {
+    "frame": {"x": 32,"y": 32,"w": 16,"h": 16}
+  },
+
+"tilled dirt25.png":
+  {
+    "frame": {"x": 48,"y": 32,"w": 16,"h": 16}
+  },
+
+"tilled dirt26.png":
+  {
+    "frame": {"x": 64,"y": 32,"w": 16,"h": 16}
+  },
+
+"tilled dirt27.png":
+  {
+    "frame": {"x": 80,"y": 32,"w": 16,"h": 16}
+  },
+
+"tilled dirt28.png":
+  {
+    "frame": {"x": 96,"y": 32,"w": 16,"h": 16}
+  },
+
+"tilled dirt29.png":
+  {
+    "frame": {"x": 112,"y": 32,"w": 16,"h": 16}
+  },
+
+"tilled dirt30.png":
+  {
+    "frame": {"x": 128,"y": 32,"w": 16,"h": 16}
+  },
+
+"tilled dirt31.png":
+  {
+    "frame": {"x": 144,"y": 32,"w": 16,"h": 16}
+  },
+
+"tilled dirt32.png":
+  {
+    "frame": {"x": 160,"y": 32,"w": 16,"h": 16}
+  },
+
+"tilled dirt33.png":
+  {
+    "frame": {"x": 0,"y": 48,"w": 16,"h": 16}
+  },
+
+"tilled dirt34.png":
+  {
+    "frame": {"x": 16,"y": 48,"w": 16,"h": 16}
+  },
+
+"tilled dirt35.png":
+  {
+    "frame": {"x": 32,"y": 48,"w": 16,"h": 16}
+  },
+
+"tilled dirt36.png":
+  {
+    "frame": {"x": 48,"y": 48,"w": 16,"h": 16}
+  },
+
+"tilled dirt37.png":
+  {
+    "frame": {"x": 64,"y": 48,"w": 16,"h": 16}
+  },
+
+"tilled dirt38.png":
+  {
+    "frame": {"x": 80,"y": 48,"w": 16,"h": 16}
+  },
+
+"tilled dirt39.png":
+  {
+    "frame": {"x": 96,"y": 48,"w": 16,"h": 16}
+  },
+
+"tilled dirt40.png":
+  {
+    "frame": {"x": 112,"y": 48,"w": 16,"h": 16}
+  },
+
+"tilled dirt41.png":
+  {
+    "frame": {"x": 128,"y": 48,"w": 16,"h": 16}
+  },
+
+"tilled dirt42.png":
+  {
+    "frame": {"x": 144,"y": 48,"w": 16,"h": 16}
+  },
+
+"tilled dirt43.png":
+  {
+    "frame": {"x": 160,"y": 48,"w": 16,"h": 16}
+  },
+
+"tilled dirt44.png":
+  {
+    "frame": {"x": 0,"y": 64,"w": 16,"h": 16}
+  },
+
+"tilled dirt45.png":
+  {
+    "frame": {"x": 16,"y": 64,"w": 16,"h": 16}
+  },
+
+"tilled dirt46.png":
+  {
+    "frame": {"x": 32,"y": 64,"w": 16,"h": 16}
+  },
+
+"tilled dirt47.png":
+  {
+    "frame": {"x": 48,"y": 64,"w": 16,"h": 16}
+  },
+
+"tilled dirt48.png":
+  {
+    "frame": {"x": 64,"y": 64,"w": 16,"h": 16}
+  },
+
+"tilled dirt49.png":
+  {
+    "frame": {"x": 80,"y": 64,"w": 16,"h": 16}
+  },
+
+"tilled dirt50.png":
+  {
+    "frame": {"x": 96,"y": 64,"w": 16,"h": 16}
+  },
+
+"tilled dirt51.png":
+  {
+    "frame": {"x": 112,"y": 64,"w": 16,"h": 16}
+  },
+
+"tilled dirt52.png":
+  {
+    "frame": {"x": 128,"y": 64,"w": 16,"h": 16}
+  },
+
+"tilled dirt53.png":
+  {
+    "frame": {"x": 144,"y": 64,"w": 16,"h": 16}
+  },
+
+"tilled dirt54.png":
+  {
+    "frame": {"x": 160,"y": 64,"w": 16,"h": 16}
+  },
+
+"tilled dirt55.png":
+  {
+    "frame": {"x": 0,"y": 80,"w": 16,"h": 16}
+  },
+
+"tilled dirt56.png":
+  {
+    "frame": {"x": 16,"y": 80,"w": 16,"h": 16}
+  },
+
+"tilled dirt57.png":
+  {
+    "frame": {"x": 32,"y": 80,"w": 16,"h": 16}
+  },
+
+"tilled dirt58.png":
+  {
+    "frame": {"x": 48,"y": 80,"w": 16,"h": 16}
+  },
+
+"tilled dirt59.png":
+  {
+    "frame": {"x": 64,"y": 80,"w": 16,"h": 16}
+  },
+
+"tilled dirt60.png":
+  {
+    "frame": {"x": 80,"y": 80,"w": 16,"h": 16}
+  },
+
+"tilled dirt61.png":
+  {
+    "frame": {"x": 96,"y": 80,"w": 16,"h": 16}
+  },
+
+"tilled dirt62.png":
+  {
+    "frame": {"x": 112,"y": 80,"w": 16,"h": 16}
+  },
+
+"tilled dirt63.png":
+  {
+    "frame": {"x": 128,"y": 80,"w": 16,"h": 16}
+  },
+
+"tilled dirt64.png":
+  {
+    "frame": {"x": 144,"y": 80,"w": 16,"h": 16}
+  },
+
+"tilled dirt65.png":
+  {
+    "frame": {"x": 160,"y": 80,"w": 16,"h": 16}
+  },
+
+"tilled dirt66.png":
+  {
+    "frame": {"x": 0,"y": 96,"w": 16,"h": 16}
+  },
+
+"tilled dirt67.png":
+  {
+    "frame": {"x": 16,"y": 96,"w": 16,"h": 16}
+  },
+
+"tilled dirt68.png":
+  {
+    "frame": {"x": 32,"y": 96,"w": 16,"h": 16}
+  },
+
+"tilled dirt69.png":
+  {
+    "frame": {"x": 48,"y": 96,"w": 16,"h": 16}
+  },
+
+"tilled dirt70.png":
+  {
+    "frame": {"x": 64,"y": 96,"w": 16,"h": 16}
+  },
+
+"tilled dirt71.png":
+  {
+    "frame": {"x": 80,"y": 96,"w": 16,"h": 16}
+  },
+
+"tilled dirt72.png":
+  {
+    "frame": {"x": 96,"y": 96,"w": 16,"h": 16}
+  },
+
+"tilled dirt73.png":
+  {
+    "frame": {"x": 112,"y": 96,"w": 16,"h": 16}
+  },
+
+"tilled dirt74.png":
+  {
+    "frame": {"x": 128,"y": 96,"w": 16,"h": 16}
+  },
+
+"tilled dirt75.png":
+  {
+    "frame": {"x": 144,"y": 96,"w": 16,"h": 16}
+  },
+
+"tilled dirt76.png":
+  {
+    "frame": {"x": 160,"y": 96,"w": 16,"h": 16}
+  }
+}}

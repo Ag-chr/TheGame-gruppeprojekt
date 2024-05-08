@@ -25,6 +25,9 @@ class Player:
         self.collider = Collider(tile_size=self.main.tile_size, scale=self.main.scale, x=self.x + self.xOffset,
                                  y=self.y + self.yOffset, width=self.width, height=self.height)
 
+        self.lastMove = "DOWN"
+        self.vector_direction = [0, 0]
+
         self.player_img = playerSpritesheet.parse_sprite("character0.png")  # giver udsnit af sprite0 fra json fil
         self.player_img = pygame.transform.scale_by(self.player_img, self.main.scale)
         self.player_rect = self.player_img.get_rect()  # giver bredde og højde af sprite/player
@@ -76,6 +79,24 @@ class Player:
             xObstructed, yObstructed = rectCollisionChecker(self.collider, collider, self.xVel, self.yVel, xObstructed, yObstructed)
 
         return xObstructed, yObstructed
+
+    def getDirection(self):
+        if self.xVel == 0 and self.yVel == 0:
+            return tuple(self.vector_direction)
+        self.vector_direction = [0, 0]
+        if self.yVel < 0:
+            self.lastMove = "UP"
+            self.vector_direction[1] = -1
+        elif self.yVel > 0:
+            self.lastMove = "DOWN"
+            self.vector_direction[1] = 1
+        elif self.xVel < 0:
+            self.lastMove = "LEFT"
+            self.vector_direction[0] = -1
+        elif self.xVel > 0:
+            self.lastMove = "RIGHT"
+            self.vector_direction[0] = 1
+        return tuple(self.vector_direction)
 
     def draw_player(self, canvas):
         self.player_rect.x = self.x
