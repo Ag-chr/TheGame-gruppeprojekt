@@ -20,6 +20,11 @@ class Enemy:
         self.x = random.randint(0, map_width - self.width)
         self.y = random.randint(0, map_height - self.width)
 
+        self.collisionMap = read_csv(collisionMap)
+
+        self.collider = Collider(tile_size=self.main.tile_size, scale=self.main.scale, x=self.x + self.xOffset,
+                                 y=self.y + self.yOffset, width=self.width, height=self.height)
+
 
         self.Enemy_img = playerSpritesheet.parse_sprite("character0.png")  # giver udsnit af sprite0 fra json fil
         self.Enemy_img = pygame.transform.scale_by(self.Enemy_img, self.main.scale)
