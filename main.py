@@ -30,7 +30,8 @@ class Main():
                      TileMap('Levels/MainLevel_House floor.csv', woodenHouseSpritesheet, self.tile_size, self.scale),
                      TileMap('Levels/MainLevel_House walls.csv', woodenHouseSpritesheet, self.tile_size, self.scale)]
         self.enemies = [
-            Enemy("Jens",self.maps[0].map_w / 2, self.maps[0].map_h / 2,3,2, 10, 50, 5, self.scale,self)
+            Enemy("Jens", self.maps[0].map_w, self.maps[0].map_h, 3, 2, 10, 50, 5, self.scale, self, 1),
+            Enemy("nummer 2", self.maps[0].map_w, self.maps[0].map_h, 3, 2, 10, 100, 10, self.scale, self, 3)
         ]
 
         # Canvas/surface skal være samme størrelse som map for at tegne det hele i starten
@@ -50,6 +51,10 @@ class Main():
 
         while self.running:
             self.clock.tick(60)  # 60 fps
+
+            def draw(self, surface):
+                if self.image:
+                    surface.blit(self.image, self.rect)
 
 # ------------------------------------------------ TJEKKER FOR INPUT ---------------------------------------------------
             for event in pygame.event.get():
@@ -76,6 +81,7 @@ class Main():
             self.player.draw_player(self.canvas)
             self.gun.draw_gun(self.canvas)
             for enemy in self.enemies:
+                enemy.update(self.player)
                 enemy.draw_enemy(self.canvas)
 
 # ------------------------------------------------ FINDER SKÆRM OMRÅDE -------------------------------------------------
