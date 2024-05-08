@@ -101,9 +101,11 @@ class Main():
         self.running = True
         startCanvas = pygame.Surface((self.windowWidth, self.windowHeight))
 
-        def test():
-                self.running = False
-                self.run()
+        def start():
+            self.running = False
+            self.run()
+            quit()
+
 
         font = pygame.font.Font('freesansbold.ttf', 75)
         text = font.render("Storm the Farm", True, (0, 0, 0))
@@ -124,10 +126,11 @@ class Main():
                 if event.type == pygame.KEYDOWN and event.key == pygame.K_f:
                     pygame.display.toggle_fullscreen()
                 play_button.update(event)
-
+                quit_button.update(event)
 
             startCanvas.blit(text, textRect)
             play_button.draw(startCanvas)
+            quit_button.draw(startCanvas)
 
             self.window.blit(startCanvas, (0, 0))  # tegner canvas på skærm og kun område som kan ses
             pygame.display.update()  # updater skærm så disse ændringer kan ses
