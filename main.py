@@ -95,11 +95,15 @@ class Main():
         self.running = True
         startCanvas = pygame.Surface((self.windowWidth, self.windowHeight))
 
+        def test():
+                self.running = False
+                self.run()
+
         font = pygame.font.Font('freesansbold.ttf', 75)
         text = font.render("Storm the Farm", True, (0, 0, 0))
         textRect = text.get_rect()
         textRect.center = (self.windowWidth // 2, self.windowHeight // 2-150)
-        play_button = Button(self.windowWidth // 2 - 175, self.windowHeight // 2 - 25, 350, 75, "Play", False, (0, 200, 0))
+        play_button = Button(self.windowWidth // 2 - 175, self.windowHeight // 2 - 25, 350, 75, "Play", False, (0, 200, 0), lambda: test())
 
         startCanvas.fill((255, 255, 255))
         while self.running:
@@ -112,6 +116,7 @@ class Main():
                     self.running = False
                 if event.type == pygame.KEYDOWN and event.key == pygame.K_f:
                     pygame.display.toggle_fullscreen()
+                play_button.update(event)
 
 
             startCanvas.blit(text, textRect)
@@ -123,5 +128,4 @@ class Main():
 
 main = Main(pygame.display.Info().current_w, pygame.display.Info().current_h, 16 * 1.6, 9 * 1.6)
 main.start()
-main.run()
 pygame.quit()
