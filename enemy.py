@@ -3,9 +3,11 @@ import pygame
 from getSpritesheets import playerSpritesheet
 import math
 import random
+from collider import Collider
+from hjælpeFunktioner import read_csv,rectCollisionChecker, checkNearbyTiles
 
 class Enemy:
-    def __init__(self, name, map_width, map_height, xOffset, yOffset, width, health, damage, scale, main, speed):
+    def __init__(self, name, map_width, map_height, xOffset, yOffset, width, height, health, damage, scale, main, speed,collisionMap,scanArea):
         self.name = name
         self.health = health
         self.damage = damage
@@ -15,6 +17,12 @@ class Enemy:
         self.yOffset = yOffset * self.main.scale
         self.width = width * self.main.scale
         self.speed = speed
+        self.height = height * self.main.scale
+        self.scanArea = scanArea
+
+
+        self.xVel = 0
+        self.yVel = 0
 
         # Random spawn
         self.x = random.randint(0, map_width - self.width)
@@ -44,15 +52,31 @@ class Enemy:
         dx = player.x - self.x
         dy = player.y - self.y
         distance = math.sqrt(dx ** 2 + dy ** 2)
+        xObstructed, yObstructed = self.checkCollision()
 
         # fikser retningen
         if distance > 0:
             dx /= distance
             dy /= distance
 
-        self.x += dx * self.speed
-        self.y += dy * self.speed
+        if not xObstructed:
+            self.x += dx * self.speed
+        if not yObstructed:
+            self.y += dy * self.speed
 
+
+
+
+    def checkCollision(self) -> (bool, bool):
+        self.collider.x, self.collider.y = self.x + self.xOffset, self.y + self.yOffset
+        xObstructed = False
+        yObstructed = False
+
+        nearbyColliders = checkNearbyTiles(self.main.tile_size, self.main.scale, self.collisionMap, self.x, self.y, scanArea=self.scanArea)
+        for collider in nearbyColliders:
+            xObstructed, yObstructed = rectCollisionChecker(self.collider, collider, self.xVel, self.yVel, xObstructed, yObstructed)
+
+        return xObstructed, yObstructed
 
 
     """    def take_damage(self, amount):

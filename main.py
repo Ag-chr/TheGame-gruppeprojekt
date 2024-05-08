@@ -31,8 +31,8 @@ class Main():
                      TileMap('Levels/MainLevel_House floor.csv', woodenHouseSpritesheet, self.tile_size, self.scale),
                      TileMap('Levels/MainLevel_House walls.csv', woodenHouseSpritesheet, self.tile_size, self.scale)]
         self.enemies = [
-            Enemy("Jens", self.maps[0].map_w, self.maps[0].map_h, 3, 2, 10, 50, 5, self.scale, self, 1),
-            Enemy("nummer 2", self.maps[0].map_w, self.maps[0].map_h, 3, 2, 10, 100, 10, self.scale, self, 3)
+            Enemy("Jens", self.maps[0].map_w, self.maps[0].map_h, 3, 2, 10, 10, 50, 5, self.scale, self, 1,"Levels/MainLevel_Collision enemy.csv",scanArea=(3,3)),
+            Enemy("nummer 2", self.maps[0].map_w, self.maps[0].map_h, 3, 2, 10, 10,100, 10, self.scale, self, 5,"Levels/MainLevel_Collision enemy.csv",scanArea=(3,3))
         ]
 
         # Canvas/surface skal være samme størrelse som map for at tegne det hele i starten
