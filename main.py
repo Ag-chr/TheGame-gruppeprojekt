@@ -109,7 +109,8 @@ class Main():
         text = font.render("Storm the Farm", True, (0, 0, 0))
         textRect = text.get_rect()
         textRect.center = (self.windowWidth // 2, self.windowHeight // 2-150)
-        play_button = Button(self.windowWidth // 2 - 175, self.windowHeight // 2 - 25, 350, 75, "Play", False, (0, 200, 0), lambda: test())
+        play_button = Button(self.windowWidth // 2 - 175, self.windowHeight // 2 - 25, 350, 75, "Play", False, (0, 200, 0), lambda: start())
+        quit_button = Button(self.windowWidth // 2 - 175, self.windowHeight // 2 + 100, 350, 75, "Quit", False,(200, 0, 0), lambda: quit())
 
         startCanvas.fill((255, 255, 255))
         while self.running:
