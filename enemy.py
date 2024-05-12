@@ -32,7 +32,6 @@ class Enemy:
         self.collider = Collider(tile_size=self.main.tile_size, scale=self.main.scale, x=self.x + self.xOffset,
                                  y=self.y + self.yOffset, width=self.width, height=self.height)
 
-
         self.Enemy_img = playerSpritesheet.parse_sprite("character0.png")  # giver udsnit af sprite0 fra json fil
         self.Enemy_img = pygame.transform.scale_by(self.Enemy_img, self.main.scale)
         self.Enemy_rect = self.Enemy_img.get_rect()  # giver bredde og højde af enemy
@@ -43,7 +42,6 @@ class Enemy:
         canvas.blit(self.Enemy_img, self.Enemy_rect)
 
     def update(self, player):
-        # Beregner playerens retning
         xObstructed, yObstructed = self.checkCollision()
 
         distanceFromPlayer = math.sqrt((self.player.y - self.y) ** 2 + (self.player.x - self.x) ** 2)
@@ -57,9 +55,6 @@ class Enemy:
         if not yObstructed:
             self.y += self.yVel
 
-
-
-
     def checkCollision(self) -> (bool, bool):
         self.collider.x, self.collider.y = self.x + self.xOffset, self.y + self.yOffset
         xObstructed = False
@@ -70,7 +65,6 @@ class Enemy:
             xObstructed, yObstructed = rectCollisionChecker(self.collider, collider, self.xVel, self.yVel, xObstructed, yObstructed)
 
         return xObstructed, yObstructed
-
 
     """    def take_damage(self, amount):
     pygame.draw.rect(canvas, enemy_color, enemy_rect)        self.health -= amount
