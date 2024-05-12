@@ -30,10 +30,6 @@ class Main():
                      TileMap('Levels/MainLevel_Grass.csv', grassSpritesheet, self.tile_size, self.scale),
                      TileMap('Levels/MainLevel_House floor.csv', woodenHouseSpritesheet, self.tile_size, self.scale),
                      TileMap('Levels/MainLevel_House walls.csv', woodenHouseSpritesheet, self.tile_size, self.scale)]
-        self.enemies = [
-            Enemy("Jens", self.maps[0].map_w, self.maps[0].map_h, 3, 2, 10, 10, 50, 5, self.scale, self, 1,"Levels/MainLevel_Collision enemy.csv",scanArea=(3,3)),
-            Enemy("nummer 2", self.maps[0].map_w, self.maps[0].map_h, 3, 2, 10, 10,100, 10, self.scale, self, 5,"Levels/MainLevel_Collision enemy.csv",scanArea=(3,3))
-        ]
 
         # Canvas/surface skal være samme størrelse som map for at tegne det hele i starten
         self.canvas = pygame.Surface((self.maps[0].map_w, self.maps[0].map_h))
@@ -42,6 +38,11 @@ class Main():
         self.camera = Camera(self, self.player, 0.075, 100)
         self.gun = Gun(self, self.player, self.camera, "Images/gun.png", 15)
         self.farm = Farm(self, self.player, "Levels/MainLevel_Farm.csv", "Levels/MainLevel_Farm boundary.csv")
+
+        self.enemies = [
+            Enemy(self, self.player, "Jens", self.maps[0].map_w, self.maps[0].map_h, 3, 2, 10, 10, 50, 5, 1, "Levels/MainLevel_Collision enemy.csv", scanArea=(3, 3)),
+            Enemy(self, self.player, "nummer 2", self.maps[0].map_w, self.maps[0].map_h, 3, 2, 10, 10, 100, 10, 5, "Levels/MainLevel_Collision enemy.csv", scanArea=(3, 3))
+        ]
 
     def run(self):
         self.running = True

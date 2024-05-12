@@ -7,19 +7,18 @@ from collider import Collider
 from hjælpeFunktioner import read_csv,rectCollisionChecker, checkNearbyTiles
 
 class Enemy:
-    def __init__(self, name, map_width, map_height, xOffset, yOffset, width, height, health, damage, scale, main, speed,collisionMap,scanArea):
+    def __init__(self, main, player, name, map_width, map_height, xOffset, yOffset, width, height, health, damage, speed,collisionMap,scanArea):
         self.name = name
         self.health = health
         self.damage = damage
-        self.scale = scale
         self.main = main
+        self.player = player
         self.xOffset = xOffset * self.main.scale
         self.yOffset = yOffset * self.main.scale
         self.width = width * self.main.scale
         self.speed = speed
         self.height = height * self.main.scale
         self.scanArea = scanArea
-
 
         self.xVel = 0
         self.yVel = 0
@@ -42,27 +41,21 @@ class Enemy:
         self.Enemy_rect.x = self.x
         self.Enemy_rect.y = self.y
         canvas.blit(self.Enemy_img, self.Enemy_rect)
-    #def draw_enemy(self, canvas):
-      #  enemy_color = (255, 0, 0)
-      #  enemy_rect = pygame.Rect(self.x + self.xOffset, self.y + self.yOffset, self.width, self.width)
-       # pygame.draw.rect(canvas, enemy_color, enemy_rect)
 
     def update(self, player):
         # Beregner playerens retning
-        dx = player.x - self.x
-        dy = player.y - self.y
-        distance = math.sqrt(dx ** 2 + dy ** 2)
         xObstructed, yObstructed = self.checkCollision()
 
-        # fikser retningen
-        if distance > 0:
-            dx /= distance
-            dy /= distance
+        distanceFromPlayer = math.sqrt((self.player.y - self.y) ** 2 + (self.player.x - self.x) ** 2)
+        angleToPlayer = math.atan2(self.player.y - self.y, self.player.x - self.x)
+
+        self.xVel = math.cos(angleToPlayer) * self.speed
+        self.yVel = math.sin(angleToPlayer) * self.speed
 
         if not xObstructed:
-            self.x += dx * self.speed
+            self.x += self.xVel
         if not yObstructed:
-            self.y += dy * self.speed
+            self.y += self.yVel
 
 
 
