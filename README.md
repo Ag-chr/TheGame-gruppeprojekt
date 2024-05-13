@@ -14,3 +14,7 @@ Vores brainstorm:
 ## Flowchart af main start function
 
 ![Tegne knap flowchart af sidste version](Flowchart/02-05-24/Flowchart_start_02-05-24.png)
+
+## klasse diagram som ikke er helt færdigt men viser alle klasserne indtil nu
+
+![](Flowchart/02-05-24/klasse_diagram_02-05-2024.png)
