@@ -102,7 +102,7 @@ class Main():
         self.running = True
         startCanvas = pygame.Surface((self.windowWidth, self.windowHeight))
 
-        def start():
+        def start():  #Start funktion der starter spillet når der bliver trykket play.
             self.running = False
             self.run()
             quit()
@@ -112,8 +112,8 @@ class Main():
         text = font.render("Storm the Farm", True, (0, 0, 0))
         textRect = text.get_rect()
         textRect.center = (self.windowWidth // 2, self.windowHeight // 2-150)
-        play_button = Button(self.windowWidth // 2 - 175, self.windowHeight // 2 - 25, 350, 75, "Play", False, (0, 200, 0), lambda: start())
-        quit_button = Button(self.windowWidth // 2 - 175, self.windowHeight // 2 + 100, 350, 75, "Quit", False,(200, 0, 0), lambda: quit())
+        play_button = Button(self.windowWidth // 2 - 175, self.windowHeight // 2 - 25, 350, 75, "Play", False, (0, 200, 0), lambda: start()) # Play knap
+        quit_button = Button(self.windowWidth // 2 - 175, self.windowHeight // 2 + 100, 350, 75, "Quit", False,(200, 0, 0), lambda: quit()) # Quit knap
 
         startCanvas.fill((255, 255, 255))
         while self.running:
@@ -130,8 +130,8 @@ class Main():
                 quit_button.update(event)
 
             startCanvas.blit(text, textRect)
-            play_button.draw(startCanvas)
-            quit_button.draw(startCanvas)
+            play_button.draw(startCanvas) # Tegner play
+            quit_button.draw(startCanvas) # Tegner quit
 
             self.window.blit(startCanvas, (0, 0))  # tegner canvas på skærm og kun område som kan ses
             pygame.display.update()  # updater skærm så disse ændringer kan ses
