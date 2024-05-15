@@ -7,7 +7,7 @@ from player import Player
 from camera import Camera
 from gun import Gun
 from button import Button
-from enemy import Enemy
+from enemy import *
 from farm import Farm
 
 class Main():
@@ -40,8 +40,8 @@ class Main():
         self.farm = Farm(self, self.player, "Levels/MainLevel_Farm.csv", "Levels/MainLevel_Farm boundary.csv")
 
         self.enemies = [
-            Enemy(self, self.player, "Jens", self.maps[0].map_w, self.maps[0].map_h, 3, 2, 10, 10, 50, 5, 1, "Levels/MainLevel_Collision enemy.csv", scanArea=(3, 3)),
-            Enemy(self, self.player, "nummer 2", self.maps[0].map_w, self.maps[0].map_h, 3, 2, 10, 10, 100, 10, 5, "Levels/MainLevel_Collision enemy.csv", scanArea=(3, 3))
+            Enemy1(self, self.player, self.maps[0].map_w, self.maps[0].map_h, "Levels/MainLevel_Collision enemy.csv"),
+            Enemy2(self, self.player, self.maps[0].map_w, self.maps[0].map_h, "Levels/MainLevel_Collision enemy.csv")
         ]
 
     def run(self):
@@ -54,10 +54,6 @@ class Main():
 
         while self.running:
             self.clock.tick(60)  # 60 fps
-
-            def draw(self, surface):
-                if self.image:
-                    surface.blit(self.image, self.rect)
 
 # ------------------------------------------------ TJEKKER FOR INPUT ---------------------------------------------------
             for event in pygame.event.get():

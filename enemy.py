@@ -36,10 +36,24 @@ class Enemy:
         self.Enemy_img = pygame.transform.scale_by(self.Enemy_img, self.main.scale)
         self.Enemy_rect = self.Enemy_img.get_rect()  # giver bredde og højde af enemy
 
+        self.font = pygame.font.Font('freesansbold.ttf', 5 * self.main.scale)  # giver font til enemy title
+
+        self.heart_img = pygame.image.load("Images/Hjerte.png")
+        self.heart_img = pygame.transform.scale(self.heart_img, (10, 10))
+
     def draw_enemy(self, canvas):
         self.Enemy_rect.x = self.x
         self.Enemy_rect.y = self.y
         canvas.blit(self.Enemy_img, self.Enemy_rect)
+
+        text_surface = self.font.render(self.name, True, (255, 0, 0))
+        text_rect = text_surface.get_rect(center=(self.x + self.width / 2, self.y - 20))
+        canvas.blit(text_surface, text_rect)
+
+        for i in range(self.health):
+            heart_x = self.x + i * 12
+            heart_y = self.y - 10
+            canvas.blit(self.heart_img, (heart_x, heart_y))
 
     def update(self, player):
         xObstructed, yObstructed = self.checkCollision()
@@ -72,3 +86,20 @@ class Enemy:
             print("test")
         else:
             print("test")  """
+
+
+class Enemy1(Enemy):
+    def __init__(self, main, player, map_width, map_height, collisionMap):
+        super().__init__(main, player, "Enemy1", map_width, map_height, 3, 2, 10, 10, 3, 3, 10, collisionMap, scanArea=(3, 3))
+        self.Enemy_img = playerSpritesheet.parse_sprite("character0.png")
+        self.Enemy_img = pygame.transform.scale_by(self.Enemy_img, self.main.scale)
+        self.Enemy_rect = self.Enemy_img.get_rect()
+
+
+
+class Enemy2(Enemy):
+    def __init__(self, main, player, map_width, map_height, collisionMap):
+        super().__init__(main, player, "Enemy2", map_width, map_height, 3, 2, 10, 10, 1, 3, 5, collisionMap, scanArea=(3, 3))
+        self.Enemy_img = playerSpritesheet.parse_sprite("character0.png")  
+        self.Enemy_img = pygame.transform.scale_by(self.Enemy_img, self.main.scale)
+        self.Enemy_rect = self.Enemy_img.get_rect()
