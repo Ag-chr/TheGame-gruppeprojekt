@@ -110,11 +110,11 @@ class Main():
                 bullet.draw(self.canvas)
 
 # ------------------------------------------------ FINDER SKÆRM OMRÅDE -------------------------------------------------
-            screen_region = (self.camera.getCameraPos(), pygame.display.get_window_size())  # området hvor skærmen er
-            self.canvas.set_clip(pygame.Rect(screen_region))  # modificere pixels kun indenfor skærm området
+            self.screen_region = (self.camera.getCameraPos(), pygame.display.get_window_size())  # området hvor skærmen er
+            self.canvas.set_clip(pygame.Rect(self.screen_region))  # modificere pixels kun indenfor skærm området
 
 # ------------------------------------------------ PUTTER TEGNET TING OG SAGER PÅ SKÆRM --------------------------------
-            self.window.blit(self.canvas, (0, 0), screen_region)  # tegner canvas på skærm og kun det område som kan ses
+            self.window.blit(self.canvas, (0, 0), self.screen_region)  # tegner canvas på skærm og kun det område som kan ses
             pygame.display.update()  # updater skærm så disse ændringer kan ses
 
     def start(self):
