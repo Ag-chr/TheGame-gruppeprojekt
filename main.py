@@ -2,12 +2,13 @@ from tiles import TileMap
 from getSpritesheets import updateJson, waterSpritesheet, grassSpritesheet, woodenHouseSpritesheet
 from hjælpeFunktioner import checkNearbyTiles, read_csv
 import pygame
+from spritesheetToJson import SpritesheetToJson
 
 from player import Player
 from camera import Camera
 from gun import Gun
 from button import Button
-from enemy import *
+from enemy import Enemy2, Enemy1
 from farm import Farm
 
 class Main():

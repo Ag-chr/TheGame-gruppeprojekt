@@ -1,0 +1,41 @@
+{"frames": {
+"kylling0.png":
+  {
+    "frame": {"x": 0,"y": 0,"w": 16,"h": 16}
+  },
+
+"kylling1.png":
+  {
+    "frame": {"x": 16,"y": 0,"w": 16,"h": 16}
+  },
+
+"kylling2.png":
+  {
+    "frame": {"x": 32,"y": 0,"w": 16,"h": 16}
+  },
+
+"kylling3.png":
+  {
+    "frame": {"x": 48,"y": 0,"w": 16,"h": 16}
+  },
+
+"kylling4.png":
+  {
+    "frame": {"x": 0,"y": 16,"w": 16,"h": 16}
+  },
+
+"kylling5.png":
+  {
+    "frame": {"x": 16,"y": 16,"w": 16,"h": 16}
+  },
+
+"kylling6.png":
+  {
+    "frame": {"x": 32,"y": 16,"w": 16,"h": 16}
+  },
+
+"kylling7.png":
+  {
+    "frame": {"x": 48,"y": 16,"w": 16,"h": 16}
+  }
+}}
