@@ -6,7 +6,7 @@ from spritesheetToJson import SpritesheetToJson
 
 from player import Player
 from camera import Camera
-from gun import Gun
+from gun import Gun, Bullet
 from button import Button
 from enemy import Enemy2, Enemy1
 from farm import Farm
@@ -66,9 +66,9 @@ class Main():
                     self.running = False
                 if event.type == pygame.KEYDOWN and event.key == pygame.K_f:
                     pygame.display.toggle_fullscreen()
-                elif event.type == pygame.KEYDOWN and event.key == pygame.K_g:
-                    for enemy in self.enemies:
-                        enemy.test(event, *self.enemies)
+             #  elif event.type == pygame.KEYDOWN and event.key == pygame.K_g:
+                    #    for enemy in self.enemies:
+              #          enemy.test(event, *self.enemies)
 
                 self.player.checkInput(event)
                 self.gun.checkInput(event)
@@ -78,10 +78,21 @@ class Main():
             self.gun.update()
             self.camera.update()
 
-            for bullet in self.bullets:
+            for bullet in self.bullets[:]:
                 bullet.update()
+                for enemy in self.enemies:
+                    if bullet.skud(enemy):
+                        enemy.hit()
+                        if bullet in self.bullets:
+                            self.bullets.remove(bullet)
 
-# ------------------------------------------------ TEGNER TING OG SAGER ------------------------------------------------
+            for enemy in self.enemies:
+                enemy.update(self.player)
+
+            self.enemies = [enemy for enemy in self.enemies if not enemy.dead]
+
+
+            # ------------------------------------------------ TEGNER TING OG SAGER ------------------------------------------------
             self.canvas.blit(mapCanvas, (0, 0))
             self.farm.draw_farm(self.canvas)
             self.farm.draw_transparent_farmland(self.canvas)

@@ -82,6 +82,7 @@ class Bullet:
         self.decayed = False
 
 
+
     def update(self):
         if time.time() > self.startTime + self.decay:
             self.decayed = True
@@ -96,3 +97,10 @@ class Bullet:
         if self.decayed == True:
             return
         pygame.draw.rect(canvas,(0, 0, 0),pygame.Rect(self.x - self.width/2, self.y - self.height/2, self.width, self.height))
+
+
+    def skud(self, enemy):
+        # tjek om bullet rammer fjenden
+        bullet_rect = pygame.Rect(self.x - self.width / 2, self.y - self.height / 2, self.width, self.height)
+        enemy_rect = pygame.Rect(enemy.x + enemy.xOffset, enemy.y + enemy.yOffset, enemy.width, enemy.height)
+        return bullet_rect.colliderect(enemy_rect)

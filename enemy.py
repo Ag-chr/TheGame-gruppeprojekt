@@ -22,6 +22,7 @@ class Enemy:
         self.scanArea = scanArea
         self.hitbox = (self.xOffset + 17, self.yOffset + 2, 31, 57)
         self.visible = True
+        self.dead = False
 
         self.xVel = 0
         self.yVel = 0
@@ -35,56 +36,61 @@ class Enemy:
         self.collider = Collider(tile_size=self.main.tile_size, scale=self.main.scale, x=self.x + self.xOffset,
                                  y=self.y + self.yOffset, width=self.width, height=self.height)
 
-        self.Enemy_img = enemySpritesheet.parse_sprite("kylling4.png")  # giver udsnit af sprite0 fra json fil
+        self.Enemy_img = enemySpritesheet.parse_sprite("kylling0.png")  # giver udsnit af sprite0 fra json fil
         self.Enemy_img = pygame.transform.scale_by(self.Enemy_img, self.main.scale)
         self.Enemy_rect = self.Enemy_img.get_rect()  # giver bredde og højde af enemy
 
 
     def draw_enemy(self, canvas):
-        self.Enemy_rect.x = self.x + self.xOffset
-        self.Enemy_rect.y = self.y + self.yOffset
-        canvas.blit(self.Enemy_img, self.Enemy_rect)
+        if not self.dead:
+            self.Enemy_rect.x = self.x + self.xOffset
+            self.Enemy_rect.y = self.y + self.yOffset
+            canvas.blit(self.Enemy_img, self.Enemy_rect)
 
-        healthbar_width = 50
-        healthbar_height = 10
+            healthbar_width = 50
+            healthbar_height = 10
 
-        enemy_center_x = self.x + self.xOffset + self.width / 2
-        healthbar_x = enemy_center_x - healthbar_width / 2
+            enemy_center_x = self.x + self.xOffset + self.width / 2
 
-        #Beregner healthbaren
-        health_width = (self.health / self.max_health) * healthbar_width
+            healthbar_x = enemy_center_x - healthbar_width / 2
 
-        # Tegner den grønne
-        pygame.draw.rect(canvas, (0, 128, 0), (healthbar_x, self.y - 20, health_width, healthbar_height))
+            #Beregner healthbaren
+            health_width = (self.health / self.max_health) * healthbar_width
 
-        self.hitbox = (self.x + 17, self.y + 2, self.width, self.height)
+            # Tegner den grønne
+            pygame.draw.rect(canvas, (0, 128, 0), (healthbar_x, self.y - 20, health_width, healthbar_height))
+
+            self.hitbox = (self.x + 17, self.y + 4, self.width, self.height)
+
 
     def hit(self):
         if self.health > 0:
             self.health -= 1
-        else:
-            self.visible = False
+            if self.health <= 0:
+                self.dead = True
+                self.visible = False
 
-    def test(self, event, Enemy1, Enemy2):
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_g:
-                Enemy1.hit()
-                Enemy2.hit()
+#    def test(self, event, Enemy1, Enemy2):
+#        if event.type == pygame.KEYDOWN:
+#            if event.key == pygame.K_g:
+#                Enemy1.hit()
+#                Enemy2.hit()
 
 
     def update(self, player):
-        xObstructed, yObstructed = self.checkCollision()
+        if not self.dead:
+            xObstructed, yObstructed = self.checkCollision()
 
-        distanceFromPlayer = math.sqrt((self.player.y - self.y) ** 2 + (self.player.x - self.x) ** 2)
-        angleToPlayer = math.atan2(self.player.y - self.y, self.player.x - self.x)
+            distanceFromPlayer = math.sqrt((self.player.y - self.y) ** 2 + (self.player.x - self.x) ** 2)
+            angleToPlayer = math.atan2(self.player.y - self.y, self.player.x - self.x)
 
-        self.xVel = math.cos(angleToPlayer) * self.speed
-        self.yVel = math.sin(angleToPlayer) * self.speed
+            self.xVel = math.cos(angleToPlayer) * self.speed
+            self.yVel = math.sin(angleToPlayer) * self.speed
 
-        if not xObstructed:
-            self.x += self.xVel
-        if not yObstructed:
-            self.y += self.yVel
+            if not xObstructed:
+                self.x += self.xVel
+            if not yObstructed:
+                self.y += self.yVel
 
 
 
@@ -102,7 +108,7 @@ class Enemy:
 
 class Enemy1(Enemy):
     def __init__(self, main, player, map_width, map_height, collisionMap):
-        super().__init__(main, player, "Enemy1", map_width, map_height, 3, 2, 10, 10, 10, 3, 10, collisionMap, scanArea=(3, 3))
+        super().__init__(main, player, "Enemy1", map_width, map_height, 3, 2, 10, 10, 10, 3, 4, collisionMap, scanArea=(3, 3))
         self.Enemy_img = enemySpritesheet.parse_sprite("kylling4.png")
         self.Enemy_img = pygame.transform.scale_by(self.Enemy_img, self.main.scale)
         self.Enemy_rect = self.Enemy_img.get_rect()
@@ -111,7 +117,7 @@ class Enemy1(Enemy):
 
 class Enemy2(Enemy):
     def __init__(self, main, player, map_width, map_height, collisionMap):
-        super().__init__(main, player, "Enemy2", map_width, map_height, 3, 2, 10, 10, 10, 3, 5, collisionMap, scanArea=(3, 3))
+        super().__init__(main, player, "Enemy2", map_width, map_height, 3, 2, 10, 10, 10, 3, 2, collisionMap, scanArea=(3, 3))
         self.Enemy_img = enemySpritesheet.parse_sprite("kylling4.png")
         self.Enemy_img = pygame.transform.scale_by(self.Enemy_img, self.main.scale)
         self.Enemy_rect = self.Enemy_img.get_rect()
