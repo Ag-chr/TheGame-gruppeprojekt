@@ -70,13 +70,6 @@ class Enemy:
                 self.dead = True
                 self.visible = False
 
-#    def test(self, event, Enemy1, Enemy2):
-#        if event.type == pygame.KEYDOWN:
-#            if event.key == pygame.K_g:
-#                Enemy1.hit()
-#                Enemy2.hit()
-
-
     def update(self, player):
         if not self.dead:
             xObstructed, yObstructed = self.checkCollision()
@@ -108,7 +101,7 @@ class Enemy:
 
 class Sprinter(Enemy):
     def __init__(self, main, player, map_width, map_height, collisionMap):
-        super().__init__(main, player, "Sprinter", map_width, map_height, 3, 2, 10, 10, 10, 2, 1, collisionMap, scanArea=(3, 3))
+        super().__init__(main, player, "Sprinter", map_width, map_height, 3, 2, 10, 10, 10, 2, 1.2, collisionMap, scanArea=(3, 3))
         self.Enemy_img = enemySpritesheet.parse_sprite("kylling4.png")
         self.Enemy_img = pygame.transform.scale_by(self.Enemy_img, self.main.scale)
         self.Enemy_rect = self.Enemy_img.get_rect()
