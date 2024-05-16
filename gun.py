@@ -1,5 +1,6 @@
 import pygame
 import math
+import time
 
 class Gun:
     def __init__(self, main, player, camera, image, distance):
@@ -77,9 +78,14 @@ class Bullet:
         self.y = self.gun.y  + self.gun.image_rect.h / 2
         self.width = 2 * self.main.scale
         self.height = 2 * self.main.scale
+        self.startTime = time.time()
+        self.decayed = False
 
 
     def update(self):
+        if time.time() > self.startTime + self.decay:
+            self.decayed = True
+            return
         self.xVel = math.cos(self.angle) * self.speed
         self.yVel = math.sin(self.angle) * self.speed
         self.x += self.xVel
@@ -87,4 +93,6 @@ class Bullet:
 
 
     def draw(self, canvas):
-        pygame.draw.rect(canvas,(255,255,255),pygame.Rect(self.x - self.width/2, self.y - self.height/2, self.width, self.height))
+        if self.decayed == True:
+            return
+        pygame.draw.rect(canvas,(0, 0, 0),pygame.Rect(self.x - self.width/2, self.y - self.height/2, self.width, self.height))
