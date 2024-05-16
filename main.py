@@ -55,6 +55,7 @@ class Main():
         while self.running:
             self.clock.tick(60)  # 60 fps
 
+
 # ------------------------------------------------ TJEKKER FOR INPUT ---------------------------------------------------
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -63,6 +64,9 @@ class Main():
                     self.running = False
                 if event.type == pygame.KEYDOWN and event.key == pygame.K_f:
                     pygame.display.toggle_fullscreen()
+               # elif event.type == pygame.KEYDOWN and event.key == pygame.K_g:
+                #    for enemy in self.enemies:
+                #        enemy.test(event, *self.enemies)
 
                 self.player.checkInput(event)
                 self.gun.checkInput(event)
