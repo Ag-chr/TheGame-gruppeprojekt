@@ -2,13 +2,12 @@ from tiles import TileMap
 from getSpritesheets import updateJson, waterSpritesheet, grassSpritesheet, woodenHouseSpritesheet
 from hjælpeFunktioner import checkNearbyTiles, read_csv
 import pygame
-from spritesheetToJson import SpritesheetToJson
 
 from player import Player
 from camera import Camera
 from gun import Gun, Bullet
 from button import Button
-from enemy import Enemy2, Enemy1
+from enemy import Tank, Sprinter, Boss
 from farm import Farm
 
 class Main():
@@ -41,8 +40,9 @@ class Main():
         self.farm = Farm(self, self.player, "Levels/MainLevel_Farm.csv", "Levels/MainLevel_Farm boundary.csv")
 
         self.enemies = [
-            Enemy1(self, self.player, self.maps[0].map_w, self.maps[0].map_h, "Levels/MainLevel_Collision enemy.csv"),
-            Enemy2(self, self.player, self.maps[0].map_w, self.maps[0].map_h, "Levels/MainLevel_Collision enemy.csv")
+            Sprinter(self, self.player, self.maps[0].map_w, self.maps[0].map_h, "Levels/MainLevel_Collision enemy.csv"),
+            Tank(self, self.player, self.maps[0].map_w, self.maps[0].map_h, "Levels/MainLevel_Collision enemy.csv"),
+            Boss(self, self.player, self.maps[0].map_w, self.maps[0].map_h, "Levels/MainLevel_Collision enemy.csv")
         ]
         self.bullets = []
 

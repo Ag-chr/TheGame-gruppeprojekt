@@ -106,18 +106,23 @@ class Enemy:
         return xObstructed, yObstructed
 
 
-class Enemy1(Enemy):
+class Sprinter(Enemy):
     def __init__(self, main, player, map_width, map_height, collisionMap):
-        super().__init__(main, player, "Enemy1", map_width, map_height, 3, 2, 10, 10, 10, 3, 4, collisionMap, scanArea=(3, 3))
+        super().__init__(main, player, "Sprinter", map_width, map_height, 3, 2, 10, 10, 10, 2, 1, collisionMap, scanArea=(3, 3))
         self.Enemy_img = enemySpritesheet.parse_sprite("kylling4.png")
         self.Enemy_img = pygame.transform.scale_by(self.Enemy_img, self.main.scale)
         self.Enemy_rect = self.Enemy_img.get_rect()
 
-
-
-class Enemy2(Enemy):
+class Tank(Enemy):
     def __init__(self, main, player, map_width, map_height, collisionMap):
-        super().__init__(main, player, "Enemy2", map_width, map_height, 3, 2, 10, 10, 10, 3, 2, collisionMap, scanArea=(3, 3))
+        super().__init__(main, player, "Tank", map_width, map_height, 3, 2, 10, 10, 30, 5, 0.3, collisionMap, scanArea=(3, 3))
+        self.Enemy_img = enemySpritesheet.parse_sprite("kylling4.png")
+        self.Enemy_img = pygame.transform.scale_by(self.Enemy_img, self.main.scale)
+        self.Enemy_rect = self.Enemy_img.get_rect()
+
+class Boss(Enemy):
+    def __init__(self, main, player, map_width, map_height, collisionMap):
+        super().__init__(main, player, "Boss", map_width, map_height, 3, 2, 10, 10, 100, 10, 0.4, collisionMap, scanArea=(3, 3))
         self.Enemy_img = enemySpritesheet.parse_sprite("kylling4.png")
         self.Enemy_img = pygame.transform.scale_by(self.Enemy_img, self.main.scale)
         self.Enemy_rect = self.Enemy_img.get_rect()
