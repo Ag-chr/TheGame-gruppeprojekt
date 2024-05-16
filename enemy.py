@@ -9,6 +9,7 @@ from hjælpeFunktioner import read_csv,rectCollisionChecker, checkNearbyTiles
 class Enemy:
     def __init__(self, main, player, name, map_width, map_height, xOffset, yOffset, width, height, health, damage, speed,collisionMap,scanArea):
         self.name = name
+        self.max_health = health
         self.health = health
         self.damage = damage
         self.main = main
@@ -40,15 +41,23 @@ class Enemy:
 
 
     def draw_enemy(self, canvas):
-        self.Enemy_rect.x = self.x
-        self.Enemy_rect.y = self.y
+        self.Enemy_rect.x = self.x + self.xOffset
+        self.Enemy_rect.y = self.y + self.yOffset
         canvas.blit(self.Enemy_img, self.Enemy_rect)
 
-        #tegner den røde healthbar
-        pygame.draw.rect(canvas, (255, 0, 0), (self.hitbox[0], self.hitbox[1] - 20, 50, 10))
-        #tegner den grønne healthbar
-        pygame.draw.rect(canvas, (0, 128, 0), (self.hitbox[0], self.hitbox[1] - 20, 50 - (5 * (10 - self.health)), 10))
-        self.hitbox = (self.x + 17, self.y + 2, 31, 57)
+        healthbar_width = 50
+        healthbar_height = 10
+
+        enemy_center_x = self.x + self.xOffset + self.width / 2
+        healthbar_x = enemy_center_x - healthbar_width / 2
+
+        #Beregner healthbaren
+        health_width = (self.health / self.max_health) * healthbar_width
+
+        # Tegner den grønne
+        pygame.draw.rect(canvas, (0, 128, 0), (healthbar_x, self.y - 20, health_width, healthbar_height))
+
+        self.hitbox = (self.x + 17, self.y + 2, self.width, self.height)
 
     def hit(self):
         if self.health > 0:
@@ -56,11 +65,11 @@ class Enemy:
         else:
             self.visible = False
 
-  #  def test(self, event, Enemy1, Enemy2):
-   #     if event.type == pygame.KEYDOWN:
-   #          if event.key == pygame.K_g:
-    #            Enemy1.hit()
-    #            Enemy2.hit()
+    def test(self, event, Enemy1, Enemy2):
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_g:
+                Enemy1.hit()
+                Enemy2.hit()
 
 
     def update(self, player):

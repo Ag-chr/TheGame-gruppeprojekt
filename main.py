@@ -64,9 +64,9 @@ class Main():
                     self.running = False
                 if event.type == pygame.KEYDOWN and event.key == pygame.K_f:
                     pygame.display.toggle_fullscreen()
-               # elif event.type == pygame.KEYDOWN and event.key == pygame.K_g:
-                #    for enemy in self.enemies:
-                #        enemy.test(event, *self.enemies)
+                elif event.type == pygame.KEYDOWN and event.key == pygame.K_g:
+                    for enemy in self.enemies:
+                        enemy.test(event, *self.enemies)
 
                 self.player.checkInput(event)
                 self.gun.checkInput(event)
