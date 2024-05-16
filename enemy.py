@@ -1,10 +1,10 @@
 import pygame
-#from getSpritesheets import enemySpritesheet
-from getSpritesheets import playerSpritesheet
+from getSpritesheets import enemySpritesheet
 import math
 import random
 from collider import Collider
 from hjælpeFunktioner import read_csv,rectCollisionChecker, checkNearbyTiles
+from gun import Bullet
 
 class Enemy:
     def __init__(self, main, player, name, map_width, map_height, xOffset, yOffset, width, height, health, damage, speed,collisionMap,scanArea):
@@ -35,7 +35,7 @@ class Enemy:
         self.collider = Collider(tile_size=self.main.tile_size, scale=self.main.scale, x=self.x + self.xOffset,
                                  y=self.y + self.yOffset, width=self.width, height=self.height)
 
-        self.Enemy_img = playerSpritesheet.parse_sprite("character0.png")  # giver udsnit af sprite0 fra json fil
+        self.Enemy_img = enemySpritesheet.parse_sprite("kylling4.png")  # giver udsnit af sprite0 fra json fil
         self.Enemy_img = pygame.transform.scale_by(self.Enemy_img, self.main.scale)
         self.Enemy_rect = self.Enemy_img.get_rect()  # giver bredde og højde af enemy
 
@@ -103,7 +103,7 @@ class Enemy:
 class Enemy1(Enemy):
     def __init__(self, main, player, map_width, map_height, collisionMap):
         super().__init__(main, player, "Enemy1", map_width, map_height, 3, 2, 10, 10, 10, 3, 10, collisionMap, scanArea=(3, 3))
-        self.Enemy_img = playerSpritesheet.parse_sprite("character0.png")
+        self.Enemy_img = enemySpritesheet.parse_sprite("kylling4.png")
         self.Enemy_img = pygame.transform.scale_by(self.Enemy_img, self.main.scale)
         self.Enemy_rect = self.Enemy_img.get_rect()
 
@@ -112,6 +112,6 @@ class Enemy1(Enemy):
 class Enemy2(Enemy):
     def __init__(self, main, player, map_width, map_height, collisionMap):
         super().__init__(main, player, "Enemy2", map_width, map_height, 3, 2, 10, 10, 10, 3, 5, collisionMap, scanArea=(3, 3))
-        self.Enemy_img = playerSpritesheet.parse_sprite("character0.png")
+        self.Enemy_img = enemySpritesheet.parse_sprite("kylling4.png")
         self.Enemy_img = pygame.transform.scale_by(self.Enemy_img, self.main.scale)
         self.Enemy_rect = self.Enemy_img.get_rect()
