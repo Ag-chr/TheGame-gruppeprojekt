@@ -43,6 +43,7 @@ class Main():
             Enemy1(self, self.player, self.maps[0].map_w, self.maps[0].map_h, "Levels/MainLevel_Collision enemy.csv"),
             Enemy2(self, self.player, self.maps[0].map_w, self.maps[0].map_h, "Levels/MainLevel_Collision enemy.csv")
         ]
+        self.bullets = []
 
     def run(self):
         self.running = True
@@ -72,6 +73,9 @@ class Main():
             self.gun.update()
             self.camera.update()
 
+            for bullet in self.bullets:
+                bullet.update()
+
 # ------------------------------------------------ TEGNER TING OG SAGER ------------------------------------------------
             self.canvas.blit(mapCanvas, (0, 0))
             self.farm.draw_farm(self.canvas)
@@ -85,6 +89,9 @@ class Main():
             for enemy in self.enemies:
                 enemy.update(self.player)
                 enemy.draw_enemy(self.canvas)
+
+            for bullet in self.bullets:
+                bullet.draw(self.canvas)
 
 # ------------------------------------------------ FINDER SKÆRM OMRÅDE -------------------------------------------------
             screen_region = (self.camera.getCameraPos(), pygame.display.get_window_size())  # området hvor skærmen er

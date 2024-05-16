@@ -19,7 +19,7 @@ class Gun:
     def checkInput(self, event):
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == pygame.BUTTON_LEFT:
-                print("BANG")
+                self.main.bullets.append(Bullet(self.main, self.player, self.angleFromPlayerToMouse, 3, self.distance, 1, self))
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
                 print("Ikk smid med skrald, det kan blive din sidste fejl")
@@ -50,9 +50,9 @@ class Gun:
             image_copy = pygame.transform.flip(image_copy, True, False)
 
         image_copy = pygame.transform.rotate(image_copy, angle)
-        image_rect = image_copy.get_rect()
-        image_rect.x, image_rect.y = self.x - image_rect.w / 2, self.y - image_rect.h / 2
-        canvas.blit(image_copy, image_rect)
+        self.image_rect = image_copy.get_rect()
+        self.image_rect.x, self.image_rect.y = self.x - self.image_rect.w / 2, self.y - self.image_rect.h / 2
+        canvas.blit(image_copy, self.image_rect)
 
     def getDegrees(self, num):
         num = math.degrees(num)
@@ -61,3 +61,30 @@ class Gun:
         return num
 
 
+class Bullet:
+
+    width = 2
+    height = 2
+    def __init__(self, main, player, angle, speed, firingDistance, decay, gun):
+        self.main = main
+        self.player = player
+        self.gun = gun
+        self.angle = angle
+        self.speed = speed * self.main.scale
+        self.firingDistance = firingDistance
+        self.decay = decay
+        self.x = self.gun.x + self.gun.image_rect.w / 2
+        self.y = self.gun.y  + self.gun.image_rect.h / 2
+        self.width = 2 * self.main.scale
+        self.height = 2 * self.main.scale
+
+
+    def update(self):
+        self.xVel = math.cos(self.angle) * self.speed
+        self.yVel = math.sin(self.angle) * self.speed
+        self.x += self.xVel
+        self.y += self.yVel
+
+
+    def draw(self, canvas):
+        pygame.draw.rect(canvas,(255,255,255),pygame.Rect(self.x - self.width/2, self.y - self.height/2, self.width, self.height))
