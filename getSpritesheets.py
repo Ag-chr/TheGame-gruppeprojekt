@@ -11,6 +11,7 @@ collisionSpritesheet = Spritesheet("Images/collision.png")
 playerSpritesheet = Spritesheet("Images/character.png")
 farmSpritesheet = Spritesheet("Images/tilled dirt.png")
 enemySpritesheet = Spritesheet("Images/kylling.png")
+goblinSpritesheet = Spritesheet("Images/goblin.png")
 
 
 pygame.quit()
@@ -23,6 +24,7 @@ def updateJson(tile_size):
     SpritesheetToJson("Images/Wooden House.png", tile_size)
     SpritesheetToJson("Images/collision.png", tile_size)
     SpritesheetToJson("Images/character.png", tile_size, 16, (16, 16), (16, 16))
+    SpritesheetToJson("Images/goblin.png", tile_size)
 
 
 

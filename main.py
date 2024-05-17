@@ -9,6 +9,8 @@ from gun import Gun, Bullet
 from button import Button
 from enemy import Tank, Sprinter, Boss
 from farm import Farm
+from spritesheetToJson import SpritesheetToJson
+
 
 class Main():
     pygame.init()
@@ -30,7 +32,6 @@ class Main():
                      TileMap('Levels/MainLevel_Grass.csv', grassSpritesheet, self.tile_size, self.scale),
                      TileMap('Levels/MainLevel_House floor.csv', woodenHouseSpritesheet, self.tile_size, self.scale),
                      TileMap('Levels/MainLevel_House walls.csv', woodenHouseSpritesheet, self.tile_size, self.scale)]
-
         # Canvas/surface skal være samme størrelse som map for at tegne det hele i starten
         self.canvas = pygame.Surface((self.maps[0].map_w, self.maps[0].map_h))
 
