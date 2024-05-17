@@ -74,8 +74,10 @@ class Bullet:
         self.speed = speed * self.main.scale
         self.firingDistance = firingDistance
         self.decay = decay
-        self.x = self.gun.x + self.gun.image_rect.w / 2
-        self.y = self.gun.y  + self.gun.image_rect.h / 2
+        self.x = (self.gun.x)
+        #+ self.gun.image_rect.w)
+        self.y = (self.gun.y)
+        #+ self.gun.image_rect.h)
         self.width = 2 * self.main.scale
         self.height = 2 * self.main.scale
         self.startTime = time.time()
@@ -87,9 +89,9 @@ class Bullet:
         xScreen, yScreen = self.main.screen_region[0]
         wScreen, hScreen = self.main.screen_region[1]
 
-        if xScreen > self.x or yScreen > self.y or wScreen + xScreen < self.x or hScreen + yScreen < self.y:
-            self.decayed = True
-            return
+        #if xScreen > self.x or yScreen > self.y or wScreen + xScreen < self.x or hScreen + yScreen < self.y:
+        #    self.decayed = True
+        #    return
         self.xVel = math.cos(self.angle) * self.speed
         self.yVel = math.sin(self.angle) * self.speed
         self.x += self.xVel
