@@ -17,7 +17,8 @@ class Button:
     def draw(self, canvas):
         button_text = self.font.render(self.text, True, (0, 0, 0))
         button_rect = pygame.rect.Rect((self.x, self.y), (self.width, self.height))
-        pygame.draw.rect(canvas, self.color, button_rect, 0, 0)
+        pygame.draw.rect(canvas, self.color, button_rect, 0, 10)
+        pygame.draw.rect(canvas, (0, 0, 0), button_rect, 3, 10)
         canvas.blit(button_text, (self.width // 2 + self.x - 35, self.height // 2 + self.y - 20))
 
     def update(self, event):
