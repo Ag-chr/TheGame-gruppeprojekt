@@ -89,9 +89,9 @@ class Bullet:
         xScreen, yScreen = self.main.screen_region[0]
         wScreen, hScreen = self.main.screen_region[1]
 
-        #if xScreen > self.x or yScreen > self.y or wScreen + xScreen < self.x or hScreen + yScreen < self.y:
-        #    self.decayed = True
-        #    return
+        if xScreen > self.x or yScreen > self.y or wScreen + xScreen < self.x or hScreen + yScreen < self.y:
+            self.decayed = True
+            return
         self.xVel = math.cos(self.angle) * self.speed
         self.yVel = math.sin(self.angle) * self.speed
         self.x += self.xVel
