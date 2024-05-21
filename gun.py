@@ -19,11 +19,12 @@ class Gun:
         self.xPlayer = None
         self.yPlayer = None
 
-
     def checkInput(self, event):
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == pygame.BUTTON_LEFT:
-                self.main.bullets.append(Bullet(self.main, self.player, self.angleFromPlayerToMouse, 3, self.distance, 1, self, 2, 2, "Levels/MainLevel_Collision enemy.csv", (2,2), 0, 0, 0, 0))
+                self.startTime = time.time()
+                if time.time() > self.startTime + 1:
+                    self.main.bullets.append(Bullet(self.main, self.player, self.angleFromPlayerToMouse, 3, self.distance, 1, self, 2, 2, "Levels/MainLevel_Collision enemy.csv", (2,2), 0, 0, 0, 0))
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
                 print("Ikk smid med skrald, det kan blive din sidste fejl")
