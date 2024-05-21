@@ -2,6 +2,9 @@ import pygame
 import math
 import time
 
+from entityCollider import EntityCollider
+
+
 class Gun:
     def __init__(self, main, player, camera, image, distance):
         self.main = main
@@ -20,7 +23,7 @@ class Gun:
     def checkInput(self, event):
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == pygame.BUTTON_LEFT:
-                self.main.bullets.append(Bullet(self.main, self.player, self.angleFromPlayerToMouse, 3, self.distance, 1, self))
+                self.main.bullets.append(Bullet(self.main, self.player, self.angleFromPlayerToMouse, 3, self.distance, 1, self, 2, 2, "Levels/MainLevel_Collision enemy.csv", (2,2), 0, 0, 0, 0))
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
                 print("Ikk smid med skrald, det kan blive din sidste fejl")
@@ -62,11 +65,9 @@ class Gun:
         return num
 
 
-class Bullet:
-
-    width = 2
-    height = 2
-    def __init__(self, main, player, angle, speed, firingDistance, decay, gun):
+class Bullet(EntityCollider):
+    def __init__(self, main, player, angle, speed, firingDistance, decay, gun, width, height, collisionMap, scanArea, x, y, xOffset, yOffset):
+        EntityCollider.__init__(self, main, x, y, xOffset, yOffset, speed, width, height, collisionMap, scanArea)
         self.main = main
         self.player = player
         self.gun = gun
@@ -78,8 +79,8 @@ class Bullet:
         #+ self.gun.image_rect.w)
         self.y = (self.gun.y)
         #+ self.gun.image_rect.h)
-        self.width = 2 * self.main.scale
-        self.height = 2 * self.main.scale
+        self.width = width * self.main.scale
+        self.height = height * self.main.scale
         self.startTime = time.time()
         self.decayed = False
 
@@ -94,6 +95,13 @@ class Bullet:
             return
         self.xVel = math.cos(self.angle) * self.speed
         self.yVel = math.sin(self.angle) * self.speed
+        xObstructed, yObstructed = self.checkCollision()
+        if xObstructed or yObstructed:
+            self.decayed = True
+
+
+
+
         self.x += self.xVel
         self.y += self.yVel
 
