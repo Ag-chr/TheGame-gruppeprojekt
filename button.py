@@ -16,10 +16,13 @@ class Button:
 
     def draw(self, canvas):
         button_text = self.font.render(self.text, True, (0, 0, 0))
+        button_text_rect = button_text.get_rect()
+        button_text_rect.center = (self.x + self.width /2, self.y + self.height /2)
         button_rect = pygame.rect.Rect((self.x, self.y), (self.width, self.height))
+        button_rect.center = (self.x + self.width /2, self.y + self.height /2)
         pygame.draw.rect(canvas, self.color, button_rect, 0, 10)
         pygame.draw.rect(canvas, (0, 0, 0), button_rect, 3, 10)
-        canvas.blit(button_text, (self.width // 2 + self.x - 35, self.height // 2 + self.y - 20))
+        canvas.blit(button_text, (button_text_rect.x, button_text_rect.y))
 
     def update(self, event):
         xMouse, yMouse = pygame.mouse.get_pos()

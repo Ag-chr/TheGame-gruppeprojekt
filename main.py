@@ -159,7 +159,7 @@ class Main():
             pygame.display.update()  # updater skærm så disse ændringer kan ses
 
     def gameover(self):
-        self.running = False
+        self.running = True
         startCanvas = pygame.Surface((self.windowWidth, self.windowHeight))
 
         font = pygame.font.Font('freesansbold.ttf', 75)
