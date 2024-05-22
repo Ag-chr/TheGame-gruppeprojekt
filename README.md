@@ -1,6 +1,9 @@
 Dette er vores spil!
 Vi er 3 i gruppen: Tobias/Tobias-Henriksen, Michael/MichaelHNH og Adam/Ag-chr.
 
+Vores Scrum Master er:
+Adam/Ag-chr
+
 Vores Trello:
 https://trello.com/invite/b/gkLVz2gj/ATTIc8deef5c725b5c29da4362bbdcafc133236B5E88/the-game
 
