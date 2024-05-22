@@ -5,7 +5,7 @@ import pygame
 
 from player import Player
 from camera import Camera
-from gun import Gun
+from gun import Gun, Bullet
 from button import Button
 from enemy import Tank, Sprinter, Boss
 from farm import Farm
@@ -49,10 +49,6 @@ class Main():
         ]
         self.bullets = []
 
-        self.wave_start = False
-        self.show_text = False
-        self.wave_text_timer = 0
-
     def run(self):
         self.running = True
 
@@ -72,6 +68,9 @@ class Main():
                     self.running = False
                 if event.type == pygame.KEYDOWN and event.key == pygame.K_f:
                     pygame.display.toggle_fullscreen()
+                #  elif event.type == pygame.KEYDOWN and event.key == pygame.K_g:
+                #    for enemy in self.enemies:
+                #          enemy.test(event, *self.enemies)
 
                 self.player.checkInput(event)
                 self.gun.checkInput(event)
@@ -93,11 +92,6 @@ class Main():
                 enemy.update(self.player)
 
             self.enemies = [enemy for enemy in self.enemies if not enemy.dead]
-
-            if not self.wave_start and (self.player.xVel != 0 or self.player.yVel != 0): #Hvis playeren bevæger sig kommer teksten frem
-                self.wave_start = True
-                self.show_text = True
-                self.wave_text_timer = pygame.time.get_ticks()
 
             # ------------------------------------------------ TEGNER TING OG SAGER ------------------------------------------------
             self.canvas.blit(mapCanvas, (0, 0))
@@ -124,20 +118,7 @@ class Main():
             # ------------------------------------------------ PUTTER TEGNET TING OG SAGER PÅ SKÆRM --------------------------------
             self.window.blit(self.canvas, (0, 0),
                              self.screen_region)  # tegner canvas på skærm og kun det område som kan ses
-
-            if self.show_text:
-                self.wave_text(self.window, "Wave 1", (255, 0, 0))
-                if pygame.time.get_ticks() - self.wave_text_timer > 1500: #viser hvor lang tid teksten skal være på skærmen
-                    self.show_text = False
-
             pygame.display.update()  # updater skærm så disse ændringer kan ses
-
-    def wave_text(self, surface, text, color):
-        font = pygame.font.Font('freesansbold.ttf', 75)
-        text_surface = font.render(text, True, color)
-        text_rect = text_surface.get_rect(center=(self.windowWidth // 2, self.windowHeight // 2))
-        surface.blit(text_surface, text_rect)
-
 
     def start(self):
         self.running = True
