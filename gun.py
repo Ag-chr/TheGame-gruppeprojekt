@@ -27,9 +27,13 @@ class Gun:
             if event.button == pygame.BUTTON_LEFT:
                 if self.counter > 1 and self.ammo > 0:
                     self.ammo = self.ammo - 1
-                    print(self.ammo)
                     self.main.bullets.append(Bullet(self.main, self.player, self.angleFromPlayerToMouse, 3, self.distance, 1, self, 2, 2, "Levels/MainLevel_Collision enemy.csv", (2,2), 0, 0, 0, 0))
                     self.counter = 0
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_r:
+                self.ammo = 30
+                self.counter = -10
+
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
                 print("Ikk smid med skrald, det kan blive din sidste fejl")
