@@ -9,7 +9,7 @@ from gun import Gun
 from button import Button
 from enemy import Tank, Sprinter, Boss
 from farm import Farm
-from wavespawner import spawn_enemies
+from wavespawner import WaveManager
 
 
 class Main():
@@ -43,11 +43,12 @@ class Main():
         self.gun = Gun(self, self.player, self.camera, "Images/gun.png", 15)
         self.farm = Farm(self, self.player, "Levels/MainLevel_Farm.csv", "Levels/MainLevel_Farm boundary.csv")
 
-        self.enemies = [
-            Sprinter(self, self.player, self.maps[0].map_w, self.maps[0].map_h, "Levels/MainLevel_Collision enemy.csv"),
-            Tank(self, self.player, self.maps[0].map_w, self.maps[0].map_h, "Levels/MainLevel_Collision enemy.csv"),
-            Boss(self, self.player, self.maps[0].map_w, self.maps[0].map_h, "Levels/MainLevel_Collision enemy.csv")
-        ]
+#            Sprinter(self, self.player, self.maps[0].map_w, self.maps[0].map_h, "Levels/MainLevel_Collision enemy.csv"),
+#            Tank(self, self.player, self.maps[0].map_w, self.maps[0].map_h, "Levels/MainLevel_Collision enemy.csv"),
+ #           Boss(self, self.player, self.maps[0].map_w, self.maps[0].map_h, "Levels/MainLevel_Collision enemy.csv")
+
+
+        self.enemies = []
         self.bullets = []
 
         self.wave_start = False
@@ -55,8 +56,16 @@ class Main():
         self.wave_text_timer = 0
         self.wave_number = 1
 
+        self.wave_manager = WaveManager(self, [
+            {'type': Sprinter, 'interval': 2, 'base_count': 5},
+            {'type': Tank, 'interval': 5, 'base_count': 3},
+            {'type': Boss, 'interval': 10, 'base_count': 1}
+        ])
+
     def run(self):
         self.running = True
+
+        self.wave_manager.start_waves()
 
         # tegner mappet og gemmer i billede/canvas, som kan derefter tegnes
         mapCanvas = pygame.Surface((self.maps[0].map_w, self.maps[0].map_h))
@@ -79,10 +88,12 @@ class Main():
                 self.player.checkInput(event)
                 self.gun.checkInput(event)
                 self.farm.checkInput(event)
+                self.wave_manager.handle_event(event)
             # ------------------------------------------------ OPDATERE TING OG SAGER ----------------------------------------------
             self.player.update()
             self.gun.update()
             self.camera.update()
+            self.wave_manager.update()
 
             for bullet in self.bullets[:]:
                 bullet.update()
@@ -119,6 +130,7 @@ class Main():
             for bullet in self.bullets:
                 bullet.draw(self.canvas)
 
+
             # ------------------------------------------------ FINDER SKÆRM OMRÅDE -------------------------------------------------
             self.screen_region = (
             self.camera.getCameraPos(), pygame.display.get_window_size())  # området hvor skærmen er
@@ -128,15 +140,13 @@ class Main():
             self.window.blit(self.canvas, (0, 0),
                              self.screen_region)  # tegner canvas på skærm og kun det område som kan ses
 
-
-
             if self.show_text:
                 self.wave_text(self.window, f"Wave {self.wave_number}", (255, 0, 0))
                 if pygame.time.get_ticks() - self.wave_text_timer > 1500:  # Viser hvor lang tid teksten skal være på skærmen
                     self.show_text = False
-                    self.wave_number += 1 #øger tallet hver gang funktionen er kaldet
 
             pygame.display.update()  # updater skærm så disse ændringer kan ses
+
 
     def wave_text(self, surface, text, color):
         font = pygame.font.Font('freesansbold.ttf', 75)
