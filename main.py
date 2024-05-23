@@ -9,7 +9,7 @@ from gun import Gun
 from button import Button
 from enemy import Tank, Sprinter, Boss
 from farm import Farm
-from wavespawner import spawn_enemies
+#from wavespawner import spawn_enemies
 
 
 class Main():
@@ -55,6 +55,7 @@ class Main():
         self.wave_text_timer = 0
         self.wave_number = 1
 
+
     def run(self):
         self.running = True
 
@@ -95,6 +96,7 @@ class Main():
             for enemy in self.enemies:
                 enemy.update(self.player)
 
+
             self.enemies = [enemy for enemy in self.enemies if not enemy.dead]
 
             if not self.wave_start and (self.player.xVel != 0 or self.player.yVel != 0): #Hvis playeren bevæger sig kommer teksten frem
@@ -125,8 +127,8 @@ class Main():
             self.canvas.set_clip(pygame.Rect(self.screen_region))  # modificere pixels kun indenfor skærm området
 
             # ------------------------------------------------ PUTTER TEGNET TING OG SAGER PÅ SKÆRM --------------------------------
-            self.window.blit(self.canvas, (0, 0),
-                             self.screen_region)  # tegner canvas på skærm og kun det område som kan ses
+            self.window.blit(self.canvas, (0, 0),self.screen_region)  # tegner canvas på skærm og kun det område som kan ses
+            self.gun.drawUI()
 
 
 
@@ -143,7 +145,6 @@ class Main():
         text_surface = font.render(text, True, color)
         text_rect = text_surface.get_rect(center=(self.windowWidth // 2, self.windowHeight // 2))
         surface.blit(text_surface, text_rect)
-
 
     def start(self):
         self.running = True

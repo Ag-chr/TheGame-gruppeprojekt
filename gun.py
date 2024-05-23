@@ -71,6 +71,13 @@ class Gun:
             num += 360
         return num
 
+    def drawUI(self):
+        font = pygame.font.Font('freesansbold.ttf', 45)
+        text_surface = font.render(f"Ammo: {self.ammo}", True, (0, 0, 0))
+        text_rect = text_surface.get_rect(center=(150, 150))
+        self.main.window.blit(text_surface, text_rect)
+
+
 
 class Bullet(EntityCollider):
     def __init__(self, main, player, angle, speed, firingDistance, decay, gun, width, height, collisionMap, scanArea, x, y, xOffset, yOffset):
@@ -90,6 +97,7 @@ class Bullet(EntityCollider):
         self.height = height * self.main.scale
         self.startTime = time.time()
         self.decayed = False
+        self.show_ammo_text = True
 
 
 
@@ -107,8 +115,6 @@ class Bullet(EntityCollider):
             self.decayed = True
 
 
-
-
         self.x += self.xVel
         self.y += self.yVel
 
@@ -118,9 +124,9 @@ class Bullet(EntityCollider):
             return
         pygame.draw.rect(canvas,(0, 0, 0),pygame.Rect(self.x - self.width/2, self.y - self.height/2, self.width, self.height))
 
-
     def skud(self, enemy):
         # tjek om bullet rammer fjenden
         bullet_rect = pygame.Rect(self.x - self.width / 2, self.y - self.height / 2, self.width, self.height)
         enemy_rect = pygame.Rect(enemy.x + enemy.xOffset, enemy.y + enemy.yOffset, enemy.width, enemy.height)
         return bullet_rect.colliderect(enemy_rect)
+
