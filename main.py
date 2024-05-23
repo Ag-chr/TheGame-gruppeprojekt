@@ -64,7 +64,7 @@ class Main():
         while self.running:
             self.clock.tick(60)  # 60 fps
 
-            # ------------------------------------------------ TJEKKER FOR INPUT ---------------------------------------------------
+# ------------------------------------------------ TJEKKER FOR INPUT ---------------------------------------------------
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.running = False
@@ -76,10 +76,11 @@ class Main():
                 self.player.checkInput(event)
                 self.gun.checkInput(event)
                 self.farm.checkInput(event)
-            # ------------------------------------------------ OPDATERE TING OG SAGER ----------------------------------------------
+# ------------------------------------------------ OPDATERE TING OG SAGER ----------------------------------------------
             self.player.update()
             self.gun.update()
             self.camera.update()
+            xCamera, yCamera = self.camera.getCameraPos()
 
             for bullet in self.bullets[:]:
                 bullet.update()
@@ -99,7 +100,7 @@ class Main():
                 self.show_text = True
                 self.wave_text_timer = pygame.time.get_ticks()
 
-            # ------------------------------------------------ TEGNER TING OG SAGER ------------------------------------------------
+# ------------------------------------------------ TEGNER TING OG SAGER ------------------------------------------------
             self.canvas.blit(mapCanvas, (0, 0))
             self.farm.draw_farm(self.canvas)
             self.farm.draw_transparent_farmland(self.canvas)
@@ -116,14 +117,14 @@ class Main():
             for bullet in self.bullets:
                 bullet.draw(self.canvas)
 
-            # ------------------------------------------------ FINDER SKÆRM OMRÅDE -------------------------------------------------
-            self.screen_region = (
-            self.camera.getCameraPos(), pygame.display.get_window_size())  # området hvor skærmen er
+# ------------------------------------------------ FINDER SKÆRM OMRÅDE -------------------------------------------------
+            self.screen_region = ((xCamera, yCamera), pygame.display.get_window_size())  # området hvor skærmen er
             self.canvas.set_clip(pygame.Rect(self.screen_region))  # modificere pixels kun indenfor skærm området
 
             # ------------------------------------------------ PUTTER TEGNET TING OG SAGER PÅ SKÆRM --------------------------------
-            self.window.blit(self.canvas, (0, 0),
-                             self.screen_region)  # tegner canvas på skærm og kun det område som kan ses
+            self.window.blit(self.canvas, (0, 0), self.screen_region)  # tegner canvas på skærm og kun det område som kan ses
+            # UI
+            self.farm.drawUI(self.window)
 
             if self.show_text:
                 self.wave_text(self.window, "Wave 1", (255, 0, 0))

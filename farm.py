@@ -16,8 +16,10 @@ class Farm:
 
         self.farmland_image = farmSpritesheet.parse_sprite(f"tilled dirt{self.farmland_tile}.png").convert()
         self.farmland_image = pygame.transform.scale_by(self.farmland_image, self.main.scale)
-        self.farmland_image.set_alpha(200)
-        self.farmland_rect = self.farmland_image.get_rect()
+
+        self.farmland_image_trans = self.farmland_image.copy()
+        self.farmland_image_trans.set_alpha(200)
+        self.farmland_rect = self.farmland_image_trans.get_rect()
 
         self.farm_csv_file = farm_csv
         self.farm_boundary = read_csv(farm_boundary)
@@ -29,6 +31,44 @@ class Farm:
                                      self.end[0] * self.real_tile_size - self.start[0] * self.real_tile_size,
                                      self.end[1] * self.real_tile_size - self.start[1] * self.real_tile_size)
         self.farm_map = TileMap("Levels/MainLevel_Farm.csv", farmSpritesheet, self.main.tile_size, self.main.scale, x=self.start[0] * self.real_tile_size, y=self.start[1] * self.real_tile_size)
+
+        self.selection = ["farmland", "plant1", "plant2", "plant3"]
+        self.currentSelection = 0
+
+    def checkInput(self, event):
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_b:
+                self.place_farmland()
+            if event.key == pygame.K_q:
+                self.switchItem("LEFT")
+            if event.key == pygame.K_e:
+                self.switchItem("RIGHT")
+
+    def switchItem(self, direction: str):
+        if direction == "LEFT":
+            self.currentSelection += -1
+        if direction == "RIGHT":
+            self.currentSelection += 1
+        if self.currentSelection >= len(self.selection):
+            self.currentSelection = 0
+        elif self.currentSelection < 0:
+            self.currentSelection = len(self.selection) - 1
+        print(self.currentSelection, self.selection[self.currentSelection])
+
+    def drawUI(self, canvas):
+        width, height = 100, 100
+        surface = pygame.Surface((self.farmland_rect.w, self.farmland_rect.h))
+
+        background = pygame.Surface((width, height))
+        background_rect = background.get_rect()
+        pygame.draw.rect(background, (0, 0, 0), background_rect)
+        background.set_alpha(150)
+
+        if self.selection[self.currentSelection] == "farmland":
+            surface.blit(self.farmland_image, (0, 0))
+
+        canvas.blit(background, (self.main.windowWidth - width - 50, self.main.windowHeight - height - 50))
+        canvas.blit(surface, (self.main.windowWidth - width - 25, self.main.windowHeight - height - 25))
 
     def getPlayerGrid(self):
         player_direction = self.player.getDirection()
@@ -55,7 +95,7 @@ class Farm:
 
         self.farmland_rect.x = x_player_grid * self.real_tile_size
         self.farmland_rect.y = y_player_grid * self.real_tile_size
-        canvas.blit(self.farmland_image, self.farmland_rect)
+        canvas.blit(self.farmland_image_trans, self.farmland_rect)
 
     def place_farmland(self):
         x_player_grid, y_player_grid = self.getPlayerGrid()
@@ -79,12 +119,6 @@ class Farm:
 
         self.farm_map = TileMap("Levels/MainLevel_Farm.csv", farmSpritesheet, self.main.tile_size, self.main.scale,
                                 x=self.start[0] * self.real_tile_size, y=self.start[1] * self.real_tile_size)
-
-    def checkInput(self, event):
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_b:
-                self.place_farmland()
-
 
     def find_boundary(self):
         boundary = self.farm_boundary
