@@ -9,6 +9,7 @@ from gun import Gun
 from button import Button
 from enemy import Tank, Sprinter, Boss
 from farm import Farm
+from wavespawner import spawn_enemies
 
 
 class Main():
@@ -52,6 +53,7 @@ class Main():
         self.wave_start = False
         self.show_text = False
         self.wave_text_timer = 0
+        self.wave_number = 1
 
     def run(self):
         self.running = True
@@ -60,6 +62,7 @@ class Main():
         mapCanvas = pygame.Surface((self.maps[0].map_w, self.maps[0].map_h))
         for map in self.maps:
             map.draw_map(mapCanvas)
+
 
         while self.running:
             self.clock.tick(60)  # 60 fps
@@ -125,10 +128,13 @@ class Main():
             self.window.blit(self.canvas, (0, 0),
                              self.screen_region)  # tegner canvas på skærm og kun det område som kan ses
 
+
+
             if self.show_text:
-                self.wave_text(self.window, "Wave 1", (255, 0, 0))
-                if pygame.time.get_ticks() - self.wave_text_timer > 1500: #viser hvor lang tid teksten skal være på skærmen
+                self.wave_text(self.window, f"Wave {self.wave_number}", (255, 0, 0))
+                if pygame.time.get_ticks() - self.wave_text_timer > 1500:  # Viser hvor lang tid teksten skal være på skærmen
                     self.show_text = False
+                    self.wave_number += 1 #øger tallet hver gang funktionen er kaldet
 
             pygame.display.update()  # updater skærm så disse ændringer kan ses
 
