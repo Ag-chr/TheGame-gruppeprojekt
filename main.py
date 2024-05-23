@@ -43,11 +43,7 @@ class Main():
         self.gun = Gun(self, self.player, self.camera, "Images/gun.png", 15)
         self.farm = Farm(self, self.player, "Levels/MainLevel_Farm.csv", "Levels/MainLevel_Farm boundary.csv")
 
-        self.enemies = [
-            Sprinter(self, self.player, self.maps[0].map_w, self.maps[0].map_h, "Levels/MainLevel_Collision enemy.csv"),
-            Tank(self, self.player, self.maps[0].map_w, self.maps[0].map_h, "Levels/MainLevel_Collision enemy.csv"),
-            Boss(self, self.player, self.maps[0].map_w, self.maps[0].map_h, "Levels/MainLevel_Collision enemy.csv")
-        ]
+        self.enemies = []
         self.bullets = []
 
         self.wave_start = False
@@ -127,8 +123,6 @@ class Main():
             # ------------------------------------------------ PUTTER TEGNET TING OG SAGER PÅ SKÆRM --------------------------------
             self.window.blit(self.canvas, (0, 0),
                              self.screen_region)  # tegner canvas på skærm og kun det område som kan ses
-
-
 
             if self.show_text:
                 self.wave_text(self.window, f"Wave {self.wave_number}", (255, 0, 0))
