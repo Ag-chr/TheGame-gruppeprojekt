@@ -1,9 +1,9 @@
 import pygame
 import math
 import time
+import threading
 
 from entityCollider import EntityCollider
-
 
 class Gun:
     def __init__(self, main, player, camera, image, distance):
@@ -18,13 +18,22 @@ class Gun:
         self.angleFromPlayerToMouse = None
         self.xPlayer = None
         self.yPlayer = None
+        self.counter = 0
+        self.ammo = 30
 
     def checkInput(self, event):
+        self.counter = self.counter + 0.5
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == pygame.BUTTON_LEFT:
-                #self.startTime = time.time()
-                #if time.time() > self.startTime + 1:
+                if self.counter > 1 and self.ammo > 0:
+                    self.ammo = self.ammo - 1
                     self.main.bullets.append(Bullet(self.main, self.player, self.angleFromPlayerToMouse, 3, self.distance, 1, self, 2, 2, "Levels/MainLevel_Collision enemy.csv", (2,2), 0, 0, 0, 0))
+                    self.counter = 0
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_r:
+                self.ammo = 30
+                self.counter = -10
+
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
                 print("Ikk smid med skrald, det kan blive din sidste fejl")
@@ -35,6 +44,7 @@ class Gun:
         xMouse, yMouse = pygame.mouse.get_pos()
         xMouse += xCamera
         yMouse += yCamera
+
 
         # find vinklen fra player til musets koordinater
         self.xPlayer = self.player.x + self.main.tile_size * self.main.scale / 2
@@ -65,6 +75,13 @@ class Gun:
             num += 360
         return num
 
+    def drawUI(self):
+        font = pygame.font.Font('freesansbold.ttf', 45)
+        text_surface = font.render(f"Ammo: {self.ammo}", True, (0, 0, 0))
+        text_rect = text_surface.get_rect(center=(150, 150))
+        self.main.window.blit(text_surface, text_rect)
+
+
 
 class Bullet(EntityCollider):
     def __init__(self, main, player, angle, speed, firingDistance, decay, gun, width, height, collisionMap, scanArea, x, y, xOffset, yOffset):
@@ -84,6 +101,7 @@ class Bullet(EntityCollider):
         self.height = height * self.main.scale
         self.startTime = time.time()
         self.decayed = False
+        self.show_ammo_text = True
 
 
 
@@ -101,8 +119,6 @@ class Bullet(EntityCollider):
             self.decayed = True
 
 
-
-
         self.x += self.xVel
         self.y += self.yVel
 
@@ -112,9 +128,9 @@ class Bullet(EntityCollider):
             return
         pygame.draw.rect(canvas,(0, 0, 0),pygame.Rect(self.x - self.width/2, self.y - self.height/2, self.width, self.height))
 
-
     def skud(self, enemy):
         # tjek om bullet rammer fjenden
         bullet_rect = pygame.Rect(self.x - self.width / 2, self.y - self.height / 2, self.width, self.height)
         enemy_rect = pygame.Rect(enemy.x + enemy.xOffset, enemy.y + enemy.yOffset, enemy.width, enemy.height)
         return bullet_rect.colliderect(enemy_rect)
+
