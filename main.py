@@ -9,6 +9,7 @@ from gun import Gun
 from button import Button
 from enemy import Tank, Sprinter, Boss
 from farm import Farm
+from wavespawner import spawn_enemy_around_island
 
 
 class Main():
@@ -25,6 +26,7 @@ class Main():
 
         self.DISPLAY_W, self.DISPLAY_H = tile_columns * self.tile_size, tile_rows * self.tile_size  # ønsket antal af viste tiles på begge led
         self.scale = round(self.windowWidth / self.DISPLAY_W)  # forholdet for en pixel når den forstørres på skærm
+        self.real_tile_size = self.tile_size * self.scale
 
         updateJson(self.tile_size)  # Json filer er dem som giver lokationen og størrelse for alle sprites
         # forskellige niveauer af tilemaps, så græs bliver tegnet oven på vand, osv.
@@ -40,18 +42,16 @@ class Main():
                              "Levels/MainLevel_Collision player.csv", scanArea=(2, 2))
         self.camera = Camera(self, self.player, 0.075, 100)
         self.gun = Gun(self, self.player, self.camera, "Images/gun.png", 15)
-        self.farm = Farm(self, self.player, "Levels/MainLevel_Farm.csv", "Levels/MainLevel_Farm boundary.csv")
+        self.farm = Farm(self, self.player, "Farm/Farm_Area.csv", "Levels/MainLevel_Farm boundary.csv", "Farm/Plant_Area.csv")
 
-        self.enemies = [
-            Sprinter(self, self.player, self.maps[0].map_w, self.maps[0].map_h, "Levels/MainLevel_Collision enemy.csv"),
-            Tank(self, self.player, self.maps[0].map_w, self.maps[0].map_h, "Levels/MainLevel_Collision enemy.csv"),
-            Boss(self, self.player, self.maps[0].map_w, self.maps[0].map_h, "Levels/MainLevel_Collision enemy.csv")
-        ]
+        self.enemies = []
         self.bullets = []
+        self.plants = []
 
         self.wave_start = False
         self.show_text = False
         self.wave_text_timer = 0
+        self.wave_number = 1
 
     def run(self):
         self.running = True
@@ -60,6 +60,7 @@ class Main():
         mapCanvas = pygame.Surface((self.maps[0].map_w, self.maps[0].map_h))
         for map in self.maps:
             map.draw_map(mapCanvas)
+
 
         while self.running:
             self.clock.tick(60)  # 60 fps
@@ -103,13 +104,12 @@ class Main():
 # ------------------------------------------------ TEGNER TING OG SAGER ------------------------------------------------
             self.canvas.blit(mapCanvas, (0, 0))
             self.farm.draw_farm(self.canvas)
-            self.farm.draw_transparent_farmland(self.canvas)
-            # visualisere colliders
-            # for collider in checkNearbyTiles(self.tile_size, self.scale, read_csv('Levels/MainLevel_Collision player.csv'), self.player.x + self.player.width, self.player.y + self.player.height, scanTiles=((0,-1), (-1, 0), (0, 1), (1, 0))):
-            #    pygame.draw.rect(self.canvas, (255, 0, 0), pygame.Rect(collider.x, collider.y, collider.width, collider.height))
+            self.farm.draw_transparent_tile(self.canvas)
 
-            self.player.draw_player(self.canvas)
-            self.gun.draw_gun(self.canvas)
+            for plant in self.plants:
+                plant.update()
+                plant.draw(self.canvas)
+
             for enemy in self.enemies:
                 enemy.update(self.player)
                 enemy.draw_enemy(self.canvas)
@@ -117,6 +117,12 @@ class Main():
             for bullet in self.bullets:
                 bullet.draw(self.canvas)
 
+            self.player.draw_player(self.canvas)
+            self.gun.draw_gun(self.canvas)
+
+            # visualisere colliders
+            # for collider in checkNearbyTiles(self.tile_size, self.scale, read_csv('Levels/MainLevel_Collision player.csv'), self.player.x + self.player.width, self.player.y + self.player.height, scanTiles=((0,-1), (-1, 0), (0, 1), (1, 0))):
+            #    pygame.draw.rect(self.canvas, (255, 0, 0), pygame.Rect(collider.x, collider.y, collider.width, collider.height))
 # ------------------------------------------------ FINDER SKÆRM OMRÅDE -------------------------------------------------
             self.screen_region = ((xCamera, yCamera), pygame.display.get_window_size())  # området hvor skærmen er
             self.canvas.set_clip(pygame.Rect(self.screen_region))  # modificere pixels kun indenfor skærm området
@@ -127,9 +133,10 @@ class Main():
             self.farm.drawUI(self.window)
 
             if self.show_text:
-                self.wave_text(self.window, "Wave 1", (255, 0, 0))
-                if pygame.time.get_ticks() - self.wave_text_timer > 1500: #viser hvor lang tid teksten skal være på skærmen
+                self.wave_text(self.window, f"Wave {self.wave_number}", (255, 0, 0))
+                if pygame.time.get_ticks() - self.wave_text_timer > 1500:  # Viser hvor lang tid teksten skal være på skærmen
                     self.show_text = False
+                    self.wave_number += 1 #øger tallet hver gang funktionen er kaldet
 
             pygame.display.update()  # updater skærm så disse ændringer kan ses
 
