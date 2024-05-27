@@ -5,7 +5,6 @@ import math
 import random
 from collider import Collider
 from hjælpeFunktioner import read_csv,rectCollisionChecker, checkNearbyTiles
-from gun import Bullet
 
 class Enemy:
     def __init__(self, main, player, name, map_width, map_height, xOffset, yOffset, width, height, health, damage, speed,collisionMap,scanArea):
@@ -108,21 +107,21 @@ class Enemy:
 
 class Sprinter(Enemy):
     def __init__(self, main, player, map_width, map_height, collisionMap):
-        super().__init__(main, player, "Sprinter", map_width, map_height, 3, 2, 10, 10, 10, 2, 3, collisionMap, scanArea=(3, 3))
+        super().__init__(main, player, "Sprinter", map_width, map_height, 3, 2, 10, 10, 2, 2, 3, collisionMap, scanArea=(3, 3))
         self.Enemy_img = goblinSpritesheet.parse_sprite("goblin4.png")
         self.Enemy_img = pygame.transform.scale_by(self.Enemy_img, self.main.scale)
         self.Enemy_rect = self.Enemy_img.get_rect()
 
 class Tank(Enemy):
     def __init__(self, main, player, map_width, map_height, collisionMap):
-        super().__init__(main, player, "Tank", map_width, map_height, 3, 2, 10, 10, 30, 5, 0.3, collisionMap, scanArea=(3, 3))
+        super().__init__(main, player, "Tank", map_width, map_height, 3, 2, 10, 10, 2, 5, 0.3, collisionMap, scanArea=(3, 3))
         self.Enemy_img = enemySpritesheet.parse_sprite("kylling4.png")
         self.Enemy_img = pygame.transform.scale_by(self.Enemy_img, self.main.scale)
         self.Enemy_rect = self.Enemy_img.get_rect()
 
 class Boss(Enemy):
     def __init__(self, main, player, map_width, map_height, collisionMap):
-        super().__init__(main, player, "Boss", map_width, map_height, 3, 2, 10, 10, 100, 10, 1, collisionMap, scanArea=(3, 3))
+        super().__init__(main, player, "Boss", map_width, map_height, 3, 2, 10, 10, 2, 10, 1, collisionMap, scanArea=(3, 3))
         self.Enemy_img = enemySpritesheet.parse_sprite("kylling4.png")
         self.Enemy_img = pygame.transform.scale_by(self.Enemy_img, self.main.scale)
         self.Enemy_rect = self.Enemy_img.get_rect()

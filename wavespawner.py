@@ -8,15 +8,11 @@ def spawn_enemy_around_island(main, enemy_type):
     x = main.maps[1].map_w / 2 + map_radius * math.cos(angle)
     y = main.maps[1].map_h / 2 + map_radius * math.sin(angle)
 
-
-    new_enemy = enemy_type(main, main.player, main.maps[1].map_w, main.maps[1].map_h,
-                           "Levels/MainLevel_Collision enemy.csv")
+    new_enemy = enemy_type(main, main.player, main.maps[1].map_w, main.maps[1].map_h,"Levels/MainLevel_Collision enemy.csv")
     new_enemy.x = x
     new_enemy.y = y
     new_enemy.sværhed(main.wave_number)
     main.enemies.append(new_enemy)
-
-
 
 
 class WaveManager:
