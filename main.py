@@ -131,6 +131,7 @@ class Main():
             self.window.blit(self.canvas, (0, 0), self.screen_region)  # tegner canvas på skærm og kun det område som kan ses
             # UI
             self.farm.drawUI(self.window)
+            self.gun.drawUI(self.window)
 
             if self.show_text:
                 self.wave_text(self.window, f"Wave {self.wave_number}", (255, 0, 0))
@@ -188,6 +189,13 @@ class Main():
     def gameover(self):
         self.running = True
         startCanvas = pygame.Surface((self.windowWidth, self.windowHeight))
+
+
+        def start():  # Start funktion der starter spillet når der bliver trykket play.
+            self.running = False
+            self.run()
+            self.gameover()
+            quit()
 
         font = pygame.font.Font('freesansbold.ttf', 75)
         text = font.render("The farm was stormed", True, (0, 0, 0))

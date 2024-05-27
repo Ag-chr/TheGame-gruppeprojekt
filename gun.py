@@ -1,7 +1,6 @@
 import pygame
 import math
 import time
-import threading
 
 from entityCollider import EntityCollider
 
@@ -20,9 +19,12 @@ class Gun:
         self.yPlayer = None
         self.counter = 0
         self.ammo = 30
+        self.timeStart = time.time()
+        self.tick = time.time()
+
 
     def checkInput(self, event):
-        self.counter = self.counter + 0.5
+
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == pygame.BUTTON_LEFT:
                 if self.counter > 1 and self.ammo > 0:
@@ -75,11 +77,11 @@ class Gun:
             num += 360
         return num
 
-    def drawUI(self):
+    def drawUI(self, canvas):
         font = pygame.font.Font('freesansbold.ttf', 45)
         text_surface = font.render(f"Ammo: {self.ammo}", True, (0, 0, 0))
         text_rect = text_surface.get_rect(center=(150, 150))
-        self.main.window.blit(text_surface, text_rect)
+        canvas.blit(text_surface, text_rect)
 
 
 
@@ -109,7 +111,7 @@ class Bullet(EntityCollider):
         xScreen, yScreen = self.main.screen_region[0]
         wScreen, hScreen = self.main.screen_region[1]
 
-        if xScreen > self.x or yScreen > self.y or wScreen + xScreen < self.x or hScreen + yScreen < self.y:
+        if time.time() > self.startTime + 4:
             self.decayed = True
             return
         self.xVel = math.cos(self.angle) * self.speed
