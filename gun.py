@@ -27,9 +27,10 @@ class Gun:
 
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == pygame.BUTTON_LEFT:
-                if self.counter > 1 and self.ammo > 0:
-                    self.ammo = self.ammo - 1
-                    self.main.bullets.append(Bullet(self.main, self.player, self.angleFromPlayerToMouse, 3, self.distance, 1, self, 2, 2, "Levels/MainLevel_Collision enemy.csv", (2,2), 0, 0, 0, 0))
+                if time.time() > self.tick + 0.5 and self.ammo > 0:
+                    self.tick = time.time()
+                    self.ammo -= 1
+                    self.main.bullets.append(Bullet(self.main, self.angleFromPlayerToMouse, 3, self.distance, 1, 2, 2, "Levels/MainLevel_Collision enemy.csv", (2,2), self.xPlayer, self.yPlayer, 0, 0))
                     self.counter = 0
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_r:
@@ -86,30 +87,29 @@ class Gun:
 
 
 class Bullet(EntityCollider):
-    def __init__(self, main, player, angle, speed, firingDistance, decay, gun, width, height, collisionMap, scanArea, x, y, xOffset, yOffset):
+    def __init__(self, main, angle, speed, firingDistance, decay, width, height, collisionMap, scanArea, x, y, xOffset, yOffset):
         EntityCollider.__init__(self, main, x, y, xOffset, yOffset, speed, width, height, collisionMap, scanArea)
         self.main = main
-        self.player = player
-        self.gun = gun
         self.angle = angle
         self.speed = speed * self.main.scale
         self.firingDistance = firingDistance
         self.decay = decay
-        self.x = (self.gun.x)
-        #+ self.gun.image_rect.w)
-        self.y = (self.gun.y)
-        #+ self.gun.image_rect.h)
+        self.x = x
+        self.y = y
         self.width = width * self.main.scale
         self.height = height * self.main.scale
         self.startTime = time.time()
         self.decayed = False
         self.show_ammo_text = True
 
+        self.ammo_image = pygame.Surface((self.width, self.height))
+        pygame.draw.rect(self.ammo_image, (0, 0, 0),pygame.Rect(0, 0, self.width, self.height))
+
 
 
     def update(self):
-        xScreen, yScreen = self.main.screen_region[0]
-        wScreen, hScreen = self.main.screen_region[1]
+        if self.decayed:
+            return
 
         if time.time() > self.startTime + 4:
             self.decayed = True
@@ -120,15 +120,15 @@ class Bullet(EntityCollider):
         if xObstructed or yObstructed:
             self.decayed = True
 
-
         self.x += self.xVel
         self.y += self.yVel
 
 
     def draw(self, canvas):
-        if self.decayed == True:
+        if self.decayed:
             return
-        pygame.draw.rect(canvas,(0, 0, 0),pygame.Rect(self.x - self.width/2, self.y - self.height/2, self.width, self.height))
+        canvas.blit(self.ammo_image, (self.x - self.width/2, self.y - self.height/2))
+
 
     def skud(self, enemy):
         # tjek om bullet rammer fjenden

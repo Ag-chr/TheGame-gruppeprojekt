@@ -29,19 +29,21 @@ def checkNearbyTiles(tile_size, scale, collisionMap, x, y, scanArea=(2, 2), scan
 
     yGrid = int(y // real_tile_size)
     xGrid = int(x // real_tile_size)
+    try:
+        if scanTiles is None:
+            for y in range(yGrid, yGrid + scanHeight):
+                for x in range(xGrid, xGrid + scanWidth):
+                    tileID = collisionMap[y][x]
+                    if tileID == "-1": continue
+                    nearbyColliders.append(Collider(tile_size, scale, x * real_tile_size, y * real_tile_size, tileID=tileID))
+        else:
+            for tile in scanTiles:
+                y = tile[1] + yGrid
+                x = tile[0] + xGrid
 
-    if scanTiles is None:
-        for y in range(yGrid, yGrid + scanHeight):
-            for x in range(xGrid, xGrid + scanWidth):
                 tileID = collisionMap[y][x]
                 if tileID == "-1": continue
                 nearbyColliders.append(Collider(tile_size, scale, x * real_tile_size, y * real_tile_size, tileID=tileID))
-    else:
-        for tile in scanTiles:
-            y = tile[1] + yGrid
-            x = tile[0] + xGrid
-
-            tileID = collisionMap[y][x]
-            if tileID == "-1": continue
-            nearbyColliders.append(Collider(tile_size, scale, x * real_tile_size, y * real_tile_size, tileID=tileID))
-    return nearbyColliders
+        return nearbyColliders
+    except:
+        return []
