@@ -9,7 +9,7 @@ from gun import Gun
 from button import Button
 from enemy import Tank, Sprinter, Boss
 from farm import Farm
-from wavespawner import spawn_enemy_around_island
+from wavespawner import WaveManager
 
 
 class Main():
@@ -53,8 +53,17 @@ class Main():
         self.wave_text_timer = 0
         self.wave_number = 1
 
+        self.wave_manager = WaveManager(self, [
+            {'type': Sprinter, 'interval': 2, 'base_count': 5},
+            {'type': Tank, 'interval': 5, 'base_count': 3},
+            {'type': Boss, 'interval': 10, 'base_count': 1}
+        ])
+
+
     def run(self):
         self.running = True
+
+        self.wave_manager.start_waves()
 
         # tegner mappet og gemmer i billede/canvas, som kan derefter tegnes
         mapCanvas = pygame.Surface((self.maps[0].map_w, self.maps[0].map_h))
@@ -77,10 +86,12 @@ class Main():
                 self.player.checkInput(event)
                 self.gun.checkInput(event)
                 self.farm.checkInput(event)
+                self.wave_manager.handle_event(event)
 # ------------------------------------------------ OPDATERE TING OG SAGER ----------------------------------------------
             self.player.update()
             self.gun.update()
             self.camera.update()
+            self.wave_manager.update()
             xCamera, yCamera = self.camera.getCameraPos()
 
             for bullet in self.bullets[:]:
