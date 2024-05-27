@@ -6,6 +6,7 @@ from tiles import TileMap
 from getSpritesheets import farmSpritesheet
 import csv
 import math
+from gun import Bullet
 
 class Farm:
     def __init__(self, main, player, farm_csv, farm_boundary, plant_csv):
@@ -180,7 +181,7 @@ class Farm:
                 file.write("\n")
 
 class Plant:
-    def __init__(self, main, image, x, y, targets: list):
+    def __init__(self, main, image, x, y, targets: list, health, damage, firingspeed):
         self.main = main
         self.image = image
         self.width = 16 * self.main.scale
@@ -188,9 +189,12 @@ class Plant:
         self.x = x
         self.y = y
         self.targets = targets
+        self.target = None
+        self.health = health
+        self.damage = damage
+        self.firingspeed = firingspeed
         self.xblock = None
         self.yblock = None
-        self.target = None
 
     def draw(self, canvas):
         canvas.blit(self.image, (self.x, self.y))
@@ -204,10 +208,13 @@ class Plant:
         yCenter = self.y + self.height / 2
 
         self.target = self.nearest_target()
-        angle_to_target = math.atan2(self.target.y - xCenter, self.target.x - yCenter)
+        angle_to_target = math.atan2(self.target.y - yCenter, self.target.x - xCenter)
 
         self.xblock = math.cos(angle_to_target) * 6 * self.main.scale + xCenter
         self.yblock = math.sin(angle_to_target) * 6 * self.main.scale + yCenter
+
+    def shoot(self):
+        self.main.bullets.append()
 
     def nearest_target(self):
         min_distance = math.inf
@@ -223,13 +230,13 @@ class Plant:
 
 class Plant1(Plant):
     def __init__(self, main, image, x, y, targets):
-        super().__init__(main, image, x, y, targets)
+        super().__init__(main, image, x, y, targets, 5, 1, 1)
 
 
 class Plant2(Plant):
     def __init__(self, main, image, x, y, targets):
-        super().__init__(main, image, x, y, targets)
+        super().__init__(main, image, x, y, targets, 10, 2, 0.75)
 
 class Plant3(Plant):
     def __init__(self, main, image, x, y, targets):
-        super().__init__(main, image, x, y, targets)
+        super().__init__(main, image, x, y, targets, 15, 3, 0.5)
