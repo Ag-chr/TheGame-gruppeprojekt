@@ -69,21 +69,24 @@ class Enemy:
             if self.health <= 0:
                 self.dead = True
                 self.visible = False
+                self.main.enemies.remove(self)
+                print("dead")
 
     def update(self, player):
-        if not self.dead:
-            xObstructed, yObstructed = self.checkCollision()
+        if self.dead:
+            return
+        xObstructed, yObstructed = self.checkCollision()
 
-            distanceFromPlayer = math.sqrt((self.player.y - self.y) ** 2 + (self.player.x - self.x) ** 2)
-            angleToPlayer = math.atan2(self.player.y - self.y, self.player.x - self.x)
+        distanceFromPlayer = math.sqrt((self.player.y - self.y) ** 2 + (self.player.x - self.x) ** 2)
+        angleToPlayer = math.atan2(self.player.y - self.y, self.player.x - self.x)
 
-            self.xVel = math.cos(angleToPlayer) * self.speed
-            self.yVel = math.sin(angleToPlayer) * self.speed
+        self.xVel = math.cos(angleToPlayer) * self.speed
+        self.yVel = math.sin(angleToPlayer) * self.speed
 
-            if not xObstructed:
-                self.x += self.xVel
-            if not yObstructed:
-                self.y += self.yVel
+        if not xObstructed:
+            self.x += self.xVel
+        if not yObstructed:
+            self.y += self.yVel
 
 
 

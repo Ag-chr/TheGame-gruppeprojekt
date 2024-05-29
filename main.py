@@ -92,9 +92,8 @@ class Main():
             self.gun.update()
             self.camera.update()
             self.wave_manager.update()
-            xCamera, yCamera = self.camera.getCameraPos()
 
-            for bullet in self.bullets[:]:
+            for bullet in self.bullets:
                 bullet.update()
                 for enemy in self.enemies:
                     if bullet.skud(enemy):
@@ -135,7 +134,7 @@ class Main():
             # for collider in checkNearbyTiles(self.tile_size, self.scale, read_csv('Levels/MainLevel_Collision player.csv'), self.player.x + self.player.width, self.player.y + self.player.height, scanTiles=((0,-1), (-1, 0), (0, 1), (1, 0))):
             #    pygame.draw.rect(self.canvas, (255, 0, 0), pygame.Rect(collider.x, collider.y, collider.width, collider.height))
 # ------------------------------------------------ FINDER SKÆRM OMRÅDE -------------------------------------------------
-            self.screen_region = ((xCamera, yCamera), pygame.display.get_window_size())  # området hvor skærmen er
+            self.screen_region = ((self.camera.getCameraPos()), pygame.display.get_window_size())  # området hvor skærmen er
             self.canvas.set_clip(pygame.Rect(self.screen_region))  # modificere pixels kun indenfor skærm området
 
             # ------------------------------------------------ PUTTER TEGNET TING OG SAGER PÅ SKÆRM --------------------------------

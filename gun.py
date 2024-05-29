@@ -30,7 +30,7 @@ class Gun:
                 if time.time() > self.tick + 0.5 and self.ammo > 0:
                     self.tick = time.time()
                     self.ammo -= 1
-                    self.main.bullets.append(Bullet(self.main, self.angleFromPlayerToMouse, 3, self.distance, 1, 2, 2, "Levels/MainLevel_Collision enemy.csv", (2,2), self.xPlayer, self.yPlayer, 0, 0))
+                    self.main.bullets.append(Bullet(self.main, self.angleFromPlayerToMouse, 3, 1, 2, 2, "Levels/MainLevel_Collision enemy.csv", (2,2), self.xPlayer, self.yPlayer, 0, 0))
                     self.counter = 0
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_r:
@@ -87,12 +87,11 @@ class Gun:
 
 
 class Bullet(EntityCollider):
-    def __init__(self, main, angle, speed, firingDistance, decay, width, height, collisionMap, scanArea, x, y, xOffset, yOffset):
-        EntityCollider.__init__(self, main, x, y, xOffset, yOffset, speed, width, height, collisionMap, scanArea)
+    def __init__(self, main, angle, speed, decay, width, height, collisionMap, scanArea, x, y, xOffset, yOffset):
+        EntityCollider.__init__(self, main, speed, collisionMap, x, y, xOffset, yOffset, width, height, scanArea)
         self.main = main
         self.angle = angle
         self.speed = speed * self.main.scale
-        self.firingDistance = firingDistance
         self.decay = decay
         self.x = x
         self.y = y

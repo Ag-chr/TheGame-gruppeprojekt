@@ -7,6 +7,7 @@ from getSpritesheets import farmSpritesheet
 import csv
 import math
 from gun import Bullet
+import time
 
 class Farm:
     def __init__(self, main, player, farm_csv, farm_boundary, plant_csv):
@@ -47,11 +48,12 @@ class Farm:
         self.image_key = "image"
         self.placeable_tile_key = "placeable_tile"
         self.class_key = "class"
+        self.firing_distance_key = "firing_distance"
 
         self.selection = [{self.image_key: self.farmland_image, self.placeable_tile_key: "-1"},
-                          {self.image_key: self.plant1_image, self.placeable_tile_key: "12", "class": Plant1},
-                          {self.image_key: self.plant2_image, self.placeable_tile_key: "12", "class": Plant2},
-                          {self.image_key: self.plant3_image, self.placeable_tile_key: "12", "class": Plant3}]
+                          {self.image_key: self.plant1_image, self.placeable_tile_key: "12", self.firing_distance_key: 100 * self.main.scale, "class": Plant1},
+                          {self.image_key: self.plant2_image, self.placeable_tile_key: "12", self.firing_distance_key: 150 * self.main.scale, "class": Plant2},
+                          {self.image_key: self.plant3_image, self.placeable_tile_key: "12", self.firing_distance_key: 200 * self.main.scale, "class": Plant3}]
         self.currentSelection = 0
 
     def checkInput(self, event):
@@ -89,12 +91,11 @@ class Farm:
     def drawUI(self, canvas):
         scale = self.main.scale
         width, height = 35 * scale, 35 * scale
-        tile = None
 
         background = pygame.Surface((width, height))
         background.set_alpha(150)
-        tile = self.selection[self.currentSelection][self.image_key]
 
+        tile = self.selection[self.currentSelection][self.image_key]
         canvas.blit(background, (self.main.windowWidth - width - 10 * scale, self.main.windowHeight - height - 10 * scale))
         canvas.blit(tile, (self.main.windowWidth - width/2 - 10 * scale - tile.get_width() /2, self.main.windowHeight - height / 2 - 10 * scale - tile.get_height() / 2))
 
@@ -111,18 +112,24 @@ class Farm:
 
     def draw_transparent_tile(self, canvas):
         x_player_grid, y_player_grid, x_player_boundary, y_player_boundary = self.getPlayerGridPos()
-
         selected = self.selection[self.currentSelection]
 
-        placeable_tile = selected[self.placeable_tile_key]
-        tile_image = selected[self.image_key]
-
-        if not self.is_placeable(x_player_boundary, y_player_boundary, self.farm_csv_array, placeable_tile):
+        if not self.is_placeable(x_player_boundary, y_player_boundary, self.farm_csv_array, selected[self.placeable_tile_key]):
             return
 
-        tile_image_trans = tile_image.copy()
+        tile_image_trans = selected[self.image_key].copy()
         tile_image_trans.set_alpha(150)
         canvas.blit(tile_image_trans, (x_player_grid * self.real_tile_size, y_player_grid * self.real_tile_size))
+
+    def change_num_in_csv(self, csv_file, x, y, num):
+        csv_array = read_csv(csv_file, dialect="unix")
+        csv_array[y][x] = num
+
+        with open(csv_file, "w") as file:
+            csvwriter = csv.writer(file, delimiter=",", dialect="unix")
+            csvwriter.writerows(csv_array)
+
+        return csv_array
 
     def place_farmland(self):
         x_player_grid, y_player_grid, x_player_boundary, y_player_boundary = self.getPlayerGridPos()
@@ -130,11 +137,7 @@ class Farm:
         if not self.is_placeable(x_player_boundary, y_player_boundary, self.farm_csv_array, "-1"):
             return
 
-        self.farm_csv_array[y_player_boundary][x_player_boundary] = "12"
-
-        with open(self.farm_csv, "w") as file:
-            csvwriter = csv.writer(file, delimiter=",", dialect="unix")
-            csvwriter.writerows(self.farm_csv_array)
+        self.farm_csv_array = self.change_num_in_csv(self.farm_csv, x_player_boundary, y_player_boundary, "12")
 
         self.farm_map = TileMap("Farm/Farm_Area.csv", farmSpritesheet, self.main.tile_size, self.main.scale,
                                 x=self.start_of_bounds[0] * self.real_tile_size, y=self.start_of_bounds[1] * self.real_tile_size)
@@ -148,13 +151,10 @@ class Farm:
         if not self.is_placeable(x_player_boundary, y_player_boundary, self.plant_csv_array, selected_plant[self.placeable_tile_key]):
             return
 
-        self.plant_csv_array[y_player_boundary][x_player_boundary] = "-1"
+        self.plant_csv_array = self.change_num_in_csv(self.plant_csv, x_player_boundary, y_player_boundary, "-1")
+        print(x_player_boundary, y_player_boundary)
 
-        with open(self.farm_csv, "w") as file:
-            csvwriter = csv.writer(file, delimiter=",", dialect="unix")
-            csvwriter.writerows(self.farm_csv_array)
-
-        self.main.plants.append(selected_plant[self.class_key](self.main, selected_plant[self.image_key], x_player_grid * self.real_tile_size, y_player_grid * self.real_tile_size, [self.player]))
+        self.main.plants.append(selected_plant[self.class_key](self.main, self, selected_plant[self.image_key], x_player_grid * self.real_tile_size, y_player_grid * self.real_tile_size, self.main.enemies, selected_plant[self.firing_distance_key]))
 
     def find_boundary(self):
         boundary = self.farm_boundary
@@ -181,62 +181,75 @@ class Farm:
                 file.write("\n")
 
 class Plant:
-    def __init__(self, main, image, x, y, targets: list, health, damage, firingspeed):
+    def __init__(self, main, farm, image, x, y, targets: list, health, damage, firingspeed, firing_distance):
         self.main = main
+        self.farm = farm
         self.image = image
-        self.width = 16 * self.main.scale
-        self.height = 16 * self.main.scale
-        self.x = x
-        self.y = y
+        self.x, self.y = x, y
+        self.width = self.height = 16 * self.main.scale
         self.targets = targets
-        self.target = None
+
         self.health = health
         self.damage = damage
         self.firingspeed = firingspeed
-        self.xblock = None
-        self.yblock = None
+        self.firing_distance = firing_distance
+
+        self.xPoint = self.x + self.width / 2
+        self.yPoint = self.y + self.height / 2
+
+        self.startTime = time.time()
+        self.dead = False
 
     def draw(self, canvas):
         canvas.blit(self.image, (self.x, self.y))
-        pygame.draw.rect(canvas, (0, 0, 0), (self.xblock, self.yblock, 1 * self.main.scale, 1 * self.main.scale))
-        pygame.draw.rect(canvas, (0, 0, 0), (self.x + self.width / 2, self.y + self.height / 2, 2 * self.main.scale, 2 * self.main.scale))
-        pygame.draw.rect(canvas, (0, 0, 0), (self.target.x, self.target.y, 2 * self.main.scale, 2 * self.main.scale))
-
+        width = height = self.main.scale
+        pygame.draw.rect(canvas, (0, 0, 0), (self.xPoint - width / 2, self.yPoint - height / 2, width, height))
 
     def update(self):
-        xCenter = self.x + self.width / 2
-        yCenter = self.y + self.height / 2
+        self.targets = self.main.enemies
+        target = self.nearest_target()
 
-        self.target = self.nearest_target()
-        angle_to_target = math.atan2(self.target.y - yCenter, self.target.x - xCenter)
+        if target is None:
+            return
+        xCenter, yCenter = self.x + self.width / 2, self.y + self.height / 2
+        angle_to_target = math.atan2(target.y + target.height / 2 - yCenter, target.x + target.width / 2 - xCenter)
 
-        self.xblock = math.cos(angle_to_target) * 6 * self.main.scale + xCenter
-        self.yblock = math.sin(angle_to_target) * 6 * self.main.scale + yCenter
+        self.xPoint = math.cos(angle_to_target) * 6 * self.main.scale + xCenter
+        self.yPoint = math.sin(angle_to_target) * 6 * self.main.scale + yCenter
 
-    def shoot(self):
-        self.main.bullets.append()
+        if time.time() > self.startTime + self.firingspeed:
+            self.startTime = time.time()
+            self.main.bullets.append(Bullet(self.main, angle_to_target, 3, 1, 2, 2, "Levels/MainLevel_Collision enemy.csv", (2, 2), xCenter, yCenter, 0, 0))
 
     def nearest_target(self):
         min_distance = math.inf
         nearest_target = None
         for target in self.targets:
             distance = math.sqrt((target.x - (self.x - self.width / 2))**2 + (target.y - (self.y + self.height / 2))**2)
-            if distance < min_distance:
+            if distance < min_distance and distance < self.firing_distance:
                 min_distance = distance
                 nearest_target = target
         return nearest_target
 
+    def hit(self, damage):
+        self.health -= damage
+        if self.health <= 0:
+            self.main.plants.remove(self)
+            xboundary = (self.x // (self.main.tile_size * self.main.scale)) - self.farm.start_of_bounds[0]
+            yboundary = (self.y // (self.main.tile_size * self.main.scale)) - self.farm.start_of_bounds[1]
+            self.farm.plant_csv_array = self.farm.change_num_in_csv(self.farm.plant_csv, xboundary, yboundary, "12")
 
 
 class Plant1(Plant):
-    def __init__(self, main, image, x, y, targets):
-        super().__init__(main, image, x, y, targets, 5, 1, 1)
+    def __init__(self, main, farm, image, x, y, targets, firing_distance):
+        super().__init__(main, farm, image, x, y, targets, 5, 1, 2, firing_distance)
 
 
 class Plant2(Plant):
-    def __init__(self, main, image, x, y, targets):
-        super().__init__(main, image, x, y, targets, 10, 2, 0.75)
+    def __init__(self, main, farm, image, x, y, targets, firing_distance):
+        super().__init__(main, farm, image, x, y, targets, 10, 2, 1.5, firing_distance)
+
 
 class Plant3(Plant):
-    def __init__(self, main, image, x, y, targets):
-        super().__init__(main, image, x, y, targets, 15, 3, 0.5)
+    def __init__(self, main, farm, image, x, y, targets, firing_distance):
+        super().__init__(main, farm, image, x, y, targets, 15, 3, 1, firing_distance)
