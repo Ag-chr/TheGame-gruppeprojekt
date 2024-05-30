@@ -63,8 +63,6 @@ class Main():
     def run(self):
         self.running = True
 
-        self.wave_manager.start_waves()
-
         # tegner mappet og gemmer i billede/canvas, som kan derefter tegnes
         mapCanvas = pygame.Surface((self.maps[0].map_w, self.maps[0].map_h))
         for map in self.maps:
@@ -108,6 +106,7 @@ class Main():
 
             if not self.wave_start and (self.player.xVel != 0 or self.player.yVel != 0): #Hvis playeren bevæger sig kommer teksten frem
                 self.wave_start = True
+                self.wave_manager.start_waves()
                 self.show_text = True
                 self.wave_text_timer = pygame.time.get_ticks()
 
@@ -147,7 +146,6 @@ class Main():
                 self.wave_text(self.window, f"Wave {self.wave_number}", (255, 0, 0))
                 if pygame.time.get_ticks() - self.wave_text_timer > 1500:  # Viser hvor lang tid teksten skal være på skærmen
                     self.show_text = False
-                    self.wave_number += 1 #øger tallet hver gang funktionen er kaldet
 
             pygame.display.update()  # updater skærm så disse ændringer kan ses
 
