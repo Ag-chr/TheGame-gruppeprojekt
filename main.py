@@ -58,7 +58,7 @@ class Main():
             {'type': Tank, 'interval': 5, 'base_count': 3},
             {'type': Boss, 'interval': 10, 'base_count': 1}
         ])
-
+        self.money = 0
 
     def run(self):
         self.running = True
@@ -140,6 +140,7 @@ class Main():
             # UI
             self.farm.drawUI(self.window)
             self.gun.drawUI(self.window)
+            self.money_ui(self.window, f"Money: {self.money}", (0, 0, 0))
 
             if self.show_text:
                 self.wave_text(self.window, f"Wave {self.wave_number}", (255, 0, 0))
@@ -152,6 +153,12 @@ class Main():
         font = pygame.font.Font('freesansbold.ttf', 75)
         text_surface = font.render(text, True, color)
         text_rect = text_surface.get_rect(center=(self.windowWidth // 2, self.windowHeight // 2))
+        surface.blit(text_surface, text_rect)
+
+    def money_ui(self, surface, text, color):
+        font = pygame.font.Font('freesansbold.ttf', 45)
+        text_surface = font.render(text, True, color)
+        text_rect = text_surface.get_rect(center=(self.windowWidth/2, 210 * self.scale))
         surface.blit(text_surface, text_rect)
 
 
