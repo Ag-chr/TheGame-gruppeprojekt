@@ -58,7 +58,7 @@ class Main():
             {'type': Tank, 'interval': 5, 'base_count': 3},
             {'type': Boss, 'interval': 10, 'base_count': 1}
         ])
-        self.money = 10000
+        self.money = 0
 
     def run(self):
         self.running = True

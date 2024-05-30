@@ -80,7 +80,7 @@ class Gun:
     def drawUI(self, canvas):
         font = pygame.font.Font('freesansbold.ttf', 45)
         text_surface = font.render(f"Ammo: {self.ammo}", True, (0, 0, 0))
-        text_rect = text_surface.get_rect(center=(150, 150))
+        text_rect = text_surface.get_rect(center=(30 * self.main.scale, 10 * self.main.scale))
         canvas.blit(text_surface, text_rect)
 
 
