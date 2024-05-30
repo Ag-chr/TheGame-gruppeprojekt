@@ -68,10 +68,9 @@ class Enemy:
             self.health -= 1
             if self.health <= 0:
                 self.dead = True
+                self.main.money += 10
                 self.visible = False
                 self.main.enemies.remove(self)
-                print("dead")
-
     def update(self, player):
         if self.dead:
             return
