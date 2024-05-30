@@ -27,15 +27,14 @@ class Gun:
 
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == pygame.BUTTON_LEFT:
-                if time.time() > self.tick + 0.5 and self.ammo > 0:
+                if time.time() > self.tick + 0.06 and self.ammo > 0:
                     self.tick = time.time()
                     self.ammo -= 1
                     self.main.bullets.append(Bullet(self.main, self.angleFromPlayerToMouse, 3, 1, 2, 2, "Levels/MainLevel_Collision enemy.csv", (2,2), self.xPlayer, self.yPlayer, 0, 0))
-                    self.counter = 0
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_r:
                 self.ammo = 30
-                self.counter = -10
+                self.tick = time.time() + 1
 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
