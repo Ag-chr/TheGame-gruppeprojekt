@@ -15,6 +15,9 @@ class Farm:
         self.player = player
         self.real_tile_size = self.main.tile_size * self.main.scale
 
+        self.x = self.main.maps[0].map_w / 2
+        self.y = self.main.maps[0].map_h / 2
+
         self.farmland_tile = "12"
         self.boundary_tile = "10"
 
@@ -208,6 +211,7 @@ class Plant:
     def update(self):
         self.targets = self.main.enemies
         target = self.nearest_target()
+        return
 
         if target is None:
             return
@@ -238,7 +242,6 @@ class Plant:
             xboundary = (self.x // (self.main.tile_size * self.main.scale)) - self.farm.start_of_bounds[0]
             yboundary = (self.y // (self.main.tile_size * self.main.scale)) - self.farm.start_of_bounds[1]
             self.farm.plant_csv_array = self.farm.change_num_in_csv(self.farm.plant_csv, xboundary, yboundary, "12")
-
 
 class Plant1(Plant):
     def __init__(self, main, farm, image, x, y, targets, firing_distance):

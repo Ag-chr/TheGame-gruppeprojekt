@@ -5,6 +5,10 @@ import math
 import random
 from collider import Collider
 from hjælpeFunktioner import read_csv,rectCollisionChecker, checkNearbyTiles
+from farm import Farm, Plant
+from player import Player
+import time
+
 
 class Enemy:
     def __init__(self, main, player, name, map_width, map_height, xOffset, yOffset, width, height, health, damage, speed,collisionMap,scanArea):
@@ -27,9 +31,9 @@ class Enemy:
         self.xVel = 0
         self.yVel = 0
 
-        # Random spawn
-        self.x = random.randint(0, map_width - self.width)
-        self.y = random.randint(0, map_height - self.width)
+        self.x = random.randint(0, map_width)
+        self.y = random.randint(0, map_height)
+
 
         self.collisionMap = read_csv(collisionMap)
 
@@ -39,6 +43,11 @@ class Enemy:
         self.Enemy_img = enemySpritesheet.parse_sprite("kylling0.png")  # giver udsnit af sprite0 fra json fil
         self.Enemy_img = pygame.transform.scale_by(self.Enemy_img, self.main.scale)
         self.Enemy_rect = self.Enemy_img.get_rect()  # giver bredde og højde af enemy
+
+        self.attack_range = 50
+        self.attack_cooldown = 1.0
+        self.last_attack_time = 0
+
 
 
     def draw_enemy(self, canvas):
@@ -70,25 +79,46 @@ class Enemy:
                 self.dead = True
                 self.visible = False
                 self.main.enemies.remove(self)
-                print("dead")
 
-    def update(self, player):
+    def update(self, player, farm):
         if self.dead:
             return
         xObstructed, yObstructed = self.checkCollision()
 
-        distanceFromPlayer = math.sqrt((self.player.y - self.y) ** 2 + (self.player.x - self.x) ** 2)
-        angleToPlayer = math.atan2(self.player.y - self.y, self.player.x - self.x)
+        distancefromplayer = math.sqrt((self.player.y - self.y) ** 2 + (self.player.x - self.x) ** 2)
+        nearest_target = self.player
+        min_distance = distancefromplayer
 
-        self.xVel = math.cos(angleToPlayer) * self.speed
-        self.yVel = math.sin(angleToPlayer) * self.speed
+        # Tjek afstanden til hver plante
+        for plant in self.main.plants:
+            distance = math.sqrt((plant.y - self.y) ** 2 + (plant.x - self.x) ** 2)
+            if distance < min_distance:
+                min_distance = distance
+                nearest_target = plant
+
+        # Hvis fjenden er inden for angrebsafstand, angreb målet
+        if min_distance <= self.attack_range:
+            current_time = time.time()
+            if current_time - self.last_attack_time >= self.attack_cooldown:
+                self.attack(nearest_target)
+                self.last_attack_time = current_time
+            return
+
+        # Beregn retningen til målet (player eller farm)
+        angletotarget = math.atan2(nearest_target.y - self.y, nearest_target.x - self.x)
+
+        self.xVel = math.cos(angletotarget) * self.speed
+        self.yVel = math.sin(angletotarget) * self.speed
 
         if not xObstructed:
             self.x += self.xVel
         if not yObstructed:
             self.y += self.yVel
 
-
+        if not xObstructed:
+            self.x += self.xVel
+        if not yObstructed:
+            self.y += self.yVel
 
     def checkCollision(self) -> (bool, bool):
         self.collider.x, self.collider.y = self.x + self.xOffset, self.y + self.yOffset
@@ -107,10 +137,16 @@ class Enemy:
         self.damage += wave_number
         self.speed += wave_number * 0.1
 
+    def attack(self, target):
+        if isinstance(target, Player):
+            target.hit(self.damage)
+        elif isinstance(target, Plant):
+            target.hit(self.damage)
+
 
 class Sprinter(Enemy):
     def __init__(self, main, player, map_width, map_height, collisionMap):
-        super().__init__(main, player, "Sprinter", map_width, map_height, 3, 2, 10, 10, 2, 2, 3, collisionMap, scanArea=(3, 3))
+        super().__init__(main, player, "Sprinter", map_width, map_height, 3, 2, 10, 10, 2, 2, 1, collisionMap, scanArea=(3, 3))
         self.Enemy_img = goblinSpritesheet.parse_sprite("goblin4.png")
         self.Enemy_img = pygame.transform.scale_by(self.Enemy_img, self.main.scale)
         self.Enemy_rect = self.Enemy_img.get_rect()
@@ -124,8 +160,11 @@ class Tank(Enemy):
 
 class Boss(Enemy):
     def __init__(self, main, player, map_width, map_height, collisionMap):
-        super().__init__(main, player, "Boss", map_width, map_height, 3, 2, 10, 10, 2, 10, 1, collisionMap, scanArea=(3, 3))
+        super().__init__(main, player, "Boss", map_width, map_height, 3, 2, 10, 10, 2, 10, 0.5, collisionMap, scanArea=(3, 3))
         self.Enemy_img = enemySpritesheet.parse_sprite("kylling4.png")
         self.Enemy_img = pygame.transform.scale_by(self.Enemy_img, self.main.scale)
         self.Enemy_rect = self.Enemy_img.get_rect()
+
+
+
 

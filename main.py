@@ -100,10 +100,9 @@ class Main():
                             self.bullets.remove(bullet)
 
             for enemy in self.enemies:
-                enemy.update(self.player)
+                enemy.update(self.player, self.farm)
 
             self.enemies = [enemy for enemy in self.enemies if not enemy.dead]
-
             if not self.wave_start and (self.player.xVel != 0 or self.player.yVel != 0): #Hvis playeren bevæger sig kommer teksten frem
                 self.wave_start = True
                 self.wave_manager.start_waves()
@@ -120,7 +119,7 @@ class Main():
                 plant.draw(self.canvas)
 
             for enemy in self.enemies:
-                enemy.update(self.player)
+                enemy.update(self.player, self.farm)
                 enemy.draw_enemy(self.canvas)
 
             for bullet in self.bullets:

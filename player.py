@@ -13,6 +13,8 @@ class Player:
         self.width = width * self.main.scale
         self.height = height * self.main.scale
         self.speed = speed * self.main.scale
+        self.max_health = 100
+        self.health = self.max_health
 
         self.x = x - (self.xOffset + self.width) / 2
         self.y = y - (self.xOffset + self.width) / 2
@@ -102,3 +104,28 @@ class Player:
         self.player_rect.x = self.x
         self.player_rect.y = self.y
         canvas.blit(self.player_img, self.player_rect)
+
+        healthbar_width = 50
+        healthbar_height = 10
+
+        player_center_x = self.x + self.xOffset + self.width / 2
+
+        healthbar_x = player_center_x - healthbar_width / 2
+
+        # Beregner healthbaren
+        health_width = (self.health / self.max_health) * healthbar_width
+
+        # Tegner den grønne
+        pygame.draw.rect(canvas, (0, 128, 0), (healthbar_x, self.y - 20, health_width, healthbar_height))
+
+        self.hitbox = (self.x + 17, self.y + 4, self.width, self.height)
+
+
+    def hit(self, damage):
+        self.health -= damage
+        if self.health <= 0:
+            self.die()
+
+    def die(self):
+        print("Du død!")
+        #Skal ahve gameover screenen
