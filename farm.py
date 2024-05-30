@@ -49,11 +49,12 @@ class Farm:
         self.placeable_tile_key = "placeable_tile"
         self.class_key = "class"
         self.firing_distance_key = "firing_distance"
+        self.price_key = "price"
 
-        self.selection = [{self.image_key: self.farmland_image, self.placeable_tile_key: "-1"},
-                          {self.image_key: self.plant1_image, self.placeable_tile_key: "12", self.firing_distance_key: 100 * self.main.scale, "class": Plant1},
-                          {self.image_key: self.plant2_image, self.placeable_tile_key: "12", self.firing_distance_key: 150 * self.main.scale, "class": Plant2},
-                          {self.image_key: self.plant3_image, self.placeable_tile_key: "12", self.firing_distance_key: 200 * self.main.scale, "class": Plant3}]
+        self.selection = [{self.image_key: self.farmland_image, self.placeable_tile_key: "-1", self.price_key: 50},
+                          {self.image_key: self.plant1_image, self.placeable_tile_key: "12", self.firing_distance_key: 100 * self.main.scale, "class": Plant1, self.price_key: 100},
+                          {self.image_key: self.plant2_image, self.placeable_tile_key: "12", self.firing_distance_key: 150 * self.main.scale, "class": Plant2, self.price_key: 200},
+                          {self.image_key: self.plant3_image, self.placeable_tile_key: "12", self.firing_distance_key: 200 * self.main.scale, "class": Plant3, self.price_key: 300}]
         self.currentSelection = 0
 
     def checkInput(self, event):
@@ -133,9 +134,14 @@ class Farm:
 
     def place_farmland(self):
         x_player_grid, y_player_grid, x_player_boundary, y_player_boundary = self.getPlayerGridPos()
+        selected_farmland = self.selection[self.currentSelection]
 
         if not self.is_placeable(x_player_boundary, y_player_boundary, self.farm_csv_array, "-1"):
             return
+
+        if self.main.money < selected_farmland[self.price_key]:
+            return
+        self.main.money -= selected_farmland[self.price_key]
 
         self.farm_csv_array = self.change_num_in_csv(self.farm_csv, x_player_boundary, y_player_boundary, "12")
 
@@ -150,6 +156,10 @@ class Farm:
             return
         if not self.is_placeable(x_player_boundary, y_player_boundary, self.plant_csv_array, selected_plant[self.placeable_tile_key]):
             return
+
+        if self.main.money < selected_plant[self.price_key]:
+            return
+        self.main.money -= selected_plant[self.price_key]
 
         self.plant_csv_array = self.change_num_in_csv(self.plant_csv, x_player_boundary, y_player_boundary, "-1")
         print(x_player_boundary, y_player_boundary)
