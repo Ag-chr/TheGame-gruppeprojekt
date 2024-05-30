@@ -76,6 +76,7 @@ class Enemy:
         if self.health > 0:
             self.health -= 1
             if self.health <= 0:
+                self.main.money += 10
                 self.dead = True
                 self.visible = False
                 self.main.enemies.remove(self)

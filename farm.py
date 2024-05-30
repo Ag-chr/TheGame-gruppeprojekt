@@ -221,8 +221,6 @@ class Plant:
     def update(self):
         self.targets = self.main.enemies
         target = self.nearest_target()
-        return
-
         if target is None:
             return
         xCenter, yCenter = self.x + self.width / 2, self.y + self.height / 2
