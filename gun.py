@@ -22,15 +22,13 @@ class Gun:
         self.timeStart = time.time()
         self.tick = time.time()
 
-
     def checkInput(self, event):
-
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == pygame.BUTTON_LEFT:
                 if time.time() > self.tick + 0.06 and self.ammo > 0:
                     self.tick = time.time()
                     self.ammo -= 1
-                    self.main.bullets.append(Bullet(self.main, self.angleFromPlayerToMouse, 3, 1, 2, 2, "Levels/MainLevel_Collision enemy.csv", (2,2), self.xPlayer, self.yPlayer, 0, 0))
+                    self.main.bullets.append(Bullet(self.main, self.angleFromPlayerToMouse, 3, 1, "Levels/MainLevel_Collision enemy.csv", self.xPlayer, self.yPlayer))
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_r:
                 self.ammo = 30
@@ -46,7 +44,6 @@ class Gun:
         xMouse, yMouse = pygame.mouse.get_pos()
         xMouse += xCamera
         yMouse += yCamera
-
 
         # find vinklen fra player til musets koordinater
         self.xPlayer = self.player.x + self.main.tile_size * self.main.scale / 2
@@ -84,26 +81,17 @@ class Gun:
         canvas.blit(text_surface, text_rect)
 
 
-
 class Bullet(EntityCollider):
-    def __init__(self, main, angle, speed, decay, width, height, collisionMap, scanArea, x, y, xOffset, yOffset):
-        EntityCollider.__init__(self, main, speed, collisionMap, x, y, xOffset, yOffset, width, height, scanArea)
-        self.main = main
+    def __init__(self, main, angle, speed, decay, collisionMap, x, y):
+        super().__init__(main, speed, collisionMap, x, y, xOffset=0, yOffset=0, width=2, height=2, scanArea=(2,2))
         self.angle = angle
-        self.speed = speed * self.main.scale
         self.decay = decay
-        self.x = x
-        self.y = y
-        self.width = width * self.main.scale
-        self.height = height * self.main.scale
         self.startTime = time.time()
         self.decayed = False
         self.show_ammo_text = True
 
         self.ammo_image = pygame.Surface((self.width, self.height))
         pygame.draw.rect(self.ammo_image, (0, 0, 0),pygame.Rect(0, 0, self.width, self.height))
-
-
 
     def update(self):
         if self.decayed:
@@ -121,12 +109,10 @@ class Bullet(EntityCollider):
         self.x += self.xVel
         self.y += self.yVel
 
-
     def draw(self, canvas):
         if self.decayed:
             return
         canvas.blit(self.ammo_image, (self.x - self.width/2, self.y - self.height/2))
-
 
     def skud(self, enemy):
         # tjek om bullet rammer fjenden

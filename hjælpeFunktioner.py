@@ -1,5 +1,6 @@
 import csv, os
 from collider import Collider
+import pygame
 
 
 def read_csv(filename, dialect="excel"):
@@ -47,3 +48,10 @@ def checkNearbyTiles(tile_size, scale, collisionMap, x, y, scanArea=(2, 2), scan
         return nearbyColliders
     except:
         return []
+
+
+def make_text(surface, text: str, pos: tuple[int, int], color, size):
+    font = pygame.font.Font('freesansbold.ttf', size)
+    text_surface = font.render(text, True, color)
+    text_rect = text_surface.get_rect(center=pos)
+    surface.blit(text_surface, text_rect)

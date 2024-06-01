@@ -3,29 +3,14 @@ from getSpritesheets import playerSpritesheet
 from collider import Collider
 import math
 from hjælpeFunktioner import read_csv, rectCollisionChecker, checkNearbyTiles
+from entityCollider import EntityCollider
 
 
-class Player:
-    def __init__(self, main, x, y, xOffset, yOffset, width, height, speed, collisionMap, scanArea):
-        self.main = main
-        self.xOffset = xOffset * self.main.scale
-        self.yOffset = yOffset * self.main.scale
-        self.width = width * self.main.scale
-        self.height = height * self.main.scale
-        self.speed = speed * self.main.scale
+class Player(EntityCollider):
+    def __init__(self, main, x, y, speed, collisionMap, scanArea):
+        super().__init__(main=main, x=x, y=y, xOffset=3, yOffset=2, width=10, height=12, speed=speed, collisionMap=collisionMap, scanArea=scanArea)
         self.max_health = 100
         self.health = self.max_health
-
-        self.x = x - (self.xOffset + self.width) / 2
-        self.y = y - (self.xOffset + self.width) / 2
-
-        self.xVel = 0
-        self.yVel = 0
-        self.collisionMap = read_csv(collisionMap)
-        self.scanArea = scanArea
-
-        self.collider = Collider(tile_size=self.main.tile_size, scale=self.main.scale, x=self.x + self.xOffset,
-                                 y=self.y + self.yOffset, width=self.width, height=self.height)
 
         self.lastMove = "DOWN"
         self.vector_direction = [0, 0]
@@ -70,17 +55,6 @@ class Player:
             self.x += self.xVel * amountToCorrect
         if not yObstructed:
             self.y += self.yVel * amountToCorrect
-
-    def checkCollision(self) -> (bool, bool):
-        self.collider.x, self.collider.y = self.x + self.xOffset, self.y + self.yOffset
-        xObstructed = False
-        yObstructed = False
-
-        nearbyColliders = checkNearbyTiles(self.main.tile_size, self.main.scale, self.collisionMap, self.x, self.y, scanArea=self.scanArea)
-        for collider in nearbyColliders:
-            xObstructed, yObstructed = rectCollisionChecker(self.collider, collider, self.xVel, self.yVel, xObstructed, yObstructed)
-
-        return xObstructed, yObstructed
 
     def getDirection(self):
         if self.xVel == 0 and self.yVel == 0:

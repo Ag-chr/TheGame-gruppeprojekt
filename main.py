@@ -38,8 +38,7 @@ class Main():
         # Canvas/surface skal være samme størrelse som map for at tegne det hele i starten
         self.canvas = pygame.Surface((self.maps[0].map_w, self.maps[0].map_h))
 
-        self.player = Player(self, self.maps[0].map_w / 2, self.maps[0].map_h / 2, 3, 2, 10, 12, 2,
-                             "Levels/MainLevel_Collision player.csv", scanArea=(2, 2))
+        self.player = Player(self, self.maps[0].map_w / 2, self.maps[0].map_h / 2, 1.5, "Levels/MainLevel_Collision player.csv", scanArea=(2, 2))
         self.camera = Camera(self, self.player, 0.075, 100)
         self.gun = Gun(self, self.player, self.camera, "Images/gun.png", 15)
         self.farm = Farm(self, self.player, "Farm/Farm_Area.csv", "Levels/MainLevel_Farm boundary.csv", "Farm/Plant_Area.csv")
@@ -58,7 +57,7 @@ class Main():
             {'type': Tank, 'interval': 5, 'base_count': 3},
             {'type': Boss, 'interval': 10, 'base_count': 1}
         ])
-        self.money = 0
+        self.money = 10000
 
     def run(self):
         self.running = True
@@ -100,7 +99,7 @@ class Main():
                             self.bullets.remove(bullet)
 
             for enemy in self.enemies:
-                enemy.update(self.player, self.farm)
+                enemy.update()
 
             self.enemies = [enemy for enemy in self.enemies if not enemy.dead]
             if not self.wave_start and (self.player.xVel != 0 or self.player.yVel != 0): #Hvis playeren bevæger sig kommer teksten frem
@@ -119,7 +118,6 @@ class Main():
                 plant.draw(self.canvas)
 
             for enemy in self.enemies:
-                enemy.update(self.player, self.farm)
                 enemy.draw_enemy(self.canvas)
 
             for bullet in self.bullets:

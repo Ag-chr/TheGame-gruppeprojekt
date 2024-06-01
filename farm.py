@@ -1,7 +1,7 @@
 import keyword
 
 import pygame
-from hjælpeFunktioner import read_csv
+from hjælpeFunktioner import read_csv, make_text
 from tiles import TileMap
 from getSpritesheets import farmSpritesheet
 import csv
@@ -54,10 +54,10 @@ class Farm:
         self.firing_distance_key = "firing_distance"
         self.price_key = "price"
 
-        self.selection = [{self.image_key: self.farmland_image, self.placeable_tile_key: "-1", self.price_key: 50},
-                          {self.image_key: self.plant1_image, self.placeable_tile_key: "12", self.firing_distance_key: 100 * self.main.scale, "class": Plant1, self.price_key: 100},
-                          {self.image_key: self.plant2_image, self.placeable_tile_key: "12", self.firing_distance_key: 150 * self.main.scale, "class": Plant2, self.price_key: 200},
-                          {self.image_key: self.plant3_image, self.placeable_tile_key: "12", self.firing_distance_key: 200 * self.main.scale, "class": Plant3, self.price_key: 300}]
+        self.selection = [{self.image_key: self.farmland_image, self.placeable_tile_key: "-1", self.price_key: 25},
+                          {self.image_key: self.plant1_image, self.placeable_tile_key: "12", "class": Plant1, self.price_key: 50},
+                          {self.image_key: self.plant2_image, self.placeable_tile_key: "12", "class": Plant2, self.price_key: 100},
+                          {self.image_key: self.plant3_image, self.placeable_tile_key: "12", "class": Plant3, self.price_key: 150}]
         self.currentSelection = 0
 
     def checkInput(self, event):
@@ -93,15 +93,17 @@ class Farm:
         self.farm_map.draw_map(canvas)
 
     def drawUI(self, canvas):
+        selectedItem = self.selection[self.currentSelection]
         scale = self.main.scale
-        width, height = 35 * scale, 35 * scale
+        width, height = 35 * scale, 40 * scale
 
         background = pygame.Surface((width, height))
         background.set_alpha(150)
 
-        tile = self.selection[self.currentSelection][self.image_key]
+        tile = selectedItem[self.image_key]
         canvas.blit(background, (self.main.windowWidth - width - 10 * scale, self.main.windowHeight - height - 10 * scale))
-        canvas.blit(tile, (self.main.windowWidth - width/2 - 10 * scale - tile.get_width() /2, self.main.windowHeight - height / 2 - 10 * scale - tile.get_height() / 2))
+        canvas.blit(tile, (self.main.windowWidth - width/2 - 10 * scale - tile.get_width() /2, self.main.windowHeight - height/2 - 15 * scale - tile.get_height() / 2))
+        make_text(canvas, f"Price: {selectedItem[self.price_key]}", (self.main.windowWidth - width/2 - 10 * scale, self.main.windowHeight - height/2), "white", 30)
 
     def switchItem(self, direction: str):
         if direction == "LEFT":
@@ -167,7 +169,7 @@ class Farm:
         self.plant_csv_array = self.change_num_in_csv(self.plant_csv, x_player_boundary, y_player_boundary, "-1")
         print(x_player_boundary, y_player_boundary)
 
-        self.main.plants.append(selected_plant[self.class_key](self.main, self, selected_plant[self.image_key], x_player_grid * self.real_tile_size, y_player_grid * self.real_tile_size, self.main.enemies, selected_plant[self.firing_distance_key]))
+        self.main.plants.append(selected_plant[self.class_key](self.main, self, selected_plant[self.image_key], x_player_grid * self.real_tile_size, y_player_grid * self.real_tile_size))
 
     def find_boundary(self):
         boundary = self.farm_boundary
@@ -193,19 +195,20 @@ class Farm:
                     file.write(f',"{boundary_tile}"') if self.farm_boundary[y][x] != "-1" else file.write(f',"{empty_tile}"')
                 file.write("\n")
 
+
 class Plant:
-    def __init__(self, main, farm, image, x, y, targets: list, health, damage, firingspeed, firing_distance):
+    def __init__(self, main, farm, image, x, y, health, damage, firingspeed, firing_distance):
         self.main = main
         self.farm = farm
         self.image = image
         self.x, self.y = x, y
         self.width = self.height = 16 * self.main.scale
-        self.targets = targets
+        self.targets = self.main.enemies
 
         self.health = health
         self.damage = damage
         self.firingspeed = firingspeed
-        self.firing_distance = firing_distance
+        self.firing_distance = firing_distance * self.main.scale
 
         self.xPoint = self.x + self.width / 2
         self.yPoint = self.y + self.height / 2
@@ -231,7 +234,7 @@ class Plant:
 
         if time.time() > self.startTime + self.firingspeed:
             self.startTime = time.time()
-            self.main.bullets.append(Bullet(self.main, angle_to_target, 3, 1, 2, 2, "Levels/MainLevel_Collision enemy.csv", (2, 2), xCenter, yCenter, 0, 0))
+            self.main.bullets.append(Bullet(self.main, angle_to_target, 3, 1, "Levels/MainLevel_Collision enemy.csv", xCenter, yCenter))
 
     def nearest_target(self):
         min_distance = math.inf
@@ -251,16 +254,17 @@ class Plant:
             yboundary = (self.y // (self.main.tile_size * self.main.scale)) - self.farm.start_of_bounds[1]
             self.farm.plant_csv_array = self.farm.change_num_in_csv(self.farm.plant_csv, xboundary, yboundary, "12")
 
+
 class Plant1(Plant):
-    def __init__(self, main, farm, image, x, y, targets, firing_distance):
-        super().__init__(main, farm, image, x, y, targets, 5, 1, 2, firing_distance)
+    def __init__(self, main, farm, image, x, y):
+        super().__init__(main, farm, image, x, y, 20, 1, 2, 150)
 
 
 class Plant2(Plant):
-    def __init__(self, main, farm, image, x, y, targets, firing_distance):
-        super().__init__(main, farm, image, x, y, targets, 10, 2, 1.5, firing_distance)
+    def __init__(self, main, farm, image, x, y):
+        super().__init__(main, farm, image, x, y, 30, 2, 1.5, 200)
 
 
 class Plant3(Plant):
-    def __init__(self, main, farm, image, x, y, targets, firing_distance):
-        super().__init__(main, farm, image, x, y, targets, 15, 3, 1, firing_distance)
+    def __init__(self, main, farm, image, x, y):
+        super().__init__(main, farm, image, x, y, 40, 3, 1, 300)

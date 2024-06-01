@@ -1,6 +1,5 @@
 import pygame
-from getSpritesheets import enemySpritesheet
-from getSpritesheets import goblinSpritesheet
+from getSpritesheets import enemySpritesheet, goblinSpritesheet
 import math
 import random
 from collider import Collider
@@ -8,37 +7,19 @@ from hjælpeFunktioner import read_csv,rectCollisionChecker, checkNearbyTiles
 from farm import Farm, Plant
 from player import Player
 import time
+from entityCollider import EntityCollider
 
-
-class Enemy:
+class Enemy(EntityCollider):
     def __init__(self, main, player, name, map_width, map_height, xOffset, yOffset, width, height, health, damage, speed,collisionMap,scanArea):
+        super().__init__(main=main, speed=speed, collisionMap=collisionMap, x=random.randint(0, map_width), y=random.randint(0, map_height), xOffset=xOffset, yOffset=yOffset, width=width, height=height, scanArea=scanArea)
         self.name = name
         self.max_health = health
         self.health = health
         self.damage = damage
-        self.main = main
         self.player = player
-        self.xOffset = xOffset * self.main.scale
-        self.yOffset = yOffset * self.main.scale
-        self.width = width * self.main.scale
-        self.speed = speed
-        self.height = height * self.main.scale
-        self.scanArea = scanArea
         self.hitbox = (self.xOffset + 17, self.yOffset + 2, 31, 57)
         self.visible = True
         self.dead = False
-
-        self.xVel = 0
-        self.yVel = 0
-
-        self.x = random.randint(0, map_width)
-        self.y = random.randint(0, map_height)
-
-
-        self.collisionMap = read_csv(collisionMap)
-
-        self.collider = Collider(tile_size=self.main.tile_size, scale=self.main.scale, x=self.x + self.xOffset,
-                                 y=self.y + self.yOffset, width=self.width, height=self.height)
 
         self.Enemy_img = enemySpritesheet.parse_sprite("kylling0.png")  # giver udsnit af sprite0 fra json fil
         self.Enemy_img = pygame.transform.scale_by(self.Enemy_img, self.main.scale)
@@ -81,10 +62,9 @@ class Enemy:
                 self.visible = False
                 self.main.enemies.remove(self)
 
-    def update(self, player, farm):
+    def update(self):
         if self.dead:
             return
-        xObstructed, yObstructed = self.checkCollision()
 
         distancefromplayer = math.sqrt((self.player.y - self.y) ** 2 + (self.player.x - self.x) ** 2)
         nearest_target = self.player
@@ -108,6 +88,7 @@ class Enemy:
         # Beregn retningen til målet (player eller farm)
         angletotarget = math.atan2(nearest_target.y - self.y, nearest_target.x - self.x)
 
+        xObstructed, yObstructed = self.checkCollision()
         self.xVel = math.cos(angletotarget) * self.speed
         self.yVel = math.sin(angletotarget) * self.speed
 
@@ -115,22 +96,6 @@ class Enemy:
             self.x += self.xVel
         if not yObstructed:
             self.y += self.yVel
-
-        if not xObstructed:
-            self.x += self.xVel
-        if not yObstructed:
-            self.y += self.yVel
-
-    def checkCollision(self) -> (bool, bool):
-        self.collider.x, self.collider.y = self.x + self.xOffset, self.y + self.yOffset
-        xObstructed = False
-        yObstructed = False
-
-        nearbyColliders = checkNearbyTiles(self.main.tile_size, self.main.scale, self.collisionMap, self.x, self.y, scanArea=self.scanArea)
-        for collider in nearbyColliders:
-            xObstructed, yObstructed = rectCollisionChecker(self.collider, collider, self.xVel, self.yVel, xObstructed, yObstructed)
-
-        return xObstructed, yObstructed
 
     def sværhed(self, wave_number):
         self.max_health += wave_number * 2
@@ -154,7 +119,7 @@ class Sprinter(Enemy):
 
 class Tank(Enemy):
     def __init__(self, main, player, map_width, map_height, collisionMap):
-        super().__init__(main, player, "Tank", map_width, map_height, 3, 2, 10, 10, 2, 5, 0.3, collisionMap, scanArea=(3, 3))
+        super().__init__(main, player, "Tank", map_width, map_height, 3, 2, 10, 10, 2, 5, 0.30, collisionMap, scanArea=(3, 3))
         self.Enemy_img = enemySpritesheet.parse_sprite("kylling4.png")
         self.Enemy_img = pygame.transform.scale_by(self.Enemy_img, self.main.scale)
         self.Enemy_rect = self.Enemy_img.get_rect()
