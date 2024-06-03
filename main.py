@@ -59,6 +59,8 @@ class Main():
         ])
         self.money = 10000
 
+        self.respawn_event = pygame.USEREVENT
+
     def run(self):
         self.running = True
 
@@ -79,6 +81,8 @@ class Main():
                     self.running = False
                 if event.type == pygame.KEYDOWN and event.key == pygame.K_f:
                     pygame.display.toggle_fullscreen()
+                elif event.type == self.respawn_event:
+                    self.player.respawn()
 
                 self.player.checkInput(event)
                 self.gun.checkInput(event)
@@ -140,12 +144,21 @@ class Main():
             self.gun.drawUI(self.window)
             self.money_ui(self.window, f"Money: {self.money}", (0, 0, 0))
 
+            if self.player.respawning:
+                self.respawn_text(self.window, "Du respawner om 3 sekunder", (255, 0, 0))
+
             if self.show_text:
                 self.wave_text(self.window, f"Wave {self.wave_number}", (255, 0, 0))
                 if pygame.time.get_ticks() - self.wave_text_timer > 1500:  # Viser hvor lang tid teksten skal være på skærmen
                     self.show_text = False
 
             pygame.display.update()  # updater skærm så disse ændringer kan ses
+
+    def respawn_text(self, surface, text, color):
+        font = pygame.font.Font('freesansbold.ttf', 75)
+        text_surface = font.render(text, True, color)
+        text_rect = text_surface.get_rect(center=(self.windowWidth // 2, self.windowHeight // 2))
+        surface.blit(text_surface, text_rect)
 
     def wave_text(self, surface, text, color):
         font = pygame.font.Font('freesansbold.ttf', 75)

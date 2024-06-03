@@ -3,6 +3,7 @@ import math
 import time
 
 from entityCollider import EntityCollider
+from player import Player
 
 class Gun:
     def __init__(self, main, player, camera, image, distance):
@@ -23,6 +24,8 @@ class Gun:
         self.tick = time.time()
 
     def checkInput(self, event):
+        if self.player.respawning:
+            return
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == pygame.BUTTON_LEFT:
                 if time.time() > self.tick + 0.06 and self.ammo > 0:
@@ -39,6 +42,8 @@ class Gun:
                 print("Ikk smid med skrald, det kan blive din sidste fejl")
 
     def update(self):
+        if self.player.respawning:
+            return
         # få musets koordinater
         xCamera, yCamera = self.camera.getCameraPos()
         xMouse, yMouse = pygame.mouse.get_pos()

@@ -11,6 +11,7 @@ class Player(EntityCollider):
         super().__init__(main=main, x=x, y=y, xOffset=3, yOffset=2, width=10, height=12, speed=speed, collisionMap=collisionMap, scanArea=scanArea)
         self.max_health = 100
         self.health = self.max_health
+        self.respawning = False
 
         self.lastMove = "DOWN"
         self.vector_direction = [0, 0]
@@ -20,6 +21,8 @@ class Player(EntityCollider):
         self.player_rect = self.player_img.get_rect()  # giver bredde og højde af sprite/player
 
     def checkInput(self, event):
+        if self.respawning:
+            return
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_w:
                 self.yVel -= self.speed
@@ -41,6 +44,8 @@ class Player(EntityCollider):
                 self.xVel -= self.speed
 
     def update(self):
+        if self.respawning:
+            return
         # bruger checkCollision fra fil entitycollider.py, som tjekker hvis
         xObstructed, yObstructed = self.checkCollision()
 
@@ -94,12 +99,18 @@ class Player(EntityCollider):
 
         self.hitbox = (self.x + 17, self.y + 4, self.width, self.height)
 
-
     def hit(self, damage):
         self.health -= damage
         if self.health <= 0:
             self.die()
 
     def die(self):
-        print("Du død!")
-        #Skal ahve gameover screenen
+        self.respawning = True
+        pygame.time.set_timer(self.main.respawn_event, 3000)  # Sætter en timer til 3 sekunder for respawn
+
+    def respawn(self):
+        self.health = self.max_health
+        self.x = (self.main.maps[0].map_w - self.width) / 2
+        self.y = (self.main.maps[0].map_h - self.height) / 2
+        self.respawning = False
+        pygame.time.set_timer(self.main.respawn_event, 0)  # Slukker timeren (så den ikke kører et uendelig loop)

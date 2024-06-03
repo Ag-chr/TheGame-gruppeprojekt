@@ -63,6 +63,8 @@ class Enemy(EntityCollider):
                 self.main.enemies.remove(self)
 
     def update(self):
+        if self.player.respawning:
+            return
         if self.dead:
             return
 
@@ -98,12 +100,12 @@ class Enemy(EntityCollider):
             self.y += self.yVel
 
     def sværhed(self, wave_number):
-        self.max_health += wave_number * 2
+        self.max_health += wave_number * 1.5
         self.health = self.max_health
-        self.damage += wave_number
-        self.speed += wave_number * 0.1
 
     def attack(self, target):
+        if self.player.respawning:
+            return
         if isinstance(target, Player):
             target.hit(self.damage)
         elif isinstance(target, Plant):
@@ -112,21 +114,21 @@ class Enemy(EntityCollider):
 
 class Sprinter(Enemy):
     def __init__(self, main, player, map_width, map_height, collisionMap):
-        super().__init__(main, player, "Sprinter", map_width, map_height, 3, 2, 10, 10, 2, 2, 1, collisionMap, scanArea=(3, 3))
+        super().__init__(main, player, "Sprinter", map_width, map_height, 3, 2, 10, 10, 2, 5, 1, collisionMap, scanArea=(3, 3))
         self.Enemy_img = goblinSpritesheet.parse_sprite("goblin4.png")
         self.Enemy_img = pygame.transform.scale_by(self.Enemy_img, self.main.scale)
         self.Enemy_rect = self.Enemy_img.get_rect()
 
 class Tank(Enemy):
     def __init__(self, main, player, map_width, map_height, collisionMap):
-        super().__init__(main, player, "Tank", map_width, map_height, 3, 2, 10, 10, 2, 5, 0.30, collisionMap, scanArea=(3, 3))
+        super().__init__(main, player, "Tank", map_width, map_height, 3, 2, 10, 10, 2, 10, 0.30, collisionMap, scanArea=(3, 3))
         self.Enemy_img = enemySpritesheet.parse_sprite("kylling4.png")
         self.Enemy_img = pygame.transform.scale_by(self.Enemy_img, self.main.scale)
         self.Enemy_rect = self.Enemy_img.get_rect()
 
 class Boss(Enemy):
     def __init__(self, main, player, map_width, map_height, collisionMap):
-        super().__init__(main, player, "Boss", map_width, map_height, 3, 2, 10, 10, 2, 10, 0.5, collisionMap, scanArea=(3, 3))
+        super().__init__(main, player, "Boss", map_width, map_height, 3, 2, 10, 10, 2, 15, 0.5, collisionMap, scanArea=(3, 3))
         self.Enemy_img = enemySpritesheet.parse_sprite("kylling4.png")
         self.Enemy_img = pygame.transform.scale_by(self.Enemy_img, self.main.scale)
         self.Enemy_rect = self.Enemy_img.get_rect()
