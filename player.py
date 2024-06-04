@@ -114,3 +114,5 @@ class Player(EntityCollider):
         self.y = (self.main.maps[0].map_h - self.height) / 2
         self.respawning = False
         pygame.time.set_timer(self.main.respawn_event, 0)  # Slukker timeren (så den ikke kører et uendelig loop)
+        self.yVel = 0
+        self.xVel = 0
