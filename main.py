@@ -59,7 +59,7 @@ class Main():
         ])
         self.money = 10000
 
-        self.respawn_event = pygame.USEREVENT
+        self.respawn_event = pygame.USEREVENT + 1
 
     def run(self):
         self.running = True
