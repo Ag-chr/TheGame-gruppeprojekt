@@ -167,7 +167,6 @@ class Farm:
         self.main.money -= selected_plant[self.price_key]
 
         self.plant_csv_array = self.change_num_in_csv(self.plant_csv, x_player_boundary, y_player_boundary, "-1")
-        print(x_player_boundary, y_player_boundary)
 
         self.main.plants.append(selected_plant[self.class_key](self.main, self, selected_plant[self.image_key], x_player_grid * self.real_tile_size, y_player_grid * self.real_tile_size))
 
@@ -234,8 +233,7 @@ class Plant:
 
         if time.time() > self.startTime + self.firingspeed:
             self.startTime = time.time()
-            self.main.bullets.append(Bullet(self.main, angle_to_target, 3, 1, "Levels/MainLevel_Collision enemy.csv", xCenter, yCenter))
-
+            self.main.bullets.append(Bullet(self.main, angle_to_target, 3, 1, "Levels/MainLevel_Collision enemy.csv", xCenter, yCenter, self.damage))
     def nearest_target(self):
         min_distance = math.inf
         nearest_target = None
