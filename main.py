@@ -7,7 +7,7 @@ from player import Player
 from camera import Camera
 from gun import Gun
 from button import Button
-from enemy import Tank, Sprinter, Boss
+from enemy import Tank, Sprinter, Boss, Enemy
 from farm import Farm
 from wavespawner import WaveManager
 
@@ -98,7 +98,7 @@ class Main():
                 bullet.update()
                 for enemy in self.enemies:
                     if bullet.skud(enemy):
-                        enemy.hit()
+                        enemy.hit(bullet.damage)
                         if bullet in self.bullets:
                             self.bullets.remove(bullet)
 

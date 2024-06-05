@@ -52,10 +52,9 @@ class Enemy(EntityCollider):
 
             self.hitbox = (self.x + 17, self.y + 4, self.width, self.height)
 
-
-    def hit(self):
+    def hit(self, damage):
         if self.health > 0:
-            self.health -= 1
+            self.health -= damage
             if self.health <= 0:
                 self.main.money += 10
                 self.dead = True
@@ -114,21 +113,21 @@ class Enemy(EntityCollider):
 
 class Sprinter(Enemy):
     def __init__(self, main, player, map_width, map_height, collisionMap):
-        super().__init__(main, player, "Sprinter", map_width, map_height, 3, 2, 10, 10, 2, 5, 1, collisionMap, scanArea=(3, 3))
+        super().__init__(main, player, "Sprinter", map_width, map_height, 3, 2, 10, 10, 20, 5, 1, collisionMap, scanArea=(3, 3))
         self.Enemy_img = goblinSpritesheet.parse_sprite("goblin4.png")
         self.Enemy_img = pygame.transform.scale_by(self.Enemy_img, self.main.scale)
         self.Enemy_rect = self.Enemy_img.get_rect()
 
 class Tank(Enemy):
     def __init__(self, main, player, map_width, map_height, collisionMap):
-        super().__init__(main, player, "Tank", map_width, map_height, 3, 2, 10, 10, 2, 10, 0.30, collisionMap, scanArea=(3, 3))
+        super().__init__(main, player, "Tank", map_width, map_height, 3, 2, 10, 10, 40, 10, 0.30, collisionMap, scanArea=(3, 3))
         self.Enemy_img = enemySpritesheet.parse_sprite("kylling4.png")
         self.Enemy_img = pygame.transform.scale_by(self.Enemy_img, self.main.scale)
         self.Enemy_rect = self.Enemy_img.get_rect()
 
 class Boss(Enemy):
     def __init__(self, main, player, map_width, map_height, collisionMap):
-        super().__init__(main, player, "Boss", map_width, map_height, 3, 2, 10, 10, 2, 15, 0.5, collisionMap, scanArea=(3, 3))
+        super().__init__(main, player, "Boss", map_width, map_height, 3, 2, 10, 10, 50, 20, 0.5, collisionMap, scanArea=(3, 3))
         self.Enemy_img = enemySpritesheet.parse_sprite("kylling4.png")
         self.Enemy_img = pygame.transform.scale_by(self.Enemy_img, self.main.scale)
         self.Enemy_rect = self.Enemy_img.get_rect()
