@@ -53,9 +53,9 @@ class Main():
         self.wave_number = 1
 
         self.wave_manager = WaveManager(self, [
-            {'type': Sprinter, 'interval': 2, 'base_count': 5},
-            {'type': Tank, 'interval': 5, 'base_count': 3},
-            {'type': Boss, 'interval': 10, 'base_count': 1}
+            {'type': Sprinter, 'interval': 0},
+            {'type': Tank, 'interval': 0},
+            {'type': Boss, 'interval': 0}
         ])
         self.money = 10000
 

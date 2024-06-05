@@ -99,8 +99,9 @@ class Enemy(EntityCollider):
             self.y += self.yVel
 
     def sværhed(self, wave_number):
-        self.max_health += wave_number * 1.5
-        self.health = self.max_health
+        if self.main.wave_number > 1:
+            self.max_health += wave_number * 1.5
+            self.health = self.max_health
 
     def attack(self, target):
         if self.player.respawning:
