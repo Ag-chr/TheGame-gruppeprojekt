@@ -13,8 +13,6 @@ def spawn_enemy_around_island(main, enemy_type):
     new_enemy.y = y
     new_enemy.sværhed(main.wave_number)
     main.enemies.append(new_enemy)
-    print(f"fjender{len(main.enemies)}")
-
 
 
 class WaveManager:
@@ -61,7 +59,6 @@ class WaveManager:
                     spawn_enemy_around_island(self.main, enemy_type)
                     self.enemies_spawned += 1
                     self.time_spawn = 0
-                    print(f"Wave {self.main.wave_number}: Spawned enemy {self.enemies_spawned}/{self.enemies_per_wave}")
 
 
             # Tjekker om enemies er død
