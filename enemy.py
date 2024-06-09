@@ -18,7 +18,7 @@ class Enemy(EntityCollider):
         self.health = health
         self.damage = damage
         self.player = player
-        self.hitbox = (self.xOffset + 17, self.yOffset + 2, 31, 57)
+        self.hitbox = pygame.Rect(self.x + self.xOffset, self.y + self.yOffset, self.width, self.height)
         self.visible = True
         self.dead = False
 
@@ -30,10 +30,13 @@ class Enemy(EntityCollider):
         self.attack_cooldown = 1.0
         self.last_attack_time = 0
 
-
+    def update_hitbox(self):
+        self.hitbox.x = self.x + self.xOffset
+        self.hitbox.y = self.y + self.yOffset
 
     def draw_enemy(self, canvas):
         if not self.dead:
+            self.update_hitbox()
             self.Enemy_rect.x = self.x + self.xOffset
             self.Enemy_rect.y = self.y + self.yOffset
             canvas.blit(self.Enemy_img, self.Enemy_rect)
@@ -77,10 +80,19 @@ class Enemy(EntityCollider):
                 min_distance = distance
                 nearest_target = plant
 
-        distance_to_base = math.sqrt((self.main.base.y - self.y) ** 2 + (self.main.base.x - self.x) ** 2)
+        base_center_x = self.main.base.get_x()
+        base_center_y = self.main.base.get_y()
+        distance_to_base = math.sqrt((base_center_y - self.y) ** 2 + (base_center_x - self.x) ** 2)
         if distance_to_base < min_distance:
             min_distance = distance_to_base
             nearest_target = self.main.base
+
+        if nearest_target == self.main.base and self.hitbox.colliderect(self.main.base.hitbox):
+            current_time = time.time()
+            if current_time - self.last_attack_time >= self.attack_cooldown:
+                self.main.base.hit(self.damage)
+                self.last_attack_time = current_time
+            return
 
         # Hvis fjenden er inden for angrebsafstand, angreb målet
         if min_distance <= self.attack_range:
@@ -90,8 +102,15 @@ class Enemy(EntityCollider):
                 self.last_attack_time = current_time
             return
 
-        # Beregn retningen til målet (player eller farm eller base)
-        angletotarget = math.atan2(nearest_target.y - self.y, nearest_target.x - self.x) if nearest_target != self.main.base else math.atan2(self.main.base.y - self.y, self.main.base.x - self.x)
+        if nearest_target == self.main.base:
+            target_x = self.main.base.get_x()
+            target_y = self.main.base.get_y()
+        else:
+            target_x = nearest_target.x
+            target_y = nearest_target.y
+
+        # Beregn retningen til målet (player eller farm)
+        angletotarget = math.atan2(target_y - self.y, target_x - self.x)
 
         xObstructed, yObstructed = self.checkCollision()
         self.xVel = math.cos(angletotarget) * self.speed

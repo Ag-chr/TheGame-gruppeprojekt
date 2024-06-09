@@ -43,8 +43,8 @@ class Main():
         self.camera = Camera(self, self.player, 0.075, 100)
         self.gun = Gun(self, self.player, self.camera, "Images/gun.png", 15)
         self.farm = Farm(self, self.player, "Farm/Farm_Area.csv", "Levels/MainLevel_Farm boundary.csv", "Farm/Plant_Area.csv")
-        base_width = 62
-        base_height = 82
+        base_width = 70
+        base_height = 90
         house_walls_center_x = self.maps[0].map_w // 2
         house_walls_center_y = self.maps[0].map_h // 2
         self.base = Base(self, house_walls_center_x - (base_width * self.scale) // 2, house_walls_center_y - (base_height * self.scale) // 2, base_width, base_height, 1000)
