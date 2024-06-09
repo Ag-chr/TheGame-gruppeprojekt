@@ -97,8 +97,10 @@ class Player(EntityCollider):
         # Beregner healthbaren
         health_width = (self.health / self.max_health) * healthbar_width
 
-        # Tegner den grønne
+        # Tegner den grønne, røde og sorte outline
+        pygame.draw.rect(canvas, (255, 0, 0), (healthbar_x, self.y - 20, healthbar_width, healthbar_height))
         pygame.draw.rect(canvas, (0, 128, 0), (healthbar_x, self.y - 20, health_width, healthbar_height))
+        pygame.draw.rect(canvas, (0, 0, 0), (healthbar_x, self.y - 20, healthbar_width, healthbar_height), 1)
 
         self.hitbox = (self.x + 17, self.y + 4, self.width, self.height)
 

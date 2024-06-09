@@ -16,12 +16,12 @@ class Base:
         self.hitbox.x = self.x - self.hitbox_margin
         self.hitbox.y = self.y - self.hitbox_margin
     def draw(self, canvas):
-        pygame.draw.rect(canvas, (255, 0, 0), self.hitbox, 2)
         healthbar_width = 100
         healthbar_height = 10
         health_width = (self.health / self.max_health) * healthbar_width
+        pygame.draw.rect(canvas, (255, 0, 0), (self.x + (self.width // 2) - (healthbar_width // 2), self.y - 20, healthbar_width, healthbar_height))
         pygame.draw.rect(canvas, (0, 128, 0), (self.x + (self.width // 2) - (healthbar_width // 2), self.y - 20, health_width, healthbar_height))
-        pygame.draw.rect(canvas, (255, 0, 0), (self.x + (self.width // 2) - (healthbar_width // 2), self.y - 20, healthbar_width, healthbar_height), 2)
+        pygame.draw.rect(canvas, (0, 0, 0), (self.x + (self.width // 2) - (healthbar_width // 2), self.y - 20, healthbar_width, healthbar_height), 1)
 
     def hit(self, damage):
         self.health -= damage
