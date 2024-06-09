@@ -7,9 +7,10 @@ from player import Player
 from camera import Camera
 from gun import Gun
 from button import Button
-from enemy import Tank, Sprinter, Boss
+from enemy import Tank, Sprinter, Boss, Enemy
 from farm import Farm
 from wavespawner import WaveManager
+from base import Base
 
 
 class Main():
@@ -42,6 +43,11 @@ class Main():
         self.camera = Camera(self, self.player, 0.075, 100)
         self.gun = Gun(self, self.player, self.camera, "Images/gun.png", 15)
         self.farm = Farm(self, self.player, "Farm/Farm_Area.csv", "Levels/MainLevel_Farm boundary.csv", "Farm/Plant_Area.csv")
+        base_width = 62
+        base_height = 82
+        house_walls_center_x = self.maps[0].map_w // 2
+        house_walls_center_y = self.maps[0].map_h // 2
+        self.base = Base(self, house_walls_center_x - (base_width * self.scale) // 2, house_walls_center_y - (base_height * self.scale) // 2, base_width, base_height, 1000)
 
         self.enemies = []
         self.bullets = []
@@ -53,9 +59,9 @@ class Main():
         self.wave_number = 1
 
         self.wave_manager = WaveManager(self, [
-            {'type': Sprinter, 'interval': 2, 'base_count': 5},
-            {'type': Tank, 'interval': 5, 'base_count': 3},
-            {'type': Boss, 'interval': 10, 'base_count': 1}
+            {'type': Sprinter, 'interval': 0},
+            {'type': Tank, 'interval': 0},
+            {'type': Boss, 'interval': 0}
         ])
         self.money = 10000
 
@@ -69,9 +75,12 @@ class Main():
         for map in self.maps:
             map.draw_map(mapCanvas)
 
-
         while self.running:
             self.clock.tick(60)  # 60 fps
+
+            if self.base.health <= 0:
+                self.gameover()
+                break
 
 # ------------------------------------------------ TJEKKER FOR INPUT ---------------------------------------------------
             for event in pygame.event.get():
@@ -98,7 +107,7 @@ class Main():
                 bullet.update()
                 for enemy in self.enemies:
                     if bullet.skud(enemy):
-                        enemy.hit()
+                        enemy.hit(bullet.damage)
                         if bullet in self.bullets:
                             self.bullets.remove(bullet)
 
@@ -129,6 +138,7 @@ class Main():
 
             self.player.draw_player(self.canvas)
             self.gun.draw_gun(self.canvas)
+            self.base.draw(self.canvas)
 
             # visualisere colliders
             # for collider in checkNearbyTiles(self.tile_size, self.scale, read_csv('Levels/MainLevel_Collision player.csv'), self.player.x + self.player.width, self.player.y + self.player.height, scanTiles=((0,-1), (-1, 0), (0, 1), (1, 0))):
@@ -143,6 +153,8 @@ class Main():
             self.farm.drawUI(self.window)
             self.gun.drawUI(self.window)
             self.money_ui(self.window, f"Money: {self.money}", (0, 0, 0))
+            self.base_health_ui(self.window, f"Base Health: {self.base.health}", (0, 0, 0))
+
 
             if self.player.respawning:
                 self.respawn_text(self.window, "Du respawner om 3 sekunder", (255, 0, 0))
@@ -154,6 +166,11 @@ class Main():
 
             pygame.display.update()  # updater skærm så disse ændringer kan ses
 
+    def base_health_ui(self, surface, text, color):
+        font = pygame.font.Font('freesansbold.ttf', 45)
+        text_surface = font.render(text, True, color)
+        text_rect = text_surface.get_rect(center=(self.windowWidth / 2, 260 * self.scale))
+        surface.blit(text_surface, text_rect)
     def respawn_text(self, surface, text, color):
         font = pygame.font.Font('freesansbold.ttf', 75)
         text_surface = font.render(text, True, color)

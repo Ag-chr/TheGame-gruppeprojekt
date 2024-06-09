@@ -23,6 +23,8 @@ class WaveManager:
         self.time_spawn = 0
         self.enemies_spawned = 0
         self.wave_active = False
+        self.enemies_per_wave = 5
+        self.increase = 3
 
     def start_waves(self):
         self.current_wave = 0
@@ -40,6 +42,8 @@ class WaveManager:
         self.enemies_spawned = 0
         self.wave_active = True
         self.main.wave_number += 1
+        if self.main.wave_number > 1:
+            self.enemies_per_wave += self.increase + 2
         self.main.show_text = True
         self.main.wave_text_timer = pygame.time.get_ticks()
 
@@ -48,7 +52,7 @@ class WaveManager:
             current_wave_config = self.wave_config[self.current_wave]
             self.time_spawn += self.main.clock.get_time() / 1000
 
-            if self.enemies_spawned < current_wave_config['base_count'] + self.main.wave_number:
+            if self.enemies_spawned < self.enemies_per_wave:
                 if self.time_spawn >= current_wave_config['interval']:
                     # Vælg en tilfældig fjende fra wave_config
                     enemy_type = random.choice([cfg['type'] for cfg in self.wave_config])
@@ -56,8 +60,9 @@ class WaveManager:
                     self.enemies_spawned += 1
                     self.time_spawn = 0
 
+
             # Tjekker om enemies er død
-            if self.enemies_spawned >= current_wave_config['base_count'] + self.main.wave_number:
+            if self.enemies_spawned >= self.enemies_per_wave:
                 if all(enemy.dead for enemy in self.main.enemies):
                     self.wave_active = False
                     self.main.show_text = True

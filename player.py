@@ -25,27 +25,29 @@ class Player(EntityCollider):
             return
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_w:
-                self.yVel -= self.speed
+                self.yVel = -self.speed
             if event.key == pygame.K_s:
-                self.yVel += self.speed
+                self.yVel = self.speed
             if event.key == pygame.K_a:
-                self.xVel -= self.speed
+                self.xVel = -self.speed
             if event.key == pygame.K_d:
-                self.xVel += self.speed
+                self.xVel = self.speed
 
         if event.type == pygame.KEYUP:
-            if event.key == pygame.K_w:
-                self.yVel += self.speed
-            if event.key == pygame.K_s:
-                self.yVel -= self.speed
-            if event.key == pygame.K_a:
-                self.xVel += self.speed
-            if event.key == pygame.K_d:
-                self.xVel -= self.speed
+            if event.key == pygame.K_w and self.yVel == -self.speed:
+                self.yVel = 0
+            if event.key == pygame.K_s and self.yVel == self.speed:
+                self.yVel = 0
+            if event.key == pygame.K_a and self.xVel == -self.speed:
+                self.xVel = 0
+            if event.key == pygame.K_d and self.xVel == self.speed:
+                self.xVel = 0
 
     def update(self):
         if self.respawning:
             return
+
+
         # bruger checkCollision fra fil entitycollider.py, som tjekker hvis
         xObstructed, yObstructed = self.checkCollision()
 
@@ -60,6 +62,7 @@ class Player(EntityCollider):
             self.x += self.xVel * amountToCorrect
         if not yObstructed:
             self.y += self.yVel * amountToCorrect
+
 
     def getDirection(self):
         if self.xVel == 0 and self.yVel == 0:
@@ -114,5 +117,3 @@ class Player(EntityCollider):
         self.y = (self.main.maps[0].map_h - self.height) / 2
         self.respawning = False
         pygame.time.set_timer(self.main.respawn_event, 0)  # Slukker timeren (så den ikke kører et uendelig loop)
-        self.yVel = 0
-        self.xVel = 0

@@ -3,7 +3,7 @@ import math
 import time
 
 from entityCollider import EntityCollider
-from player import Player
+
 
 class Gun:
     def __init__(self, main, player, camera, image, distance):
@@ -31,7 +31,7 @@ class Gun:
                 if time.time() > self.tick + 0.06 and self.ammo > 0:
                     self.tick = time.time()
                     self.ammo -= 1
-                    self.main.bullets.append(Bullet(self.main, self.angleFromPlayerToMouse, 3, 1, "Levels/MainLevel_Collision enemy.csv", self.xPlayer, self.yPlayer))
+                    self.main.bullets.append(Bullet(self.main, self.angleFromPlayerToMouse, 3, 1, "Levels/MainLevel_Collision enemy.csv", self.xPlayer, self.yPlayer,2))
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_r:
                 self.ammo = 30
@@ -87,13 +87,14 @@ class Gun:
 
 
 class Bullet(EntityCollider):
-    def __init__(self, main, angle, speed, decay, collisionMap, x, y):
+    def __init__(self, main, angle, speed, decay, collisionMap, x, y, damage):
         super().__init__(main, speed, collisionMap, x, y, xOffset=0, yOffset=0, width=2, height=2, scanArea=(2,2))
         self.angle = angle
         self.decay = decay
         self.startTime = time.time()
         self.decayed = False
         self.show_ammo_text = True
+        self.damage = damage
 
         self.ammo_image = pygame.Surface((self.width, self.height))
         pygame.draw.rect(self.ammo_image, (0, 0, 0),pygame.Rect(0, 0, self.width, self.height))
@@ -123,5 +124,8 @@ class Bullet(EntityCollider):
         # tjek om bullet rammer fjenden
         bullet_rect = pygame.Rect(self.x - self.width / 2, self.y - self.height / 2, self.width, self.height)
         enemy_rect = pygame.Rect(enemy.x + enemy.xOffset, enemy.y + enemy.yOffset, enemy.width, enemy.height)
-        return bullet_rect.colliderect(enemy_rect)
+        if bullet_rect.colliderect(enemy_rect):
+            enemy.hit(self.damage)
+            return True
+        return False
 
