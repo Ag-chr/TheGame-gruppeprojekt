@@ -1,6 +1,7 @@
 import random
 import math
 import pygame
+from enemy import Sprinter, Tank, Boss
 
 def spawn_enemy_around_island(main, enemy_type):
     map_radius = 25*16*main.scale
@@ -25,6 +26,7 @@ class WaveManager:
         self.wave_active = False
         self.enemies_per_wave = 5
         self.increase = 3
+        self.boss_spawned = False
 
     def start_waves(self):
         self.current_wave = 0
@@ -47,6 +49,21 @@ class WaveManager:
         self.main.show_text = True
         self.main.wave_text_timer = pygame.time.get_ticks()
 
+    def enemies_dead(self):
+        for enemy in self.main.enemies:
+            if isinstance(enemy, Sprinter) or isinstance(enemy, Tank):
+                return False
+        return True
+
+    def all_enemies_dead(self):
+        return all(enemy.dead for enemy in self.main.enemies)
+
+    def boss_dead(self):
+        for enemy in self.main.enemies:
+            if isinstance(enemy, Boss):
+                return True
+        return False
+
     def update(self):
         if self.wave_active:
             current_wave_config = self.wave_config[self.current_wave]
@@ -61,14 +78,21 @@ class WaveManager:
                     self.time_spawn = 0
 
 
-            # Tjekker om enemies er død
+            # Tjekker om alle enemies er døde
             if self.enemies_spawned >= self.enemies_per_wave:
-                if all(enemy.dead for enemy in self.main.enemies):
-                    self.wave_active = False
-                    self.main.show_text = True
-                    self.main.wave_text_timer = pygame.time.get_ticks()
-                    # Starter efter lidt tid en ny wave
-                    pygame.time.set_timer(pygame.USEREVENT, 1500)
+                if self.all_enemies_dead():
+                    if self.main.wave_number % 3 == 0 and self.all_enemies_dead():
+                        if not self.boss_spawned:
+                            spawn_enemy_around_island(self.main, Boss)
+                            self.boss_spawned = True
+
+                    # Tjekker om bossen er død
+                    if not self.boss_dead():
+                        self.wave_active = False
+                        self.main.show_text = True
+                        self.main.wave_text_timer = pygame.time.get_ticks()
+                        # Starter efter lidt tid en ny wave
+                        pygame.time.set_timer(pygame.USEREVENT, 1500)
 
     def handle_event(self, event):
         if event.type == pygame.USEREVENT:
