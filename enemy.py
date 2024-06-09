@@ -8,6 +8,7 @@ from farm import Farm, Plant
 from player import Player
 import time
 from entityCollider import EntityCollider
+from base import Base
 
 class Enemy(EntityCollider):
     def __init__(self, main, player, name, map_width, map_height, xOffset, yOffset, width, height, health, damage, speed,collisionMap,scanArea):
@@ -50,8 +51,6 @@ class Enemy(EntityCollider):
             # Tegner den grønne
             pygame.draw.rect(canvas, (0, 128, 0), (healthbar_x, self.y - 20, health_width, healthbar_height))
 
-            self.hitbox = (self.x + 17, self.y + 4, self.width, self.height)
-
     def hit(self, damage):
         if self.health > 0:
             self.health -= damage
@@ -78,6 +77,11 @@ class Enemy(EntityCollider):
                 min_distance = distance
                 nearest_target = plant
 
+        distance_to_base = math.sqrt((self.main.base.y - self.y) ** 2 + (self.main.base.x - self.x) ** 2)
+        if distance_to_base < min_distance:
+            min_distance = distance_to_base
+            nearest_target = self.main.base
+
         # Hvis fjenden er inden for angrebsafstand, angreb målet
         if min_distance <= self.attack_range:
             current_time = time.time()
@@ -86,8 +90,8 @@ class Enemy(EntityCollider):
                 self.last_attack_time = current_time
             return
 
-        # Beregn retningen til målet (player eller farm)
-        angletotarget = math.atan2(nearest_target.y - self.y, nearest_target.x - self.x)
+        # Beregn retningen til målet (player eller farm eller base)
+        angletotarget = math.atan2(nearest_target.y - self.y, nearest_target.x - self.x) if nearest_target != self.main.base else math.atan2(self.main.base.y - self.y, self.main.base.x - self.x)
 
         xObstructed, yObstructed = self.checkCollision()
         self.xVel = math.cos(angletotarget) * self.speed
@@ -110,6 +114,9 @@ class Enemy(EntityCollider):
             target.hit(self.damage)
         elif isinstance(target, Plant):
             target.hit(self.damage)
+        elif isinstance(target, Base):
+            target.hit(self.damage)
+
 
 
 class Sprinter(Enemy):
