@@ -226,7 +226,7 @@ class Main():
         text = font.render("The farm was stormed", True, (0, 0, 0))
         textRect = text.get_rect()
         textRect.center = (self.windowWidth // 2, self.windowHeight // 2 - 150)
-        try_again_button = Button(self.windowWidth // 2 - 175, self.windowHeight // 2 - 25, 350, 75, "Try Again", False,(0, 200, 0), lambda: start())  # Try again knap
+        #try_again_button = Button(self.windowWidth // 2 - 175, self.windowHeight // 2 - 25, 350, 75, "Try Again", False,(0, 200, 0), lambda: start())  # Try again knap
         quit_button = Button(self.windowWidth // 2 - 175, self.windowHeight // 2 + 100, 350, 75, "Quit", False,(200, 0, 0), lambda: quit())  # Quit knap
 
         startCanvas.fill((255, 255, 255))
@@ -240,11 +240,11 @@ class Main():
                     self.running = False
                 if event.type == pygame.KEYDOWN and event.key == pygame.K_f:
                     pygame.display.toggle_fullscreen()
-                try_again_button.update(event)
+                #try_again_button.update(event)
                 quit_button.update(event)
 
             startCanvas.blit(text, textRect)
-            try_again_button.draw(startCanvas)  # Tegner again
+            #try_again_button.draw(startCanvas)  # Tegner again
             quit_button.draw(startCanvas)  # Tegner quit
 
             self.window.blit(startCanvas, (0, 0))  # tegner canvas på skærm og kun område som kan ses
