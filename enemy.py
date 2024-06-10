@@ -144,7 +144,7 @@ class Enemy(EntityCollider):
 class Sprinter(Enemy):
     def __init__(self, main, player, map_width, map_height, collisionMap):
         super().__init__(main, player, "Sprinter", map_width, map_height, 3, 2, 10, 10, 20, 5, 1, collisionMap, scanArea=(3, 3))
-        self.Enemy_img = goblinSpritesheet.parse_sprite("goblin4.png")
+        self.Enemy_img = enemySpritesheet.parse_sprite("kylling4.png")
         self.Enemy_img = pygame.transform.scale_by(self.Enemy_img, self.main.scale)
         self.Enemy_rect = self.Enemy_img.get_rect()
 
